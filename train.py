@@ -93,22 +93,27 @@ def sdpa_flash_attn_func(q, k, v, causal=True, window_size=(-1, -1)):
     return out.transpose(1, 2).contiguous()
 
 
-try:
-    from kernels import get_kernel
-
-    cap = torch.cuda.get_device_capability()
-    # varunneal's FA3 is Hopper only, use kernels-community on non-Hopper GPUs
-    _fa_repo = (
-        "varunneal/flash-attention-3"
-        if cap == (9, 0)
-        else "kernels-community/flash-attn3"
-    )
-    flash_attn_func = get_kernel(_fa_repo).flash_attn_interface.flash_attn_func
-except (FileNotFoundError, OSError, ImportError):
-    print(
-        "kernels: FA3 not available for this platform; using PyTorch SDPA for attention"
-    )
+_use_fa3 = _env_flag("AUTORESEARCH_USE_FA3")
+if _use_fa3 is False:
+    print("kernels: FA3 disabled by AUTORESEARCH_USE_FA3=0; using PyTorch SDPA")
     flash_attn_func = sdpa_flash_attn_func
+else:
+    try:
+        from kernels import get_kernel
+
+        cap = torch.cuda.get_device_capability()
+        # varunneal's FA3 is Hopper only, use kernels-community on non-Hopper GPUs
+        _fa_repo = (
+            "varunneal/flash-attention-3"
+            if cap == (9, 0)
+            else "kernels-community/flash-attn3"
+        )
+        flash_attn_func = get_kernel(_fa_repo).flash_attn_interface.flash_attn_func
+    except (FileNotFoundError, OSError, ImportError):
+        print(
+            "kernels: FA3 not available for this platform; using PyTorch SDPA for attention"
+        )
+        flash_attn_func = sdpa_flash_attn_func
 
 
 def _inductor_use_aten_gemm_only():
