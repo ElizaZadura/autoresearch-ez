@@ -340,18 +340,21 @@ def make_dataloader(tokenizer, B, T, split, buffer_size=1000):
 # Evaluation (DO NOT CHANGE — this is the fixed metric)
 # ---------------------------------------------------------------------------
 
+
 @torch.no_grad()
-def evaluate_bpb(model, tokenizer, batch_size):
+def evaluate_bpb(model, tokenizer, batch_size, eval_tokens=None):
     """
     Bits per byte (BPB): vocab size-independent evaluation metric.
     Sums per-token cross-entropy (in nats), sums target byte lengths,
     then converts nats/byte to bits/byte. Special tokens (byte length 0)
     are excluded from both sums.
     Uses fixed MAX_SEQ_LEN so results are comparable across configs.
+    eval_tokens: cap tokens to score (default EVAL_TOKENS); use a small value for smoke tests.
     """
     token_bytes = get_token_bytes(device="cuda")
     val_loader = make_dataloader(tokenizer, batch_size, MAX_SEQ_LEN, "val")
-    steps = EVAL_TOKENS // (batch_size * MAX_SEQ_LEN)
+    cap = EVAL_TOKENS if eval_tokens is None else eval_tokens
+    steps = max(1, cap // (batch_size * MAX_SEQ_LEN))
     total_nats = 0.0
     total_bytes = 0
     for _ in range(steps):
@@ -363,6 +366,7 @@ def evaluate_bpb(model, tokenizer, batch_size):
         total_nats += (loss_flat * mask).sum().item()
         total_bytes += nbytes.sum().item()
     return total_nats / (math.log(2) * total_bytes)
+
 
 # ---------------------------------------------------------------------------
 # Main

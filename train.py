@@ -1,14 +1,34 @@
 """
 Autoresearch pretraining script. Single-GPU, single-file.
 Cherry-picked and simplified from nanochat.
-Usage: uv run train.py
+Usage: uv run train.py [--smoke-test]
 """
 
+import argparse
 import os
-os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
+import sys
+
+# CUDA caching allocator (see https://pytorch.org/docs/stable/notes/cuda.html#memory-management )
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+os.environ.setdefault("PYTORCH_ALLOC_CONF", "expandable_segments:True")
 os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+# Windows CUDA wheels ship without Triton; Inductor Triton GEMM autotune can fail or
+# spam "not enough SMs" on consumer GPUs (<68 SMs is PyTorch's "big GPU" cutoff).
+if sys.platform == "win32":
+    os.environ.setdefault("TORCHINDUCTOR_MAX_AUTOTUNE_GEMM_BACKENDS", "ATEN")
+    os.environ.setdefault("TORCHINDUCTOR_MAX_AUTOTUNE_CONV_BACKENDS", "ATEN")
+
+_argp = argparse.ArgumentParser(description="Autoresearch single-GPU pretraining")
+_argp.add_argument(
+    "--smoke-test",
+    action="store_true",
+    help="Short run (few steps + tiny eval) to validate setup.",
+)
+_TRAIN_ARGS, _ = _argp.parse_known_args()
+SMOKE_TEST = _TRAIN_ARGS.smoke_test
 
 import gc
+import logging
 import math
 import time
 from dataclasses import dataclass, asdict
@@ -17,13 +37,165 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from kernels import get_kernel
-cap = torch.cuda.get_device_capability()
-# varunneal's FA3 is Hopper only, use kernels-community on non-Hopper GPUs
-repo = "varunneal/flash-attention-3" if cap == (9, 0) else "kernels-community/flash-attn3"
-fa3 = get_kernel(repo).flash_attn_interface
-
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
+
+TRAINING_TIME_BUDGET = 12 if SMOKE_TEST else TIME_BUDGET
+SMOKE_MAX_OPTIMIZER_STEPS = 4  # counted after step 10 (post compile-warmup)
+
+# ---------------------------------------------------------------------------
+# Flash Attention 3 via HF kernels when available; PyTorch SDPA otherwise
+# (e.g. Windows builds often lack matching kernel variants).
+# ---------------------------------------------------------------------------
+
+_sdpa_sliding_mask_cache: dict[tuple[int, int, str], torch.Tensor] = {}
+
+
+def _env_flag(name: str):
+    value = os.environ.get(name, "").strip().lower()
+    if value in ("1", "true", "yes", "on"):
+        return True
+    if value in ("0", "false", "no", "off"):
+        return False
+    return None
+
+
+def sdpa_flash_attn_func(q, k, v, causal=True, window_size=(-1, -1)):
+    """Drop-in-ish replacement for FA3 flash_attn_func: B,T,H,D tensors, GQA ok."""
+    if not causal:
+        raise ValueError("sdpa fallback only supports causal attention")
+    B, T, hq, D = q.shape
+    hkv = k.shape[2]
+    qh = q.transpose(1, 2).contiguous()
+    kh = k.transpose(1, 2).contiguous()
+    vh = v.transpose(1, 2).contiguous()
+    w_left = int(window_size[0])
+    gqa_kw = {"enable_gqa": True} if hq != hkv else {}
+
+    if w_left < 0 or w_left >= T:
+        out = F.scaled_dot_product_attention(qh, kh, vh, is_causal=True, **gqa_kw)
+        return out.transpose(1, 2).contiguous()
+
+    dev_s = str(q.device)
+    key = (T, w_left, dev_s)
+    mask = _sdpa_sliding_mask_cache.get(key)
+    if mask is None:
+        ii = torch.arange(T, device=q.device).unsqueeze(1)
+        jj = torch.arange(T, device=q.device).unsqueeze(0)
+        causal_ok = jj <= ii
+        band_ok = jj >= (ii - (w_left - 1))
+        allowed = causal_ok & band_ok
+        # Bool mask: less memory / friendlier to SDPA than float -inf additive mask.
+        mask = allowed.view(1, 1, T, T)
+        _sdpa_sliding_mask_cache[key] = mask
+    out = F.scaled_dot_product_attention(
+        qh, kh, vh, attn_mask=mask, is_causal=False, **gqa_kw
+    )
+    return out.transpose(1, 2).contiguous()
+
+
+try:
+    from kernels import get_kernel
+
+    cap = torch.cuda.get_device_capability()
+    # varunneal's FA3 is Hopper only, use kernels-community on non-Hopper GPUs
+    _fa_repo = (
+        "varunneal/flash-attention-3"
+        if cap == (9, 0)
+        else "kernels-community/flash-attn3"
+    )
+    flash_attn_func = get_kernel(_fa_repo).flash_attn_interface.flash_attn_func
+except (FileNotFoundError, OSError, ImportError):
+    print(
+        "kernels: FA3 not available for this platform; using PyTorch SDPA for attention"
+    )
+    flash_attn_func = sdpa_flash_attn_func
+
+
+def _inductor_use_aten_gemm_only():
+    """Use ATen/cuBLAS for compiled GEMMs when Triton autotune is unavailable or unsuitable."""
+    if not torch.cuda.is_available():
+        return
+    aten_only = _env_flag("AUTORESEARCH_INDUCTOR_ATEN_ONLY")
+    if aten_only is False:
+        return
+    if aten_only is None and sys.platform != "win32":
+        return
+    import torch._inductor.config as inductor_config
+
+    inductor_config.max_autotune_gemm_backends = "ATEN"
+    inductor_config.max_autotune_conv_backends = "ATEN"
+
+    class _DropSmAutotuneMsg(logging.Filter):
+        def filter(self, record):
+            try:
+                msg = record.getMessage()
+            except Exception:
+                return True
+            return "Not enough SMs to use max_autotune_gemm" not in msg
+
+    logging.getLogger("torch._inductor.utils").addFilter(_DropSmAutotuneMsg())
+
+
+def _best_device_batch(requested: int, max_batch: int) -> int:
+    """Largest batch such that TOTAL_BATCH_SIZE % (batch * MAX_SEQ_LEN) == 0 and batch <= max_batch."""
+    cap = min(requested, max_batch)
+    for b in range(cap, 0, -1):
+        if TOTAL_BATCH_SIZE % (b * MAX_SEQ_LEN) == 0:
+            return b
+    return 1
+
+
+def _vram_device_batch_cap(total_memory_bytes: int) -> int:
+    """Rough caps aligned with consumer-GPU practice (cf. jsegov/autoresearch-win-rtx)."""
+    gib = total_memory_bytes / (1024**3)
+    if gib < 16:
+        return 16
+    if gib < 24:
+        return 32
+    if gib < 40:
+        return 64
+    return 256
+
+
+def _device_batch_cap(total_memory_bytes: int):
+    """Optional per-device batch cap. Default heuristic is Windows-only to minimize repo drift."""
+    override = os.environ.get("AUTORESEARCH_DEVICE_BATCH_SIZE_CAP", "").strip().lower()
+    if override:
+        if override in ("0", "false", "no", "off", "none"):
+            return None
+        try:
+            cap = int(override)
+        except ValueError as exc:
+            raise ValueError(
+                "AUTORESEARCH_DEVICE_BATCH_SIZE_CAP must be an integer or one of: off, false, no, none"
+            ) from exc
+        if cap < 1:
+            raise ValueError("AUTORESEARCH_DEVICE_BATCH_SIZE_CAP must be >= 1")
+        return cap
+    if sys.platform == "win32":
+        return _vram_device_batch_cap(total_memory_bytes)
+    return None
+
+
+def _use_torch_compile() -> bool:
+    """Match upstream by default off only on Windows; keep env override for opt-in tuning."""
+    o = _env_flag("AUTORESEARCH_USE_TORCH_COMPILE")
+    if o is False:
+        return False
+    if o is True:
+        return True
+    return sys.platform != "win32"
+
+
+def _use_gradient_checkpointing(total_memory_bytes: int) -> bool:
+    """Default to upstream behavior off except on Windows low-VRAM setups."""
+    e = _env_flag("AUTORESEARCH_GRADIENT_CHECKPOINTING")
+    if e is True:
+        return True
+    if e is False:
+        return False
+    return sys.platform == "win32" and total_memory_bytes < 20 * (1024**3)
+
 
 # ---------------------------------------------------------------------------
 # GPT Model
@@ -38,6 +210,7 @@ class GPTConfig:
     n_kv_head: int = 6
     n_embd: int = 768
     window_pattern: str = "SSSL"
+    use_gradient_checkpointing: bool = False
 
 
 def norm(x):
@@ -90,7 +263,7 @@ class CausalSelfAttention(nn.Module):
         q, k = apply_rotary_emb(q, cos, sin), apply_rotary_emb(k, cos, sin)
         q, k = norm(q), norm(k)
 
-        y = fa3.flash_attn_func(q, k, v, causal=True, window_size=window_size)
+        y = flash_attn_func(q, k, v, causal=True, window_size=window_size)
         y = y.contiguous().view(B, T, -1)
         y = self.c_proj(y)
         return y
@@ -114,8 +287,19 @@ class Block(nn.Module):
         super().__init__()
         self.attn = CausalSelfAttention(config, layer_idx)
         self.mlp = MLP(config)
+        self.use_gradient_checkpointing = config.use_gradient_checkpointing
 
     def forward(self, x, ve, cos_sin, window_size):
+        if self.training and self.use_gradient_checkpointing:
+
+            def _block_inner(h):
+                h = h + self.attn(norm(h), ve, cos_sin, window_size)
+                h = h + self.mlp(norm(h))
+                return h
+
+            return torch.utils.checkpoint.checkpoint(
+                _block_inner, x, use_reentrant=False
+            )
         x = x + self.attn(norm(x), ve, cos_sin, window_size)
         x = x + self.mlp(norm(x))
         return x
@@ -302,7 +486,6 @@ polar_express_coeffs = [
     (2.3465413258596377, -1.7097828382687081, 0.42323551169305323),
 ]
 
-@torch.compile(dynamic=False, fullgraph=True)
 def adamw_step_fused(p, grad, exp_avg, exp_avg_sq, step_t, lr_t, beta1_t, beta2_t, eps_t, wd_t):
     p.mul_(1 - lr_t * wd_t)
     exp_avg.lerp_(grad, 1 - beta1_t)
@@ -313,7 +496,6 @@ def adamw_step_fused(p, grad, exp_avg, exp_avg_sq, step_t, lr_t, beta1_t, beta2_
     step_size = lr_t / bias1
     p.add_(exp_avg / denom, alpha=-step_size)
 
-@torch.compile(dynamic=False, fullgraph=True)
 def muon_step_fused(stacked_grads, stacked_params, momentum_buffer, second_momentum_buffer,
                     momentum_t, lr_t, wd_t, beta2_t, ns_steps, red_dim):
     # Nesterov momentum
@@ -459,25 +641,57 @@ torch.manual_seed(42)
 torch.cuda.manual_seed(42)
 torch.set_float32_matmul_precision("high")
 device = torch.device("cuda")
+_cuda_mem = torch.cuda.get_device_properties(0).total_memory
+_inductor_use_aten_gemm_only()
+USE_TORCH_COMPILE = _use_torch_compile()
+if USE_TORCH_COMPILE:
+    adamw_step_fused = torch.compile(adamw_step_fused, dynamic=False, fullgraph=True)
+    muon_step_fused = torch.compile(muon_step_fused, dynamic=False, fullgraph=True)
+else:
+    print(
+        "torch.compile: off. "
+        "Set AUTORESEARCH_USE_TORCH_COMPILE=1 to force on."
+    )
+_batch_cap = _device_batch_cap(_cuda_mem)
+if _batch_cap is not None:
+    DEVICE_BATCH_SIZE = _best_device_batch(DEVICE_BATCH_SIZE, _batch_cap)
+    print(
+        f"device batch: {DEVICE_BATCH_SIZE} (VRAM ~{_cuda_mem / (1024**3):.1f} GiB; cap {_batch_cap})"
+    )
+else:
+    print(f"device batch: {DEVICE_BATCH_SIZE}")
 autocast_ctx = torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16)
 H100_BF16_PEAK_FLOPS = 989.5e12
+COMPILE_WARMUP_STEPS = 10 if USE_TORCH_COMPILE else 0
 
 tokenizer = Tokenizer.from_directory()
 vocab_size = tokenizer.get_vocab_size()
 print(f"Vocab size: {vocab_size:,}")
 
-def build_model_config(depth):
+
+def build_model_config(depth, *, use_gradient_checkpointing: bool):
     base_dim = depth * ASPECT_RATIO
     model_dim = ((base_dim + HEAD_DIM - 1) // HEAD_DIM) * HEAD_DIM
     num_heads = model_dim // HEAD_DIM
     return GPTConfig(
-        sequence_len=MAX_SEQ_LEN, vocab_size=vocab_size,
-        n_layer=depth, n_head=num_heads, n_kv_head=num_heads, n_embd=model_dim,
+        sequence_len=MAX_SEQ_LEN,
+        vocab_size=vocab_size,
+        n_layer=depth,
+        n_head=num_heads,
+        n_kv_head=num_heads,
+        n_embd=model_dim,
         window_pattern=WINDOW_PATTERN,
+        use_gradient_checkpointing=use_gradient_checkpointing,
     )
 
-config = build_model_config(DEPTH)
+
+_use_ckpt = _use_gradient_checkpointing(_cuda_mem)
+config = build_model_config(DEPTH, use_gradient_checkpointing=_use_ckpt)
 print(f"Model config: {asdict(config)}")
+if _use_ckpt:
+    print(
+        "gradient checkpointing: on (AUTORESEARCH_GRADIENT_CHECKPOINTING=0 to disable)"
+    )
 
 with torch.device("meta"):
     model = GPT(config)
@@ -505,15 +719,16 @@ optimizer = model.setup_optimizer(
     weight_decay=WEIGHT_DECAY,
 )
 
-model = torch.compile(model, dynamic=False)
+if USE_TORCH_COMPILE:
+    model = torch.compile(model, dynamic=False)
 
 train_loader = make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
 x, y, epoch = next(train_loader)  # prefetch first batch
 
-print(f"Time budget: {TIME_BUDGET}s")
+print(f"Time budget: {TRAINING_TIME_BUDGET}s" + (" (smoke test)" if SMOKE_TEST else ""))
 print(f"Gradient accumulation steps: {grad_accum_steps}")
 
-# Schedules (all based on progress = training_time / TIME_BUDGET)
+# Schedules (all based on progress = training_time / TRAINING_TIME_BUDGET)
 
 def get_lr_multiplier(progress):
     if progress < WARMUP_RATIO:
@@ -552,7 +767,7 @@ while True:
         x, y, epoch = next(train_loader)
 
     # Progress and schedules
-    progress = min(total_training_time / TIME_BUDGET, 1.0)
+    progress = min(total_training_time / TRAINING_TIME_BUDGET, 1.0)
     lrm = get_lr_multiplier(progress)
     muon_momentum = get_muon_momentum(step)
     muon_weight_decay = get_weight_decay(progress)
@@ -575,7 +790,8 @@ while True:
     t1 = time.time()
     dt = t1 - t0
 
-    if step > 10:
+    completed_steps = step + 1
+    if completed_steps > COMPILE_WARMUP_STEPS:
         total_training_time += dt
 
     # Logging
@@ -585,7 +801,7 @@ while True:
     pct_done = 100 * progress
     tok_per_sec = int(TOTAL_BATCH_SIZE / dt)
     mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE / dt / H100_BF16_PEAK_FLOPS
-    remaining = max(0, TIME_BUDGET - total_training_time)
+    remaining = max(0, TRAINING_TIME_BUDGET - total_training_time)
 
     print(f"\rstep {step:05d} ({pct_done:.1f}%) | loss: {debiased_smooth_loss:.6f} | lrm: {lrm:.2f} | dt: {dt*1000:.0f}ms | tok/sec: {tok_per_sec:,} | mfu: {mfu:.1f}% | epoch: {epoch} | remaining: {remaining:.0f}s    ", end="", flush=True)
 
@@ -600,7 +816,13 @@ while True:
     step += 1
 
     # Time's up — but only stop after warmup steps so we don't count compilation
-    if step > 10 and total_training_time >= TIME_BUDGET:
+    if step > COMPILE_WARMUP_STEPS and total_training_time >= TRAINING_TIME_BUDGET:
+        break
+    if (
+        SMOKE_TEST
+        and step > COMPILE_WARMUP_STEPS
+        and (step - COMPILE_WARMUP_STEPS) >= SMOKE_MAX_OPTIMIZER_STEPS
+    ):
         break
 
 print()  # newline after \r training log
@@ -609,13 +831,20 @@ total_tokens = step * TOTAL_BATCH_SIZE
 
 # Final eval
 model.eval()
+_eval_bs = DEVICE_BATCH_SIZE
+_eval_cap = None
+if SMOKE_TEST:
+    _eval_bs = max(1, min(DEVICE_BATCH_SIZE, 4))
+    _eval_cap = max(MAX_SEQ_LEN * _eval_bs * 2, 8192)
 with autocast_ctx:
-    val_bpb = evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
+    val_bpb = evaluate_bpb(model, tokenizer, _eval_bs, eval_tokens=_eval_cap)
 
 # Final summary
 t_end = time.time()
 startup_time = t_start_training - t_start
-steady_state_mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE * (step - 10) / total_training_time / H100_BF16_PEAK_FLOPS if total_training_time > 0 else 0
+steady_state_mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE * max(
+    step - COMPILE_WARMUP_STEPS, 0
+) / total_training_time / H100_BF16_PEAK_FLOPS if total_training_time > 0 else 0
 peak_vram_mb = torch.cuda.max_memory_allocated() / 1024 / 1024
 
 print("---")
