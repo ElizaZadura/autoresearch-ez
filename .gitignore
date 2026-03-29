@@ -21,3 +21,8 @@ dev/
 
 # Results file
 results.tsv
+/.venv-linux
+/run-debug.log
+/run-smoke-small.log
+/run-smoke.log
+/run.log
