@@ -26,3 +26,4 @@ results.tsv
 /run-smoke-small.log
 /run-smoke.log
 /run.log
+/run-setup-smoke.log
