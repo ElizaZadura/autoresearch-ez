@@ -29,3 +29,4 @@ results.tsv
 /run-smoke.log
 /run.log
 /run-setup-smoke.log
+/.specstory
