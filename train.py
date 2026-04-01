@@ -154,7 +154,7 @@ def _vram_device_batch_cap(total_memory_bytes: int) -> int:
     """Rough caps aligned with consumer-GPU practice (cf. jsegov/autoresearch-win-rtx)."""
     gib = total_memory_bytes / (1024**3)
     if gib < 16:
-        return 32
+        return 16
     if gib < 24:
         return 32
     if gib < 40:
