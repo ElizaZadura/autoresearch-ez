@@ -30,3 +30,5 @@ results.tsv
 /run.log
 /run-setup-smoke.log
 /.specstory
+/bash.exe.stackdump
+/.claude
