@@ -683,7 +683,7 @@ def build_model_config(depth, *, use_gradient_checkpointing: bool):
         vocab_size=vocab_size,
         n_layer=depth,
         n_head=num_heads,
-        n_kv_head=num_heads,
+        n_kv_head=max(1, num_heads // 2),  # GQA: half KV heads
         n_embd=model_dim,
         window_pattern=WINDOW_PATTERN,
         use_gradient_checkpointing=use_gradient_checkpointing,
