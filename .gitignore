@@ -32,3 +32,4 @@ results.tsv
 /.specstory
 /bash.exe.stackdump
 /.claudemodel.pt
+/model.pt
