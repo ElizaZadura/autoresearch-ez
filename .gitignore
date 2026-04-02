@@ -31,4 +31,4 @@ results.tsv
 /run-setup-smoke.log
 /.specstory
 /bash.exe.stackdump
-/.claude
+/.claudemodel.pt
