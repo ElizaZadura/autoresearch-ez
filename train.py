@@ -864,13 +864,22 @@ print(f"num_steps:        {step}")
 print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
 
-# Save model checkpoint
+# Save model checkpoint only if this run beats the previous best
 _ckpt_path = os.path.join(os.path.dirname(__file__), "model.pt")
-torch.save({
-    "model_state_dict": model.state_dict(),
-    "config": asdict(config),
-    "val_bpb": val_bpb,
-    "num_steps": step,
-    "total_tokens": total_tokens,
-}, _ckpt_path)
-print(f"checkpoint:       {_ckpt_path}")
+_prev_bpb = float("inf")
+if os.path.exists(_ckpt_path):
+    try:
+        _prev_bpb = torch.load(_ckpt_path, weights_only=False)["val_bpb"]
+    except Exception:
+        pass
+if val_bpb < _prev_bpb:
+    torch.save({
+        "model_state_dict": model.state_dict(),
+        "config": asdict(config),
+        "val_bpb": val_bpb,
+        "num_steps": step,
+        "total_tokens": total_tokens,
+    }, _ckpt_path)
+    print(f"checkpoint:       {_ckpt_path} (new best: {val_bpb:.6f} < {_prev_bpb:.6f})")
+else:
+    print(f"checkpoint:       skipped (val_bpb {val_bpb:.6f} >= best {_prev_bpb:.6f})")
