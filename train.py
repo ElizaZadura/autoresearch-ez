@@ -632,7 +632,7 @@ MUON_BETA2 = 0.95       # NorMuon second-moment EMA (variance reduction; 0.90 an
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
 WARMDOWN_RATIO = 0.70   # brief cooldown at end
-FINAL_LR_FRAC = 0.1     # decay to 10% of initial LR
+FINAL_LR_FRAC = 0.05    # decay to 5% of initial LR
 
 # Model size
 DEPTH = 4               # number of transformer layers
