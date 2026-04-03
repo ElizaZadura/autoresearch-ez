@@ -631,7 +631,7 @@ WEIGHT_DECAY = 0.08     # slightly stronger constant Muon regularization
 MUON_BETA2 = 0.95       # NorMuon second-moment EMA (variance reduction; 0.90 and 0.99 both worse)
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
-WARMDOWN_RATIO = 0.75   # brief cooldown at end
+WARMDOWN_RATIO = 0.70   # brief cooldown at end
 FINAL_LR_FRAC = 0.05    # decay to 5% of initial LR
 
 # Model size
