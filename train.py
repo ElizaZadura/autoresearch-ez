@@ -283,7 +283,7 @@ class MLP(nn.Module):
         self.c_proj = nn.Linear(hidden, config.n_embd, bias=False)
 
     def forward(self, x):
-        return self.c_proj(F.silu(self.c_fc(x)) * self.c_gate(x))
+        return self.c_proj(F.gelu(self.c_fc(x)) * self.c_gate(x))
 
 
 class Block(nn.Module):
