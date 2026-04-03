@@ -93,25 +93,7 @@ c3d4e5f 1.005000 44.0 discard switch to GeLU activation
 d4e5f6g 0.000000 0.0 crash double model width (OOM)
 ```
 
-## Run artifacts
-
-Each run should be treated as a snapshot, not a branch.
-
-For each meaningful run, preserve a run-specific artifact folder containing at least:
-
-- `results.tsv` snapshot
-- `run.log`
-- `train.py`
-- `AGENTS.md`
-- `program.md`
-
-A simple dated or numbered run directory is sufficient.
-
-Do not use git branches as the primary way to track individual runs.
-Use:
-
-- git commits to track evolving code/policy state
-- artifact folders to track run-by-run outputs
+Do not use git branches as the primary way to track individual runs. Use git commits to track evolving code/policy state.
 
 ## The experiment loop
 
