@@ -1,124 +1,135 @@
-# Autoresearch
+# program.md
 
-This is an experiment for you, as an autonomous agent, to do your own research.
+## Current Phase: Developmental Continuation
 
-## Setup
+The prior optimization phase substantially improved short-horizon (5 minute) validation performance.  
+Easy gains from local hyperparameter search appear mostly exhausted.
 
-To set up or continue an experiment, work with the user to:
+Do not continue blind knob-turning.
 
-1. **Use the current experiment branch**: Do not create a new branch for each run. Treat the current branch as the evolving search lineage unless the human explicitly asks to start a new experimental direction on a separate branch.
-2. **Read the in-scope files**: The repo is small. Read these files for full context:
-   - `README.md` — repository context.
-   - `prepare.py` — fixed constants, data prep, tokenizer, dataloader, evaluation. Do not modify.
-   - `train.py` — the file you modify. Model architecture, optimizer, training loop.
-   - `AGENTS.md` and `program.md` — agent behavior and loop policy.
-3. **Verify data exists**: Check that `~/.cache/autoresearch/` contains data shards and a tokenizer. If not, tell the human to run `uv run prepare.py`.
-4. **Initialize or continue results.tsv**:
-   - If starting from scratch, create `results.tsv` with just the header row.
-   - If continuing an existing experiment lineage, append to the existing `results.tsv`.
-5. **Confirm and go**: Confirm setup looks good.
+The objective has changed.
 
-Once you get confirmation, kick off or continue the experimentation loop.
+We now study how the current best training recipe develops over longer training horizons.
 
-## Experimentation
-
-Each experiment runs on a single GPU. The training script runs for a **fixed time budget of 5 minutes** (wall clock training time, excluding startup/compilation). You launch it simply as: `uv run train.py`.
-
-**What you CAN do:**
-
-- Modify `train.py` — this is the only file you edit. Everything is fair game: model architecture, optimizer, hyperparameters, training loop, batch size, model size, etc.
-
-**What you CANNOT do:**
-
-- Modify `prepare.py`. It is read-only. It contains the fixed evaluation, data loading, tokenizer, and training constants (time budget, sequence length, etc).
-- Install new packages or add dependencies. You can only use what's already in `pyproject.toml`.
-- Modify the evaluation harness. The `evaluate_bpb` function in `prepare.py` is the ground truth metric.
-- Create, switch or activate alternative virtual environments unless explicitly instructed.
-- Modify PATH variables unless explicitly instructed - assume the current shell environment is authoritative. If environment problems are detected, report them instead of trying to redesign the environment.
-
-**The goal is simple: get the lowest val_bpb.** Since the time budget is fixed, you don't need to worry about training time — it's always 5 minutes. Everything is fair game: change the architecture, the optimizer, the hyperparameters, the batch size, the model size. The only constraint is that the code runs without crashing and finishes within the time budget.
-
-**VRAM** is a soft constraint. Some increase is acceptable for meaningful val_bpb gains, but it should not blow up dramatically.
-
-**Simplicity criterion**: All else being equal, simpler is better. A small improvement that adds ugly complexity is not worth it. Conversely, removing something and getting equal or better results is a great outcome — that's a simplification win. When evaluating whether to keep a change, weigh the complexity cost against the improvement magnitude. A 0.001 val_bpb improvement that adds 20 lines of hacky code? Probably not worth it. A 0.001 val_bpb improvement from deleting code? Definitely keep. An improvement of ~0 but much simpler code? Keep.
-
-**The first run**: Your very first run should always be to establish the baseline, so you will run the training script as is.
-
-## Output format
-
-Once the script finishes it prints a summary like this:
-
-```
 ---
-val_bpb:          0.997900
-training_seconds: 300.1
-total_seconds:    325.9
-peak_vram_mb:     45060.2
-mfu_percent:      39.80
-total_tokens_M:   499.6
-num_steps:        953
-num_params_M:     50.3
-depth:            8
-```
 
-Note that the script is configured to always stop after 5 minutes, so depending on the computing platform of this computer the numbers might look different. You can extract the key metric from the log file:
+## Primary Questions
 
-```
-grep "^val_bpb:" run.log
-```
+1. Does the current 5-minute winner remain strong at 15m, 30m, 1h, 2h, or longer?
 
-## Logging results
+2. When do validation gains begin to flatten materially?
 
-When an experiment is done, log it to `results.tsv` (tab-separated, NOT comma-separated — commas break in descriptions).
+3. What changes in generated samples over time?
 
-The TSV has a header row and 5 columns:
+4. Does surface fluency improve before deeper structural coherence?
 
-```
-commit val_bpb memory_gb status description
-```
+5. Does continued training reduce unusual, memorable, or high-texture outputs?
 
-1. git commit hash (short, 7 chars)
-2. val_bpb achieved (e.g. 1.234567) — use 0.000000 for crashes
-3. peak memory in GB, round to .1f (e.g. 12.3 — divide peak_vram_mb by 1024) — use 0.0 for crashes
-4. status: `keep`, `discard`, or `crash`
-5. short text description of what this experiment tried
+6. What signs indicate diminishing returns for this model/data regime?
 
-Example:
+---
 
-```
-commit val_bpb memory_gb status description
-a1b2c3d 0.997900 44.0 keep baseline
-b2c3d4e 0.993200 44.2 keep increase LR to 0.04
-c3d4e5f 1.005000 44.0 discard switch to GeLU activation
-d4e5f6g 0.000000 0.0 crash double model width (OOM)
-```
+## Core Instructions
 
-Do not use git branches as the primary way to track individual runs. Use git commits to track evolving code/policy state.
+Treat `train.py` as mostly stable.
 
-## The experiment loop
+Prefer continuation runs and observation over mutation.
 
-The experiment runs on the current active branch, which represents the evolving search lineage. Do not create a new branch per run. Only use a new branch if the human explicitly wants to start a materially different experiment family.
+Use fixed checkpoints such as:
 
-LOOP FOREVER:
+- 5 min
+- 15 min
+- 30 min
+- 1 h
+- 2 h
+- 4 h
 
-1. Look at the git state: the current branch/commit and the current best-known commit/config within this lineage.
-2. Tune `train.py` with an experimental idea by directly hacking the code.
-3. git commit
-4. Run the experiment: `uv run train.py > run.log 2>&1` (redirect everything — do NOT use tee or let output flood your context)
-5. Read out the results: `grep "^val_bpb:\|^peak_vram_mb:" run.log`
-6. If the grep output is empty, the run crashed. Run `tail -n 50 run.log` to read the Python stack trace and attempt a fix. If you can't get things to work after more than a few attempts, give up.
-7. Record the results in the tsv (NOTE: do not commit the results.tsv file, leave it untracked by git)
-8. If val_bpb improved (lower), keep the git commit and treat it as the new best-known state in this lineage.
-9. If val_bpb is equal or worse, revert back to the previous best-known state.
+(Adjust if hardware/runtime constraints require.)
 
-The idea is that you are a completely autonomous researcher trying things out. If they work, keep. If they don't, discard. And you're advancing the branch so that you can iterate. If you feel like you're getting stuck in some way, you can rewind but you should probably do this very very sparingly (if ever).
+At each checkpoint:
 
-This is a continuing optimization lineage, not a sequence of isolated branch-based runs. The branch should remain parked on the current best-known state unless a better result is found.
+- record validation metrics
+- save model checkpoint if practical
+- generate samples using the same fixed prompt pack
+- compare against earlier checkpoints
 
-**Timeout**: Each experiment should take ~5 minutes total (+ a few seconds for startup and eval overhead). If a run exceeds 10 minutes, kill it and treat it as a failure (discard and revert).
+---
 
-**Crashes**: If a run crashes (OOM, or a bug, or etc.), use your judgment: If it's something dumb and easy to fix (e.g. a typo, a missing import), fix it and re-run. If the idea itself is fundamentally broken, just skip it, log "crash" as the status in the tsv, and move on.
+## Prompt Pack Rules
 
-**NEVER STOP**: Once the experiment loop has begun (after the initial setup), do NOT pause to ask the human if you should continue. Do NOT ask "should I keep going?" or "is this a good stopping point?". The human might be asleep, or gone from a computer and expects you to continue working *indefinitely* until you are manually stopped. You are autonomous. If you run out of ideas, think harder — read papers referenced in the code, re-read the in-scope files for new angles, try combining previous near-misses, try more radical architectural changes. The loop runs until the human interrupts you, period.
+Use the same prompts each time.
 
-As an example use case, a user might leave you running while they sleep 😴 If each experiment takes you ~5 minutes then you can run approx 12/hour, for a total of about 100 over the duration of the average human sleep. The user then wakes up to experimental results, all completed by you while they slept!
+Keep prompts short, stable, and varied:
+
+- plain continuation
+- factual fragment
+- open-ended fragment
+- structurally awkward prompt
+- one nonsense / anomaly lure
+- one recurring signature prompt
+
+Do not constantly redesign prompts.
+
+Comparability matters more than novelty.
+
+---
+
+## Evaluation Priorities
+
+Track both quantitative and qualitative change.
+
+Quantitative:
+
+- val_bpb trend
+- speed / throughput
+- stability
+
+Qualitative:
+
+- coherent span length
+- repetition onset
+- syntax stability
+- generic filler behavior
+- memorability
+- anomaly retention or collapse
+- interestingness
+
+---
+
+## Mutation Policy
+
+Only modify `train.py` if one of the following is true:
+
+1. Clear instability appears
+2. Longer runs expose a specific bottleneck
+3. A concrete hypothesis exists worth testing
+4. Evidence suggests the 5-minute winner is poor at longer horizons
+
+Do not mutate for the sake of activity.
+
+---
+
+## Anti-Traps
+
+Do not:
+
+- chase tiny 5-minute gains
+- overfit to one metric
+- change many variables at once
+- mistake smoother outputs for better learning
+- erase weird but informative behavior unnoticed
+
+---
+
+## Success Criteria
+
+Success is not a tiny benchmark improvement.
+
+Success is:
+
+- a clear developmental map
+- known diminishing-return points
+- understanding of what emerges first
+- understanding of what stabilizes later
+- understanding of what gets lost during training
+- a better next question
