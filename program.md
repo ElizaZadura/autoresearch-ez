@@ -55,22 +55,20 @@ At each checkpoint:
 
 ---
 
-## Prompt Pack Rules
+## Prompt Pack
 
-Use the same prompts each time.
+Use exactly these prompts every time. Do not change them between runs.
 
-Keep prompts short, stable, and varied:
+| # | Type | Prompt |
+| --- | ------ | -------- |
+| 1 | Plain continuation | `The old man walked slowly toward the river and` |
+| 2 | Factual fragment | `The capital of France is Paris, and the population of` |
+| 3 | Open-ended | `In one sentence, the meaning of life is` |
+| 4 | Structurally awkward | `Despite the fact that however, the reason why because` |
+| 5 | Anomaly lure | `Ground control to Major Snorf,` |
+| 6 | Signature | `Once upon a time there was a small` |
 
-- plain continuation
-- factual fragment
-- open-ended fragment
-- structurally awkward prompt
-- one nonsense / anomaly lure
-- one recurring signature prompt
-
-Do not constantly redesign prompts.
-
-Comparability matters more than novelty.
+Comparability matters more than novelty. Do not redesign prompts.
 
 ---
 

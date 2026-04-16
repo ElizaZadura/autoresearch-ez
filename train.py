@@ -28,6 +28,7 @@ _TRAIN_ARGS, _ = _argp.parse_known_args()
 SMOKE_TEST = _TRAIN_ARGS.smoke_test
 
 import gc
+import json
 import logging
 import math
 import time
@@ -761,6 +762,49 @@ smooth_train_loss = 0
 total_training_time = 0
 step = 0
 
+# Intermediate checkpoint thresholds (seconds). Each fires at most once per run.
+_CKPT_THRESHOLDS = [300, 900, 1800, 3600, 7200, 14400]
+_CKPT_LABELS     = ["5m", "15m", "30m", "1h",  "2h",  "4h"]
+_ckpt_fired = set()  # tracks which thresholds have already been saved
+
+def _write_meta(path: str, meta: dict):
+    """Write a JSON sidecar next to a checkpoint file."""
+    with open(path.replace(".pt", ".json"), "w") as f:
+        json.dump(meta, f, indent=2)
+
+def _save_timed_checkpoint(elapsed: float, current_step: int, train_loss: float):
+    """Save a named checkpoint when elapsed time crosses a threshold."""
+    for threshold, label in zip(_CKPT_THRESHOLDS, _CKPT_LABELS):
+        if threshold not in _ckpt_fired and elapsed >= threshold:
+            _ckpt_fired.add(threshold)
+            path = os.path.join(os.path.dirname(__file__), f"model_{label}.pt")
+            meta = {
+                "label": label,
+                "elapsed_seconds": round(elapsed, 1),
+                "num_steps": current_step,
+                "total_tokens": current_step * TOTAL_BATCH_SIZE,
+                "train_loss_ema": round(train_loss, 6),
+                "val_bpb": None,
+                "hyperparams": {
+                    "WARMDOWN_RATIO": WARMDOWN_RATIO,
+                    "FINAL_LR_FRAC": FINAL_LR_FRAC,
+                    "MATRIX_LR": MATRIX_LR,
+                    "EMBEDDING_LR": EMBEDDING_LR,
+                    "MUON_BETA2": MUON_BETA2,
+                    "TOTAL_BATCH_SIZE": TOTAL_BATCH_SIZE,
+                    "DEPTH": DEPTH,
+                },
+            }
+            torch.save({
+                "model_state_dict": model.state_dict(),
+                "config": asdict(config),
+                "elapsed_seconds": elapsed,
+                "num_steps": current_step,
+                "label": label,
+            }, path)
+            _write_meta(path, meta)
+            print(f"\ncheckpoint [{label}]: {path}")
+
 while True:
     torch.cuda.synchronize()
     t0 = time.time()
@@ -797,13 +841,17 @@ while True:
     dt = t1 - t0
 
     completed_steps = step + 1
-    if completed_steps > COMPILE_WARMUP_STEPS:
-        total_training_time += dt
 
-    # Logging
+    # EMA loss (updated before checkpoint so it can be recorded in the sidecar)
     ema_beta = 0.9
     smooth_train_loss = ema_beta * smooth_train_loss + (1 - ema_beta) * train_loss_f
     debiased_smooth_loss = smooth_train_loss / (1 - ema_beta**(step + 1))
+
+    if completed_steps > COMPILE_WARMUP_STEPS:
+        total_training_time += dt
+        _save_timed_checkpoint(total_training_time, completed_steps, debiased_smooth_loss)
+
+    # Logging
     pct_done = 100 * progress
     tok_per_sec = int(TOTAL_BATCH_SIZE / dt)
     mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE / dt / H100_BF16_PEAK_FLOPS
@@ -880,6 +928,23 @@ if val_bpb < _prev_bpb:
         "num_steps": step,
         "total_tokens": total_tokens,
     }, _ckpt_path)
+    _write_meta(_ckpt_path, {
+        "label": "best",
+        "val_bpb": round(val_bpb, 6),
+        "num_steps": step,
+        "total_tokens": total_tokens,
+        "elapsed_seconds": round(total_training_time, 1),
+        "train_loss_ema": round(debiased_smooth_loss, 6),
+        "hyperparams": {
+            "WARMDOWN_RATIO": WARMDOWN_RATIO,
+            "FINAL_LR_FRAC": FINAL_LR_FRAC,
+            "MATRIX_LR": MATRIX_LR,
+            "EMBEDDING_LR": EMBEDDING_LR,
+            "MUON_BETA2": MUON_BETA2,
+            "TOTAL_BATCH_SIZE": TOTAL_BATCH_SIZE,
+            "DEPTH": DEPTH,
+        },
+    })
     print(f"checkpoint:       {_ckpt_path} (new best: {val_bpb:.6f} < {_prev_bpb:.6f})")
 else:
     print(f"checkpoint:       skipped (val_bpb {val_bpb:.6f} >= best {_prev_bpb:.6f})")
