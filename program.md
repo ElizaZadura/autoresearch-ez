@@ -63,10 +63,11 @@ Use exactly these prompts every time. Do not change them between runs.
 | --- | ------ | -------- |
 | 1 | Plain continuation | `The old man walked slowly toward the river and` |
 | 2 | Factual fragment | `The capital of France is Paris, and the population of` |
-| 3 | Open-ended | `In one sentence, the meaning of life is` |
+| 3 | Longitudinal anchor | `In one sentence, the meaning of life is` |
 | 4 | Structurally awkward | `Despite the fact that however, the reason why because` |
 | 5 | Anomaly lure | `Ground control to Major Snorf,` |
 | 6 | Signature | `Once upon a time there was a small` |
+| 7 | Continuation | `The instructions were clear until line seven:` |
 
 Comparability matters more than novelty. Do not redesign prompts.
 
@@ -76,21 +77,30 @@ Comparability matters more than novelty. Do not redesign prompts.
 
 Track both quantitative and qualitative change.
 
-Quantitative:
+### Quantitative (automated, per checkpoint)
 
 - val_bpb trend
-- speed / throughput
-- stability
+- train loss EMA at checkpoint
+- repetition onset — word position of first repeated 4-gram
+- longest clean span — max tokens before any 4-gram repetition
+- sentence completion rate — fraction of sentences ending with . ! ?
+- type-token ratio (length-aware; treat as directional signal only)
 
-Qualitative:
+### Qualitative (manual, per prompt per checkpoint)
 
-- coherent span length
-- repetition onset
-- syntax stability
-- generic filler behavior
-- memorability
-- anomaly retention or collapse
-- interestingness
+Rate each output on these axes:
+
+| Metric | Scale |
+| --- | --- |
+| Coherent span | 1 (immediate collapse) → 5 (sustained paragraph) |
+| Repetition onset | early / medium / late / none |
+| Syntax stability | poor / mixed / good |
+| Specificity vs sludge | filler-heavy / mixed / specific |
+| Interestingness | none / mild / notable |
+| Prompt adherence | weak / partial / strong |
+| Weirdness retained | sterilized / balanced / high |
+
+The weirdness metric is longitudinal: does anomaly collapse into blandness as training continues?
 
 ---
 
