@@ -36,14 +36,56 @@ PROMPTS = [
 # Args
 # ---------------------------------------------------------------------------
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def _latest_run_dir():
+    """Return the most recent timestamped subdir under output/, or output/ itself."""
+    out = os.path.join(HERE, "output")
+    if not os.path.isdir(out):
+        return out
+    subdirs = sorted(
+        [d for d in os.listdir(out) if os.path.isdir(os.path.join(out, d))],
+        reverse=True,
+    )
+    return os.path.join(out, subdirs[0]) if subdirs else out
+
+
 parser = argparse.ArgumentParser()
-parser.add_argument("checkpoints", nargs="+", help="Path(s) to .pt checkpoint files")
+parser.add_argument(
+    "checkpoints",
+    nargs="+",
+    help="Path(s) to .pt files, or labels like '5m 15m' resolved against --run-dir",
+)
+parser.add_argument(
+    "--run-dir",
+    type=str,
+    default=None,
+    help="Directory containing checkpoints / for output (default: latest under output/)",
+)
 parser.add_argument("--max-new-tokens", type=int, default=200)
 parser.add_argument("--temp", type=float, default=1.0)
 parser.add_argument("--top-k", type=int, default=50)
 parser.add_argument("--top-p", type=float, default=1.0)
 parser.add_argument("--stdout", action="store_true", help="Print to stdout instead of file")
 args = parser.parse_args()
+
+RUN_DIR = args.run_dir if args.run_dir else _latest_run_dir()
+os.makedirs(RUN_DIR, exist_ok=True)
+
+resolved_checkpoints = []
+for ckpt in args.checkpoints:
+    if os.path.exists(ckpt):
+        resolved_checkpoints.append(ckpt)
+    else:
+        label = ckpt.replace("model_", "").replace(".pt", "")
+        resolved = os.path.join(RUN_DIR, f"model_{label}.pt")
+        if os.path.exists(resolved):
+            resolved_checkpoints.append(resolved)
+        else:
+            print(f"Warning: {ckpt} not found (tried {resolved})")
+args.checkpoints = resolved_checkpoints
+print(f"Run directory: {RUN_DIR}")
 
 # ---------------------------------------------------------------------------
 # Model (self-contained — do not import train.py)
@@ -291,14 +333,12 @@ def run_prompts(ckpt_path: str):
 # Main
 # ---------------------------------------------------------------------------
 
-os.makedirs("output", exist_ok=True)
-
 for ckpt_path in args.checkpoints:
     label, text = run_prompts(ckpt_path)
     if args.stdout:
         print(text)
     else:
-        out_path = os.path.join("output", f"{label}_prompts.txt")
+        out_path = os.path.join(RUN_DIR, f"{label}_prompts.txt")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(text)
         print(f"Saved: {out_path}")

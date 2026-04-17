@@ -33,6 +33,7 @@ import logging
 import math
 import time
 from dataclasses import dataclass, asdict
+from datetime import datetime
 
 import torch
 import torch.nn as nn
@@ -42,6 +43,10 @@ from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evalua
 
 TRAINING_TIME_BUDGET = 12 if SMOKE_TEST else TIME_BUDGET
 SMOKE_MAX_OPTIMIZER_STEPS = 4  # counted after step 10 (post compile-warmup)
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+RUN_DIR = os.path.join(_HERE, "output", datetime.now().strftime("%Y-%m-%d_%H%M%S"))
+os.makedirs(RUN_DIR, exist_ok=True)
 
 # ---------------------------------------------------------------------------
 # Flash Attention 3 via HF kernels when available; PyTorch SDPA otherwise
@@ -775,9 +780,13 @@ def _write_meta(path: str, meta: dict):
 def _save_timed_checkpoint(elapsed: float, current_step: int, train_loss: float):
     """Save a named checkpoint when elapsed time crosses a threshold."""
     for threshold, label in zip(_CKPT_THRESHOLDS, _CKPT_LABELS):
-        if threshold not in _ckpt_fired and elapsed >= threshold:
+        if (
+            threshold not in _ckpt_fired
+            and elapsed >= threshold
+            and threshold == TRAINING_TIME_BUDGET
+        ):
             _ckpt_fired.add(threshold)
-            path = os.path.join(os.path.dirname(__file__), f"model_{label}.pt")
+            path = os.path.join(RUN_DIR, f"model_{label}.pt")
             meta = {
                 "label": label,
                 "elapsed_seconds": round(elapsed, 1),
@@ -913,7 +922,7 @@ print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
 
 # Save model checkpoint only if this run beats the previous best
-_ckpt_path = os.path.join(os.path.dirname(__file__), "model.pt")
+_ckpt_path = os.path.join(_HERE, "model.pt")
 _prev_bpb = float("inf")
 if os.path.exists(_ckpt_path):
     try:

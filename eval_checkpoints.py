@@ -17,8 +17,29 @@ import torch.nn as nn
 import torch.nn.functional as F
 from dataclasses import dataclass
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def _latest_run_dir():
+    """Return the most recent timestamped subdir under output/, or output/ itself."""
+    out = os.path.join(HERE, "output")
+    if not os.path.isdir(out):
+        return out
+    subdirs = sorted(
+        [d for d in os.listdir(out) if os.path.isdir(os.path.join(out, d))],
+        reverse=True,
+    )
+    return os.path.join(out, subdirs[0]) if subdirs else out
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--force", action="store_true", help="Re-evaluate all checkpoints")
+parser.add_argument(
+    "--run-dir",
+    type=str,
+    default=None,
+    help="Directory containing model_*.pt checkpoints (default: latest under output/)",
+)
 args = parser.parse_args()
 
 # ---------------------------------------------------------------------------
@@ -208,10 +229,11 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = Tokenizer.from_directory()
 
 LABELS = ["5m", "15m", "30m", "1h", "2h", "4h"]
-HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_CSV = os.path.join(HERE, "output", "eval_results.csv")
+RUN_DIR = args.run_dir if args.run_dir else _latest_run_dir()
+OUT_CSV = os.path.join(RUN_DIR, "eval_results.csv")
+print(f"Run directory: {RUN_DIR}")
 
-os.makedirs(os.path.join(HERE, "output"), exist_ok=True)
+os.makedirs(RUN_DIR, exist_ok=True)
 
 # Load existing results to avoid re-evaluating
 existing = {}
@@ -222,7 +244,7 @@ if os.path.exists(OUT_CSV) and not args.force:
 
 results = []
 for label in LABELS:
-    pt_path = os.path.join(HERE, f"model_{label}.pt")
+    pt_path = os.path.join(RUN_DIR, f"model_{label}.pt")
     json_path = pt_path.replace(".pt", ".json")
     if not os.path.exists(pt_path):
         print(f"[{label}] skipped (not found)")
