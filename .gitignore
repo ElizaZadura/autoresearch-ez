@@ -21,17 +21,27 @@ dev/
 
 # Results file
 results.tsv
+
+# Model files
+*.pt
+/*.pt
+
+/model_*.json
+/model*.json
+/model_*.pt
+
 /.venv-linux
 /artifacts/
+
+# Logs
 *.log
 /run-debug.log
 /run-smoke-small.log
 /run-smoke.log
 /run.log
 /run-setup-smoke.log
-/.specstory
+
 /bash.exe.stackdump
-/.claudemodel.pt
-/model.pt
+
 /output
-/model_5m.json
+
