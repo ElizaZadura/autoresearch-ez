@@ -2,9 +2,11 @@
 Sample from the trained baby GPT model.
 
 Usage:
-    uv run sample.py                          # interactive prompt
-    uv run sample.py "Once upon a time"       # single prompt from CLI
-    uv run sample.py --top-p 0.9 --temp 0.8  # custom sampling params
+    uv run sample.py --checkpoint 30m "Once upon a time"
+    uv run sample.py --checkpoint 4h --run-dir output/2026-04-17_phase2_baseline
+
+    uv run sample.py                            # uses model.pt from latest run dir, interactive mode
+    uv run sample.py --top-p 0.9 --temp 0.8     # custom sampling params
 """
 
 import argparse
@@ -16,19 +18,72 @@ import torch.nn.functional as F
 from dataclasses import dataclass
 from prepare import Tokenizer
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def _latest_run_dir():
+    """Return the most recent timestamped subdir under output/, or output/ itself."""
+    out = os.path.join(HERE, "output")
+    if not os.path.isdir(out):
+        return out
+    subdirs = sorted(
+        [d for d in os.listdir(out) if os.path.isdir(os.path.join(out, d))],
+        reverse=True,
+    )
+    for d in subdirs:
+        if d.startswith("_"):
+            continue
+        return os.path.join(out, d)
+    return out
+
+
+def _resolve_checkpoint(spec, run_dir):
+    """Resolve a checkpoint specifier to a file path.
+
+    Accepts a full path, a filename, or a label like '30m' / 'model_30m'.
+    """
+    if os.path.isfile(spec):
+        return spec
+    candidate = os.path.join(run_dir, spec)
+    if os.path.isfile(candidate):
+        return candidate
+    label = spec.replace("model_", "").replace(".pt", "")
+    candidate = os.path.join(run_dir, f"model_{label}.pt")
+    if os.path.isfile(candidate):
+        return candidate
+    fallback = os.path.join(HERE, "model.pt")
+    if os.path.isfile(fallback):
+        return fallback
+    return spec
+
+
 # ---------------------------------------------------------------------------
 # Args
 # ---------------------------------------------------------------------------
 
 parser = argparse.ArgumentParser()
 parser.add_argument("prompt", nargs="?", default=None, help="Prompt text (omit for interactive mode)")
-parser.add_argument("--checkpoint", default="model.pt", help="Path to model.pt")
+parser.add_argument(
+    "--checkpoint",
+    default=None,
+    help="Path or label (e.g. '30m') resolved against --run-dir (default: model.pt in run dir or repo root)",
+)
+parser.add_argument(
+    "--run-dir",
+    type=str,
+    default=None,
+    help="Directory containing checkpoints (default: latest under output/)",
+)
 parser.add_argument("--max-new-tokens", type=int, default=200)
 parser.add_argument("--temp", type=float, default=1.0, help="Sampling temperature")
 parser.add_argument("--top-k", type=int, default=50, help="Top-k sampling (0 = disabled)")
 parser.add_argument("--top-p", type=float, default=1.0, help="Top-p (nucleus) sampling")
 parser.add_argument("--greedy", action="store_true", help="Greedy decoding (overrides temp/top-k/top-p)")
 args = parser.parse_args()
+
+RUN_DIR = args.run_dir if args.run_dir else _latest_run_dir()
+ckpt_spec = args.checkpoint if args.checkpoint else "model.pt"
+args.checkpoint = _resolve_checkpoint(ckpt_spec, RUN_DIR)
 
 # ---------------------------------------------------------------------------
 # Model (copied from train.py — do not import train.py, it triggers training)
@@ -232,6 +287,7 @@ class GPT(nn.Module):
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+print(f"Run directory: {RUN_DIR}")
 print(f"Loading checkpoint: {args.checkpoint} ...", end=" ", flush=True)
 ck = torch.load(args.checkpoint, map_location=device, weights_only=False)
 cfg_dict = ck["config"]
@@ -240,8 +296,11 @@ model = GPT(config)
 model.load_state_dict(ck["model_state_dict"])
 model.to(device)
 model.eval()
-print(f"done  (val_bpb={ck['val_bpb']:.4f}, {ck['num_steps']} steps, "
-      f"{sum(p.numel() for p in model.parameters())/1e6:.1f}M params)")
+bpb_str = f"val_bpb={ck['val_bpb']:.4f}" if "val_bpb" in ck else ck.get("label", "?")
+print(
+    f"done  ({bpb_str}, {ck['num_steps']} steps, "
+    f"{sum(p.numel() for p in model.parameters())/1e6:.1f}M params)"
+)
 
 tokenizer = Tokenizer.from_directory()
 
