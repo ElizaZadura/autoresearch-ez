@@ -8,6 +8,30 @@ Each entry notes the source file and checkpoint so it can be traced back.
 
 ## 2026-04-17 12h run
 
+### 15m · signature · "Breathing: a hobby, can be used as an air conditioning practice"
+
+From [`output/2026-04-17_12h_run/15m_prompts.txt`](../output/2026-04-17_12h_run/15m_prompts.txt) (prompt: `Once upon a time there was a small`):
+
+After a long paragraph about "small-less soft-tipped glow-heads" and platters throwing off grass, the model cleanly breaks register into bulleted wellness-blog format:
+
+> **Breathing:**
+>
+> Difficulty breathing - a pleasurable feeling - itching – itching
+>
+> **breathing:**
+>
+> Itching - Breath, a hobby, can be used as an air conditioning practice. Blow-head is a small, easy-to-maintain procedure for breathing or breathing (in a few hundred miles) from a couple
+
+Specific joys:
+
+- *"Difficulty breathing - a pleasurable feeling"* — inverted medical-symptom list.
+- *"Breath, a hobby"* — unprompted reframing of involuntary life function as leisure activity.
+- *"can be used as an air conditioning practice"* — yoga SEO filler crashes into HVAC documentation.
+- *"Blow-head is a small, easy-to-maintain procedure for breathing"* — introduces an invented medical device, gives it a maintenance schedule.
+- *"(in a few hundred miles) from a couple"* — distance units attached to breathing, then cut off mid-sentence by the token limit. Perfect landing.
+
+The register switch (fairy-tale opener → headed glossary) is the interesting structural move — at 15m the model already has "heading + colon + list" as a strong attractor it can fall into from almost any prefix.
+
 ### 30m · anomaly_lure · "Major Snorf descends to CA"
 
 From [`output/2026-04-17_12h_run/30m_prompts.txt`](../output/2026-04-17_12h_run/30m_prompts.txt):
