@@ -40,9 +40,12 @@ results.tsv
 /run-smoke.log
 /run.log
 /run-setup-smoke.log
+/.specstory
 
 /bash.exe.stackdump
+/.claudemodel.pt
+/model.pt
+/model.json
 
 /output
-
 /output/_archive

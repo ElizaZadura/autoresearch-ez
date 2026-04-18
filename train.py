@@ -196,7 +196,12 @@ def _best_device_batch(requested: int, max_batch: int) -> int:
 
 
 def _vram_device_batch_cap(total_memory_bytes: int) -> int:
-    """Rough caps aligned with consumer-GPU practice (cf. jsegov/autoresearch-win-rtx)."""
+    """Rough caps aligned with consumer-GPU practice (cf. jsegov/autoresearch-win-rtx).
+
+    Note: at the current TOTAL_BATCH_SIZE=2**15 and MAX_SEQ_LEN=2048, the
+    effective batch chosen by _best_device_batch is capped at 16 regardless of
+    the tier (only b in {1,2,4,8,16} divides TOTAL_BATCH_SIZE/MAX_SEQ_LEN=16).
+    The higher tiers re-activate when TOTAL_BATCH_SIZE is raised."""
     gib = total_memory_bytes / (1024**3)
     if gib < 16:
         return 16
@@ -686,7 +691,7 @@ FINAL_LR_FRAC = 0.05    # decay to 5% of initial LR
 
 # Model size
 DEPTH = 4               # number of transformer layers
-DEVICE_BATCH_SIZE = 128  # per-device batch size (reduce if OOM)
+DEVICE_BATCH_SIZE = 16   # per-device batch size; max usable is TOTAL_BATCH_SIZE/MAX_SEQ_LEN (=16 here)
 
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
