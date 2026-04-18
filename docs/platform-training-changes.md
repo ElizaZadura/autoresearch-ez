@@ -79,9 +79,10 @@ Early in `train.py`, before heavy CUDA use:
 ## Gradient checkpointing
 
 - **`GPTConfig.use_gradient_checkpointing`**; each **`Block`** uses **`torch.utils.checkpoint.checkpoint(..., use_reentrant=False)`** in **training** mode when enabled.
-- **Default:** **off**, except on **Windows with VRAM &lt; 20 GiB**, unless overridden:
+- **Default:** **off**, except on **Windows with VRAM &lt; 10 GiB**, unless overridden:
   - **`AUTORESEARCH_GRADIENT_CHECKPOINTING=1`** — force on
   - **`AUTORESEARCH_GRADIENT_CHECKPOINTING=0`** — force off
+- **Why 10 GiB and not always-off?** On 8 GiB Windows cards the default config can OOM during the Muon inner iteration. 12 GiB cards (RTX 4070-class and up) have measured headroom at this model size (~5 GiB peak VRAM out of 12 GiB, per the 12h 2026-04-17 extended run) and benefit ~25–40% in throughput from checkpointing-off. The env var is the escape hatch for training larger models that would otherwise OOM.
 
 ---
 

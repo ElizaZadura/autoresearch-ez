@@ -238,13 +238,18 @@ def _use_torch_compile() -> bool:
 
 
 def _use_gradient_checkpointing(total_memory_bytes: int) -> bool:
-    """Default to upstream behavior off except on Windows low-VRAM setups."""
+    """Default off, except on Windows consumer GPUs with <10 GiB VRAM where the
+    small-model config would otherwise risk OOM. The 12h extended-run MFU
+    analysis (~0.14% milestone overhead, ~5 GiB peak VRAM out of 12 GiB) showed
+    checkpointing was significantly slowing 12 GiB cards while buying no
+    headroom. Set AUTORESEARCH_GRADIENT_CHECKPOINTING=1 to force on if you
+    later train a larger model that would otherwise OOM."""
     e = _env_flag("AUTORESEARCH_GRADIENT_CHECKPOINTING")
     if e is True:
         return True
     if e is False:
         return False
-    return sys.platform == "win32" and total_memory_bytes < 20 * (1024**3)
+    return sys.platform == "win32" and total_memory_bytes < 10 * (1024**3)
 
 
 # ---------------------------------------------------------------------------
