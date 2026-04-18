@@ -114,5 +114,91 @@ Per program.md, the developmental map is the deliverable. Based on these results
 
 ---
 
+## Phase 2b: 12h Extended Run (2026-04-18)
+
+Single fresh run with the frozen Phase 1 recipe at `TIME_BUDGET = 43200s` (12h), with
+instrumentation added to `train.py`: milestone checkpoints + full `val_bpb` + prompt
+pack at 5m / 15m / 30m / 1h / 2h / 4h / 8h / 12h, plus a capped periodic `val_bpb`
+written every ~5% of progress into `progress.csv` for a dense developmental curve.
+
+Output: `output/2026-04-17_12h_run/`. Total wall-clock 12.2h, exit code 0, no run-time warnings.
+
+### Milestone results (all from a single 12h run — intermediates share the 12h LR schedule)
+
+| Budget | Steps | Train loss EMA | val_bpb | Δ vs prev |
+| --- | ---: | ---: | ---: | ---: |
+| 5m   | 1,190   | 3.5585 | 1.2671 | — |
+| 15m  | 3,659   | 3.4198 | 1.2126 | −0.0545 |
+| 30m  | 7,427   | 3.3554 | 1.1928 | −0.0198 |
+| 1h   | 15,020  | 3.3105 | 1.1781 | −0.0147 |
+| 2h   | 28,963  | 3.2775 | 1.1691 | −0.0091 |
+| 4h   | 54,733  | 3.2524 | 1.1629 | −0.0062 |
+| 8h   | 112,929 | 3.1386 | 1.1223 | −0.0406 |
+| **12h** | **174,682** | **2.9288** | **1.0435** | **−0.0788** |
+
+Dense 19-point `progress.csv` curve (capped eval, ~5M tokens each) tracks the same shape:
+val_bpb drops smoothly from 1.183 at 5% progress to 1.061 at 95% progress.
+
+### Headline
+
+**12h dedicated val_bpb = 1.0435 vs yesterday's 4h dedicated val_bpb = 1.0472 — only
+−0.0037 bpb (<0.4%) from tripling the training budget.** A clear plateau in *final*
+quality at this depth/width.
+
+### Warmdown dominates within-run dynamics
+
+The apparent "slowdown" between 30m → 4h in the table above is an artifact of the
+12h LR schedule: at those elapsed times we are still on the flat part of the
+schedule (`lrm = 1.0`). Warmdown begins at `progress = 0.30` (3.6h) and drops
+`lrm` from 1.0 → 0.05 across the remaining 8.4h. The big drops at 8h→12h are the
+warmdown kicking in, not new learning.
+
+Side-by-side with yesterday's 4h-run intermediates (whose warmdown fully cools by 4h):
+
+| Elapsed | Yesterday's 4h-run intermediate | Tonight's 12h-run intermediate | Gap |
+| --- | ---: | ---: | ---: |
+| 5m   | 1.2798 | 1.2671 | −0.013 |
+| 15m  | 1.2186 | 1.2126 | −0.006 |
+| 30m  | 1.1994 | 1.1928 | −0.007 |
+| 1h   | 1.1820 | 1.1781 | −0.004 |
+| 2h   | 1.1505 | 1.1691 | **+0.019** |
+| 4h   | **1.0471** | **1.1629** | **+0.116** |
+
+The **+0.116 gap at 4h** is the warmdown benefit: the 4h-tuned schedule finishes
+warmdown at 4h, the 12h-tuned schedule is still at full LR. This is
+hyperparameter-dependent and NOT a model-capacity finding.
+
+### Qualitative trajectory
+
+Sample output for `plain_continuation` ("The old man walked slowly toward the river and…"):
+
+- **4h (full LR)**: loose, loops on "the newest / the oldest", hallucinated Balkani / Paul E. L. L.
+- **8h (mid-warmdown, lrm≈0.52)**: severe token-level repetition — `"sturdy sturdy sturdy sturd"`.
+- **12h (warmdown nearly done, lrm≈0.05)**: clearly more coherent — `"gnarled eyes… the angler staring over the river… the muddler came out"` — a full paragraph of narrative that holds together.
+
+Weirdness trajectory on `anomaly_lure` ("Ground control to Major Snorf,…"):
+- 5m/30m: terse, near-empty.
+- **2h–4h: weirdness peak** — elaborate fake taxonomies (`"apeptoid species (Frexelo)"`, `"Hadiard Gols, Riches"`).
+- 12h: terse again, more list-like — warmdown has pruned the creativity.
+
+No clear repetition spike at exactly 2h in this run (unlike yesterday's baseline
+observation). The 8h sample shows *stronger* token-level repetition than either
+neighbour — this is the new pathology, likely mid-warmdown LR instability.
+
+### Decisions for the next night
+
+The plan's decision tree resolves to **plateau → retune WARMDOWN_RATIO** —
+strengthened by the warmdown-gap evidence above. The interesting question is no
+longer "does the model keep learning past 4h?" (it doesn't, much), but:
+
+> **How much warmdown do we actually need?** Can we reach ≈1.04 bpb in *2h* or
+> *4h* with a tighter warmdown instead of 12h with 0.70?
+
+Candidate: sweep `WARMDOWN_RATIO ∈ {0.3, 0.5, 0.7, 0.9}` at 2h (≈8h total) and
+at 4h (≈16h total) if the 2h sweep is ambiguous. Defer capacity and seed-envelope
+questions until after this.
+
+---
+
 *Generated 2026-04-17. Model: 28.8M params, depth=4, dim=512, vocab=8192.
 Data: karpathy/climbmix-400b-shuffle. Hardware: single NVIDIA GPU (~12GB VRAM).*

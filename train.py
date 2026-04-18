@@ -39,13 +39,52 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
+from prepare import (
+    MAX_SEQ_LEN,
+    TIME_BUDGET,
+    Tokenizer,
+    make_dataloader,
+    evaluate_bpb,
+    EVAL_TOKENS,
+)
+
+# Fixed prompt pack — mirrors eval_prompts.py; do not edit between runs.
+_PROMPT_PACK = [
+    ("plain_continuation", "The old man walked slowly toward the river and"),
+    ("factual_fragment", "The capital of France is Paris, and the population of"),
+    ("longitudinal_anchor", "In one sentence, the meaning of life is"),
+    ("structurally_awkward", "Despite the fact that however, the reason why because"),
+    ("anomaly_lure", "Ground control to Major Snorf,"),
+    ("signature", "Once upon a time there was a small"),
+    ("continuation", "The instructions were clear until line seven:"),
+]
+_PROMPT_MAX_NEW_TOKENS = 200
+_PROMPT_TEMP = 1.0
+_PROMPT_TOP_K = 50
+_PROMPT_TOP_P = 1.0
 
 TRAINING_TIME_BUDGET = 12 if SMOKE_TEST else TIME_BUDGET
 SMOKE_MAX_OPTIMIZER_STEPS = 4  # counted after step 10 (post compile-warmup)
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-RUN_DIR = os.path.join(_HERE, "output", datetime.now().strftime("%Y-%m-%d_%H%M%S"))
+
+
+def _budget_label(seconds: int) -> str:
+    if seconds >= 3600 and seconds % 3600 == 0:
+        return f"{seconds // 3600}h"
+    if seconds >= 60 and seconds % 60 == 0:
+        return f"{seconds // 60}m"
+    return f"{seconds}s"
+
+
+_RUN_LABEL_OVERRIDE = os.environ.get("AUTORESEARCH_RUN_LABEL", "").strip()
+if _RUN_LABEL_OVERRIDE:
+    _run_label = _RUN_LABEL_OVERRIDE
+elif SMOKE_TEST:
+    _run_label = datetime.now().strftime("%Y-%m-%d_smoke_%H%M%S")
+else:
+    _run_label = f"{datetime.now().strftime('%Y-%m-%d')}_{_budget_label(TRAINING_TIME_BUDGET)}_run"
+RUN_DIR = os.path.join(_HERE, "output", _run_label)
 os.makedirs(RUN_DIR, exist_ok=True)
 
 # ---------------------------------------------------------------------------
@@ -731,6 +770,9 @@ optimizer = model.setup_optimizer(
     weight_decay=WEIGHT_DECAY,
 )
 
+_raw_model = (
+    model  # uncompiled reference; used for shape-dynamic sampling during training
+)
 if USE_TORCH_COMPILE:
     model = torch.compile(model, dynamic=False)
 
@@ -768,51 +810,225 @@ total_training_time = 0
 step = 0
 
 # Intermediate checkpoint thresholds (seconds). Each fires at most once per run.
-_CKPT_THRESHOLDS = [300, 900, 1800, 3600, 7200, 14400]
-_CKPT_LABELS     = ["5m", "15m", "30m", "1h",  "2h",  "4h"]
+# Thresholds above TRAINING_TIME_BUDGET simply never fire, so one list covers all budgets.
+_CKPT_THRESHOLDS = [300, 900, 1800, 3600, 7200, 14400, 28800, 43200]
+_CKPT_LABELS = ["5m", "15m", "30m", "1h", "2h", "4h", "8h", "12h"]
 _ckpt_fired = set()  # tracks which thresholds have already been saved
+
+# Periodic mid-run val_bpb points (every ~5% of progress). Capped eval for cheapness;
+# the full uncapped eval is run only at the milestone checkpoints above.
+_PERIODIC_EVAL_INTERVAL = 0.05  # fraction of progress
+_periodic_eval_fraction = _PERIODIC_EVAL_INTERVAL  # next trigger
+_PERIODIC_EVAL_CAP_TOKENS = max(MAX_SEQ_LEN * 32, EVAL_TOKENS // 4)
+_PROGRESS_CSV = os.path.join(RUN_DIR, "progress.csv")
+_MILESTONE_OVERHEAD_LOGGED = False
 
 def _write_meta(path: str, meta: dict):
     """Write a JSON sidecar next to a checkpoint file."""
     with open(path.replace(".pt", ".json"), "w") as f:
         json.dump(meta, f, indent=2)
 
+
+def _patch_meta_val_bpb(json_path: str, val_bpb: float):
+    try:
+        with open(json_path, "r") as f:
+            meta = json.load(f)
+        meta["val_bpb"] = round(float(val_bpb), 6)
+        with open(json_path, "w") as f:
+            json.dump(meta, f, indent=2)
+    except Exception as e:
+        print(f"\n[warn] could not patch {json_path}: {e}")
+
+
+def _append_progress_csv(row: dict):
+    new_file = not os.path.exists(_PROGRESS_CSV)
+    keys = [
+        "elapsed_seconds",
+        "num_steps",
+        "progress",
+        "lr_mult",
+        "train_loss_ema",
+        "val_bpb_capped",
+        "eval_cap_tokens",
+    ]
+    with open(_PROGRESS_CSV, "a", encoding="utf-8") as f:
+        if new_file:
+            f.write(",".join(keys) + "\n")
+        f.write(",".join(str(row.get(k, "")) for k in keys) + "\n")
+
+
+@torch.no_grad()
+def _generate_once(
+    gen_model, tokenizer_local, prompt_text: str, max_new_tokens: int, seq_len: int
+) -> str:
+    ids = tokenizer_local.encode(prompt_text, prepend=tokenizer_local.bos_token_id)
+    idx = torch.tensor([ids], dtype=torch.long, device=device)
+    for _ in range(max_new_tokens):
+        idx_cond = idx[:, -seq_len:]
+        logits = gen_model(idx_cond)  # targets=None -> returns logits
+        logits = logits[:, -1, :]
+        logits = logits / max(_PROMPT_TEMP, 1e-6)
+        if _PROMPT_TOP_K > 0:
+            topk_vals, _ = logits.topk(_PROMPT_TOP_K, dim=-1)
+            logits = logits.masked_fill(logits < topk_vals[:, -1:], float("-inf"))
+        probs = F.softmax(logits, dim=-1)
+        next_id = torch.multinomial(probs, num_samples=1)
+        idx = torch.cat([idx, next_id], dim=1)
+    return tokenizer_local.decode(idx[0, len(ids) :].tolist())
+
+
+def _write_prompt_pack(
+    label: str, ckpt_filename: str, val_bpb, elapsed: float, num_steps: int
+):
+    """Generate the 7-prompt pack and write <label>_prompts.txt matching eval_prompts.py format."""
+    # Use the uncompiled module to avoid torch.compile recompilation on varying seq lengths.
+    gen_model = _raw_model
+    was_training = gen_model.training
+    gen_model.eval()
+    try:
+        lines = []
+        lines.append(f"checkpoint: {ckpt_filename}")
+        lines.append(f"label:      {label}")
+        lines.append(f"val_bpb:    {val_bpb if val_bpb is not None else 'n/a'}")
+        lines.append(f"elapsed:    {elapsed}s")
+        lines.append(f"num_steps:  {num_steps}")
+        lines.append(f"generated:  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        lines.append(
+            f"temp:       {_PROMPT_TEMP}  top_k: {_PROMPT_TOP_K}  "
+            f"top_p: {_PROMPT_TOP_P}  max_new_tokens: {_PROMPT_MAX_NEW_TOKENS}"
+        )
+        lines.append("=" * 72)
+        for name, prompt in _PROMPT_PACK:
+            try:
+                with autocast_ctx:
+                    completion = _generate_once(
+                        gen_model,
+                        tokenizer,
+                        prompt,
+                        _PROMPT_MAX_NEW_TOKENS,
+                        config.sequence_len,
+                    )
+            except Exception as e:
+                completion = f"<sample_gen_error: {e!r}>"
+            lines.append(f"\n[{name}]")
+            lines.append(f"PROMPT:     {prompt}")
+            lines.append(f"COMPLETION: {prompt}{completion}")
+        lines.append("\n" + "=" * 72)
+        out_path = os.path.join(RUN_DIR, f"{label}_prompts.txt")
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
+        print(f"prompts [{label}]: {out_path}")
+    finally:
+        if was_training:
+            gen_model.train()
+
+
+def _run_eval(cap_tokens=None):
+    """Wrap evaluate_bpb with eval/train mode toggling. Returns val_bpb float."""
+    was_training = model.training
+    model.eval()
+    try:
+        with autocast_ctx:
+            return evaluate_bpb(
+                model, tokenizer, DEVICE_BATCH_SIZE, eval_tokens=cap_tokens
+            )
+    finally:
+        if was_training:
+            model.train()
+
+
+def _periodic_eval(
+    elapsed: float, current_step: int, train_loss: float, lr_mult: float
+):
+    """Cheap val_bpb snapshot every ~5% of progress; appended to progress.csv."""
+    t0 = time.time()
+    val_bpb_capped = _run_eval(cap_tokens=_PERIODIC_EVAL_CAP_TOKENS)
+    dt = time.time() - t0
+    _append_progress_csv(
+        {
+            "elapsed_seconds": round(elapsed, 1),
+            "num_steps": current_step,
+            "progress": round(elapsed / max(TRAINING_TIME_BUDGET, 1), 4),
+            "lr_mult": round(lr_mult, 4),
+            "train_loss_ema": round(train_loss, 6),
+            "val_bpb_capped": round(val_bpb_capped, 6),
+            "eval_cap_tokens": _PERIODIC_EVAL_CAP_TOKENS,
+        }
+    )
+    print(
+        f"\nperiodic_eval @ {elapsed:.0f}s  val_bpb(capped)={val_bpb_capped:.4f}  ({dt:.1f}s)"
+    )
+    return val_bpb_capped
+
+
 def _save_timed_checkpoint(elapsed: float, current_step: int, train_loss: float):
-    """Save a named checkpoint when elapsed time crosses a threshold."""
+    """At each milestone: save .pt, run full val_bpb, generate prompt pack."""
+    global _MILESTONE_OVERHEAD_LOGGED
     for threshold, label in zip(_CKPT_THRESHOLDS, _CKPT_LABELS):
-        if (
-            threshold not in _ckpt_fired
-            and elapsed >= threshold
-            and threshold == TRAINING_TIME_BUDGET
-        ):
-            _ckpt_fired.add(threshold)
-            path = os.path.join(RUN_DIR, f"model_{label}.pt")
-            meta = {
-                "label": label,
-                "elapsed_seconds": round(elapsed, 1),
-                "num_steps": current_step,
-                "total_tokens": current_step * TOTAL_BATCH_SIZE,
-                "train_loss_ema": round(train_loss, 6),
-                "val_bpb": None,
-                "hyperparams": {
-                    "WARMDOWN_RATIO": WARMDOWN_RATIO,
-                    "FINAL_LR_FRAC": FINAL_LR_FRAC,
-                    "MATRIX_LR": MATRIX_LR,
-                    "EMBEDDING_LR": EMBEDDING_LR,
-                    "MUON_BETA2": MUON_BETA2,
-                    "TOTAL_BATCH_SIZE": TOTAL_BATCH_SIZE,
-                    "DEPTH": DEPTH,
-                },
-            }
-            torch.save({
-                "model_state_dict": model.state_dict(),
+        if threshold in _ckpt_fired or elapsed < threshold:
+            continue
+        # Only fire thresholds that are meaningful for this budget.
+        if threshold > TRAINING_TIME_BUDGET:
+            continue
+        _ckpt_fired.add(threshold)
+        t_start = time.time()
+        path = os.path.join(RUN_DIR, f"model_{label}.pt")
+        meta = {
+            "label": label,
+            "elapsed_seconds": round(elapsed, 1),
+            "num_steps": current_step,
+            "total_tokens": current_step * TOTAL_BATCH_SIZE,
+            "train_loss_ema": round(train_loss, 6),
+            "val_bpb": None,
+            "hyperparams": {
+                "WARMDOWN_RATIO": WARMDOWN_RATIO,
+                "FINAL_LR_FRAC": FINAL_LR_FRAC,
+                "MATRIX_LR": MATRIX_LR,
+                "EMBEDDING_LR": EMBEDDING_LR,
+                "MUON_BETA2": MUON_BETA2,
+                "TOTAL_BATCH_SIZE": TOTAL_BATCH_SIZE,
+                "DEPTH": DEPTH,
+            },
+        }
+        torch.save(
+            {
+                "model_state_dict": _raw_model.state_dict(),
                 "config": asdict(config),
                 "elapsed_seconds": elapsed,
                 "num_steps": current_step,
                 "label": label,
-            }, path)
-            _write_meta(path, meta)
-            print(f"\ncheckpoint [{label}]: {path}")
+            },
+            path,
+        )
+        _write_meta(path, meta)
+        print(f"\ncheckpoint [{label}]: {path}")
+
+        # Full (uncapped) eval + prompt pack. On exception, continue training.
+        try:
+            full_val_bpb = _run_eval(cap_tokens=None)
+            _patch_meta_val_bpb(path.replace(".pt", ".json"), full_val_bpb)
+            print(f"val_bpb [{label}]: {full_val_bpb:.6f} (full)")
+        except Exception as e:
+            full_val_bpb = None
+            print(f"\n[warn] full eval at [{label}] failed: {e!r}")
+        try:
+            _write_prompt_pack(
+                label,
+                os.path.basename(path),
+                full_val_bpb,
+                round(elapsed, 1),
+                current_step,
+            )
+        except Exception as e:
+            print(f"\n[warn] prompt pack at [{label}] failed: {e!r}")
+
+        overhead = time.time() - t_start
+        if not _MILESTONE_OVERHEAD_LOGGED:
+            print(
+                f"milestone overhead [{label}]: {overhead:.1f}s "
+                f"(~{100 * overhead / max(TRAINING_TIME_BUDGET, 1):.2f}% of budget)"
+            )
+            _MILESTONE_OVERHEAD_LOGGED = True
 
 while True:
     torch.cuda.synchronize()
@@ -859,6 +1075,17 @@ while True:
     if completed_steps > COMPILE_WARMUP_STEPS:
         total_training_time += dt
         _save_timed_checkpoint(total_training_time, completed_steps, debiased_smooth_loss)
+        if not SMOKE_TEST:
+            _prog = total_training_time / max(TRAINING_TIME_BUDGET, 1)
+            if _prog >= _periodic_eval_fraction and _prog < 1.0:
+                _periodic_eval(
+                    total_training_time,
+                    completed_steps,
+                    debiased_smooth_loss,
+                    lrm,
+                )
+                while _periodic_eval_fraction <= _prog:
+                    _periodic_eval_fraction += _PERIODIC_EVAL_INTERVAL
 
     # Logging
     pct_done = 100 * progress

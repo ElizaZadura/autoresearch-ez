@@ -7,6 +7,8 @@ Usage:
 
     uv run sample.py                            # uses model.pt from latest run dir, interactive mode
     uv run sample.py --top-p 0.9 --temp 0.8     # custom sampling params
+
+    uv run sample.py --checkpoint 12h --run-dir output/2026-04-17_12h_run --temp 0.7 --top-p 0.9 "Stary człowiek szedł powoli w stronę rzeki i"
 """
 
 import argparse
