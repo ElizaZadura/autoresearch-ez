@@ -32,6 +32,9 @@ This document summarises changes made **in this repository** so autoresearch can
 - **Import `kernels` and FA3** when the package exists and loads; pick Hopper vs community repo by device capability (same idea as upstream).
 - On **`FileNotFoundError`**, **`OSError`**, or **`ImportError`**, set **`flash_attn_func = sdpa_flash_attn_func`** and print a short notice.
 - **`sdpa_flash_attn_func`** implements causal (and sliding-window) attention compatible with the model’s tensor layout; sliding windows use a **cached boolean `attn_mask`** (not a float `-inf` mask) for SDPA.
+- Override the auto-detection with:
+  - **`AUTORESEARCH_USE_FA3=0`** — skip the FA3 import entirely and use SDPA (useful on Windows where the import may succeed but the kernel call fails later).
+  - **`AUTORESEARCH_USE_FA3=1`** — default behaviour (attempt FA3; fall back to SDPA on load failure).
 
 ---
 
@@ -56,8 +59,9 @@ Early in `train.py`, before heavy CUDA use:
 
 ## Per-device batch size and `TOTAL_BATCH_SIZE`
 
-- **Windows default:** **`_vram_device_batch_cap(total_memory)`** applies rough upper bounds by VRAM tier (e.g. &lt;16 GiB → 16, &lt;24 → 32, &lt;40 → 64, else up to 256).
-- **Non-Windows default:** leave `DEVICE_BATCH_SIZE` as set in the script, to stay closer to upstream behavior.
+- **Default `DEVICE_BATCH_SIZE = 16`** in the script, matching the effective ceiling at `TOTAL_BATCH_SIZE = 2**15` and `MAX_SEQ_LEN = 2048` (only `b ∈ {1,2,4,8,16}` divides `TOTAL_BATCH_SIZE/MAX_SEQ_LEN = 16`). This keeps the default config runnable on non-Windows without the VRAM cap; previously the script asserted out there.
+- **Windows default:** **`_vram_device_batch_cap(total_memory)`** applies rough upper bounds by VRAM tier (e.g. &lt;16 GiB → 16, &lt;24 → 32, &lt;40 → 64, else up to 256). Tiers above 16 are **latent** at the current `TOTAL_BATCH_SIZE` — they re-activate if `TOTAL_BATCH_SIZE` is raised.
+- **Non-Windows default:** no auto-cap; the script’s `DEVICE_BATCH_SIZE` is used as-is.
 - **`_best_device_batch(requested, max_batch)`** chooses the largest batch ≤ cap such that **`TOTAL_BATCH_SIZE % (batch × MAX_SEQ_LEN) == 0`**, preserving gradient-accumulation correctness when a cap is active.
 - Override with:
   - **`AUTORESEARCH_DEVICE_BATCH_SIZE_CAP=<int>`** — apply an explicit cap on any platform
@@ -119,6 +123,7 @@ The BPB definition and dataloader contract are unchanged; only an optional cap w
 | Variable | Values | Effect |
 |----------|--------|--------|
 | `AUTORESEARCH_USE_TORCH_COMPILE` | `0` / `1` (also `true`/`false`/`on`/`off`) | Force compile off or on |
+| `AUTORESEARCH_USE_FA3` | `0` / `1` | `0` skips the FA3 import (force SDPA); `1` is the default attempt-then-fallback |
 | `AUTORESEARCH_GRADIENT_CHECKPOINTING` | `0` / `1` | Force checkpointing off or on |
 | `AUTORESEARCH_DEVICE_BATCH_SIZE_CAP` | integer, or `off` | Apply or disable the device-batch auto-cap |
 | `AUTORESEARCH_INDUCTOR_ATEN_ONLY` | `0` / `1` | Force ATen-only GEMM/conv autotune backends |

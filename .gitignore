@@ -34,3 +34,4 @@ results.tsv
 /.claudemodel.pt
 /model.pt
 /output
+/model.json
