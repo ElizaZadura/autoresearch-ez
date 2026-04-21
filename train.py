@@ -725,7 +725,52 @@ if _batch_cap is not None:
 else:
     print(f"device batch: {DEVICE_BATCH_SIZE}")
 autocast_ctx = torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16)
-H100_BF16_PEAK_FLOPS = 989.5e12
+
+
+def _bf16_peak_flops() -> float:
+    """Peak dense BF16 tensor-core throughput for the first CUDA device,
+    used as the MFU denominator. Values follow NVIDIA spec-sheet TFLOPS
+    for non-sparse BF16/FP16 tensor ops. Unknown devices fall back to the
+    H100 figure so MFU reads visibly low — a clear signal to add a new
+    entry rather than silently misreport."""
+    fallback = 989.5e12  # H100 SXM5 BF16 dense tensor peak
+    try:
+        cap = torch.cuda.get_device_capability(0)
+        name = torch.cuda.get_device_name(0).lower()
+    except Exception:
+        return fallback
+    if cap >= (9, 0):  # Hopper/Blackwell (H100, H200, etc.)
+        return fallback
+    if cap == (8, 9):  # Ada Lovelace — RTX 40 series, L40, L4
+        if "4090" in name:
+            return 330.3e12
+        if "4080" in name:
+            return 195.0e12
+        if "4070 ti" in name:
+            return 160.4e12
+        if "4070" in name:
+            return 116.6e12
+        if "4060 ti" in name:
+            return 87.2e12
+        if "4060" in name:
+            return 60.0e12
+        return fallback
+    if cap == (8, 0):  # Ampere A100
+        return 312e12
+    if cap in ((8, 6), (8, 7)):  # Ampere consumer (RTX 30, A40, A6000)
+        if "3090" in name or "a6000" in name:
+            return 142e12
+        if "3080" in name:
+            return 119e12
+        return fallback
+    return fallback
+
+
+BF16_PEAK_FLOPS = _bf16_peak_flops()
+print(
+    f"peak BF16 TFLOPS (MFU denominator): {BF16_PEAK_FLOPS / 1e12:.1f} "
+    f"(device: {torch.cuda.get_device_name(0)})"
+)
 COMPILE_WARMUP_STEPS = 10 if USE_TORCH_COMPILE else 0
 
 tokenizer = Tokenizer.from_directory()
@@ -1103,7 +1148,7 @@ while True:
     # Logging
     pct_done = 100 * progress
     tok_per_sec = int(TOTAL_BATCH_SIZE / dt)
-    mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE / dt / H100_BF16_PEAK_FLOPS
+    mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE / dt / BF16_PEAK_FLOPS
     remaining = max(0, TRAINING_TIME_BUDGET - total_training_time)
 
     print(f"\rstep {step:05d} ({pct_done:.1f}%) | loss: {debiased_smooth_loss:.6f} | lrm: {lrm:.2f} | dt: {dt*1000:.0f}ms | tok/sec: {tok_per_sec:,} | mfu: {mfu:.1f}% | epoch: {epoch} | remaining: {remaining:.0f}s    ", end="", flush=True)
@@ -1145,9 +1190,16 @@ with autocast_ctx:
 # Final summary
 t_end = time.time()
 startup_time = t_start_training - t_start
-steady_state_mfu = 100 * num_flops_per_token * TOTAL_BATCH_SIZE * max(
-    step - COMPILE_WARMUP_STEPS, 0
-) / total_training_time / H100_BF16_PEAK_FLOPS if total_training_time > 0 else 0
+steady_state_mfu = (
+    100
+    * num_flops_per_token
+    * TOTAL_BATCH_SIZE
+    * max(step - COMPILE_WARMUP_STEPS, 0)
+    / total_training_time
+    / BF16_PEAK_FLOPS
+    if total_training_time > 0
+    else 0
+)
 peak_vram_mb = torch.cuda.max_memory_allocated() / 1024 / 1024
 
 print("---")

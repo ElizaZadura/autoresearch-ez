@@ -200,5 +200,97 @@ questions until after this.
 
 ---
 
-*Generated 2026-04-17. Model: 28.8M params, depth=4, dim=512, vocab=8192.
+## Phase 2c: WARMDOWN_RATIO sweep (2026-04-20)
+
+Four back-to-back 2h runs with `WARMDOWN_RATIO ∈ {0.30, 0.50, 0.70, 0.90}` — total
+wall time 8h 44m, all four runs `exit=0`. Answering 2b's open question:
+**how much warmdown do we actually need at 2h?**
+
+Output: `output/2026-04-19_2h_warmdown_<ratio>_run/`. Each run produced the 5
+milestone prompt packs (5m / 15m / 30m / 1h / 2h), their `.pt` + `.json` sidecars,
+and a 19-point dense `progress.csv` curve.
+
+Driver: `run_warmdown_sweep.sh` at repo root; `WARMDOWN_RATIO` is now overridable
+via the `AUTORESEARCH_WARMDOWN_RATIO` env var in `train.py`.
+
+### End-of-run val_bpb (uncapped)
+
+| WARMDOWN_RATIO | val_bpb | Δ vs prev | steps | MFU (4070, corrected) |
+| --- | ---: | ---: | ---: | ---: |
+| 0.30 | 1.0606 | — | 31,257 | 18.1% |
+| 0.50 | 1.0571 | −0.0035 | 28,821 | 16.6% |
+| 0.70 | 1.0515 | −0.0055 | 33,223 | 19.2% |
+| 0.90 | **1.0500** | −0.0015 | 34,661 | 20.0% |
+
+Reference points:
+
+- 2a 2h dedicated (`WARMDOWN_RATIO=0.70`): **1.0564** — vs this sweep's 0.70 run at
+  **1.0515**, a −0.0049 gap likely dominated by run-to-run noise.
+- 2b 12h baseline at its 2h intermediate (still at full LR under the 12h schedule):
+  **1.1691** — every 2c run clears this by a wide margin, reaffirming that
+  warmdown dominates short-budget val_bpb.
+
+### Sweep headline
+
+Monotonic improvement with warmdown length; diminishing returns kick in by 0.90.
+
+- 0.30 → 0.50: −0.0035
+- 0.50 → 0.70: −0.0055 (biggest gain)
+- 0.70 → 0.90: −0.0015 (already flattening; within noise of 2a 0.70 above)
+
+At 2h, **0.90 is the best quantitative answer**, but only by 0.0015 over 0.70 —
+inside plausible run-to-run noise. The interesting story is qualitative.
+
+### Qualitative trajectory across warmdown ratios
+
+`plain_continuation` prompt at the 2h checkpoint of each run ("The old man walked
+slowly toward the river and…"):
+
+- **0.30** — jumbled syntax, implausible swerves ("agile, the man has never been
+  seen as a car"). Weirdness high, surface coherence low.
+- **0.50** — more coherent flow; still some awkwardness but readable as prose.
+- **0.70** — clean opening, then topic-jumps into a macabre medical tangent
+  (wounds / vena cava). Local syntax clean; document-level coherence weakest.
+- **0.90** — enters a degenerate repetition attractor. "The man walked fast"
+  recurs 6+ times in one completion. Best val_bpb, worst qualitative diversity.
+
+Two tensions emerge:
+
+1. **val_bpb vs qualitative diversity.** Best val_bpb (0.90) is exactly where the
+   repetition attractors appear — the same pathology 2b saw at the 12h run's 8h
+   (mid-warmdown) checkpoint.
+2. **Topic drift vs repetition.** 0.70 drifts into new subjects; 0.90 stays on
+   topic but collapses into loops. 0.50–0.70 is the diversity sweet spot.
+
+### Step-count variation
+
+Step counts vary 28,821 (0.50) → 34,661 (0.90) — ~20% across runs at the same
+7200s training budget. Since the budget is time-based the val_bpb comparison is
+fair on its own terms, but any per-step analysis would need normalization. Likely
+system noise (thermal, background load) rather than schedule-dependent.
+
+### MFU note
+
+The `H100_BF16_PEAK_FLOPS = 989.5e12` hardcode in `train.py` has been replaced by
+a small device-capability + name lookup (`BF16_PEAK_FLOPS`). On an RTX 4070 the
+denominator is 116.6 TFLOPS, and the sweep's MFU numbers land at 16.6–20.0%
+(reasonable for a 28.8M / depth-4 model — small models are bandwidth-bound).
+Pre-fix reporting was ~2%, which was the H100 denominator divided by 4070
+throughput.
+
+### Decisions
+
+- **0.90 wins val_bpb at 2h by a hair (−0.0015 over 0.70, within noise)**, but
+  carries a clear qualitative cost (repetition attractors). The practical
+  recommendation for this budget is **0.70, with 0.90 reserved for val_bpb-first
+  tasks where repetition is tolerable**.
+- **Open question for the next night**: can a 4h run at `WARMDOWN_RATIO=0.70`
+  (or a second mini-sweep around 0.75–0.85 at 2h) beat 2h@0.90 on val_bpb
+  *without* the repetition collapse? Expected cost ~4h 20m for a single 4h run,
+  ~8h for a 4-point narrow sweep.
+
+---
+
+*Phase 2a generated 2026-04-17. Phase 2b generated 2026-04-18. Phase 2c
+generated 2026-04-20. Model: 28.8M params, depth=4, dim=512, vocab=8192.
 Data: karpathy/climbmix-400b-shuffle. Hardware: single NVIDIA GPU (~12GB VRAM).*
