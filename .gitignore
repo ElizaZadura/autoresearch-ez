@@ -47,5 +47,8 @@ results.tsv
 /model.pt
 /model.json
 
-/output
-/output/_archive
+# Outputs: commit small analysis artifacts (progress.csv, model_*.json,
+# *_prompts.txt, prompts.md, qual-notes.md, summary.txt, Section 8 PNGs).
+# Bulky files are already ignored via *.pt (checkpoints) and *.log (console.log)
+# higher up in this file.
+/output/_archive/

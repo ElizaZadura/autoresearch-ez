@@ -1,0 +1,60 @@
+checkpoint: model_2h.pt
+label:      2h
+val_bpb:    n/a
+elapsed:    7200.009783983231s
+num_steps:  25888
+generated:  2026-04-17 16:17:24
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and was then driven by his son Bachel of the Roundup and the Baltimore and the Phillipian of the boy to give me a way to teach. His children who will be able to teach his son Bachel in the early years could have more time than again. If his son had to wait, as far south east, the children was able to teach the son Bachel.
+Bodie Brown: his children who are who are not interested in taking things like Tetris.
+Bodie Brown: his kids who are boy and children who are not boy.
+BodieBrown: his son who is called him "In the old son," Bodie Brown: his son.
+Bodie Brown: his son
+By Robert Brown: his son
+Participant in the Bay Area Triboe
+Phillips: his son
+Bodie Brown
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of the capital of France is limited to only about 60% of the country, with up to 82% of all France, making it only about 30% of the country and just about 10% of the United States, France is about 1% of the nation. This makes it clear that there is such a large population of foreign country. The capital of Paris is much larger to France, with up to 82% of the nation. As of France, it is estimated that in 196 million US citizens were to join in the 2020 independence, or 2% of the national independence, from 1% of the state to 1% of the nation. Only 90% of countries, France is very good about the country, but there are about 5% of the country, while the country is very good about the country. The capital of France is called the Kingdom, about 1% of the country, about
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is known as the "document" meaning "hidden"" meaning "hidden" meaning "very often."
+
+The definition a "hidden" definition of a "hidden" meaning "widden." defined meaning "widden" definition" (sometimes known as "wei" mean "very hidden" meaning "very hidden." meaning "widden." definition, "veryidden" definition or "step of life." definition as "bidden," "wID" meaning "hidden" meaning 'very hidden," meaning in "veryidden" meaning "hidden." meaning "step" meaning "hidden" meaning "step or unknown" symbol meaning "very unconscious" mean "hidden" meaning "widden."
+
+What definition does "hidden" meaning "a "step" meaning "hidden" definition" mean 'sidden?' meaning "hidden" meaning "very unknown" meaning "hidden" mean "h
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the method is not consistent with that question. But when you think you don't get the same problem here by saying that you shouldn't like it so much, or your system doesn't need to be a problem all of the time. Caution of all the other issue was that while the method isn't consistent, the way you do that will result in it's a problem to a little research on how to reduce your system. There are so many ways to reduce the problem in these areas:
+1. Don't be afraid to come up with proper solution (and don't help) but don't hesitate to come up with what's best for your issue (or that you shouldn't come up and your system doesn't need to be afraid to come up with proper solution).
+2. Don't make the problem worse!
+Another difference is that if your system is not consistent, which means your system will have an unpredictable problem and there are no
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, ND — a device that uses a single line of electrical signals to communicate with your partner. A team of researchers from the New York University, have set new goals for controlling a certain type of signals known as anneurus, and help identify a disease by providing a way to communicate with your partner.
+"This isn't the case because it uses a single line," said Lee Niemer, lead author of the ND-6 study. "It is also known as 'Blinding, and 'GBl' as it's also known as 'Burn."
+Lee Niemer, lead author of the NATOR, explained to have some of the first three-dimensional signals being "Blurcat" as a method to control the behavior of the non-membode wires, while they are also called "blinding." The device, which uses Copper or Banana, is made from 50% of the original size
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small duck named Bobygobs. One of the most amazing features of your diving was the dobs, which have its name duck.
+At Bobygs, we love your mom and dad loved and loved them.
+From the Diving's perspective, it's hard to imagine when every duck was named for. Bobygobs loved by the Diving had lived many friends who loved to loved and loved. Someone helped him become ducian, her friends loved by the Diving's ducian duck.
+One of the most beautiful duck duck ducian ducian ducian duck was named Bobygobs. Its name comes from a small duck species, making it a friendly duck duck.
+In today's diving, it's easy to imagine ducian ducian ducian duck.
+How this duck is named for his duck – known as
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 314-326 steps, 221-376 step 222-336 steps, 221-377 steps 222-336 steps, 3 224-376 steps 222-336 step, 332-336 steps 223-336 step, 333-336 Step 336 steps 336-336 step, 332-336 steps 377-336 steps 331-336 step, 332-356 step 336 step, 333-336 step, 336-336 step 336 step, 334-336 step, 335-336 step, 336-336 step, 334-336 steps 336-336 step, 335-336 step, 334-336 steps 332
+
+========================================================================

@@ -1,0 +1,73 @@
+checkpoint: model_15m.pt
+label:      15m
+val_bpb:    n/a
+elapsed:    900.3035404682159s
+num_steps:  2946
+generated:  2026-04-17 16:17:01
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and it took its entire bison as a car to watch and get a bison. There was no way it stolen out and she felt it was very close to you, but it took no place a time after the weather came back. After all the animals were treated (like the river aperture in the water, they were wolted the river ankleys wherever people was killed and killed all the time in my life. I was surprised to see a lot of things. In 1946, the river was almost almost always a very sloppy icy. And the people. There was the eukaryotic fishy, that the fishy is also the oldest aquarium in its hive.
+And the prayer would have a lot of algae and a blue prayer. There would not be so much sunlight so the prayer would have to worry about it but be sure that you could get out before you,
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of the Botano and Switzerland has been slowest compared but has not previously been reached any further due to some of its great benefits. The company of Swiss is a huge part of the UK that is a global leader in the countryside in 2014 to the UK's international partners of Swiss national war. It is now the country's first major economic growth to the Swiss countries in 2010.
+Coinclude:
+The Paris countryside by Switzerland Festival on Fort Waste is being played by the France to find the main source of its territory at the Scovar Paris Switzer in 2014. One of the countries that is covered by the Switzerland has had a global problem. There are two things and one of the countries that does not understand what makes the countryside's main territory are most of the countries. Nowadays, Swiss countries have finally tried this
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is declare, and it is not so useful to as much as a fiction organism. Thus, when you do, many of the other people at the life can be lost if they continue to have a loved one.
+Careers of life require only one extra effort; one such thing was to have them all the time. You would not even have to be wary in the same order, but I am still still talking about my life and my life. It is not for all of that. When I live in a place that has been known for some time, I can go outside every day to get involved.
+That's why it's important to have all family life insurance, many life insurance claims on life insurance plan can only be felled. That is why people with life insurance plan are likely to suffer.
+That is why it is the most important aspect of life insurance claiming, and that it comes from many types of life insurance claims. This includes all family life insurance plan
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the most recent studies are not enough to be more accurate, scientists argue that any other factor could not prove the best to the theory, and what is considered not entirely accurate is the fact that everything is well-webblind's allure is what matters to you. The theory that most of the theory is the same is the fact that the most accurate theory can be the same. Scientists have shown that for most of the theory are the first experiments, in fact, in the 1995, not everything would be right. So not all theory has the capacity to learn and maintain a theory, but many theory says that as more theory has the same theory in theory, this study might be the basis for the theory. The theory that states that the theory is most accurate is the theory, although only the theory of theory is known, but theory seems that it doesn't matter. The theory is that once they have been tested and used to define it, and therefore there is
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Livet County: When our children start to realize they are the primary Snorf is what the largest human beings, which inhabit our planet, our mission is to to understand and create, shape, as a way for our children to learn about that they can’t.
+What are the biggest Snorfitters for Earth Summer
+East Africa has helped to become an endemic environmental design and provide our planet an increasingly unique example. With the increase in Earth's diverse environment, this planet extends into the United States, as it will become more important since it's more than just a new planet.
+
+Matio Matter: The Future of Education and Innovation
+
+I recently gained an introduction to an idea of an alternative to the idea that a new planet is more complex. If human bodies don't create an antech that would require a designation or construction, a robot might become capable of producing it.
+
+Massive Technology: The first an
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small fish found out about the world of Fish and Wildlife. They all lived inside all the 100 million he settlers out within a community of waterbirds.
+So what did those that call Fish and Wildlife do their job? What took place during fish and fish like this?
+
+But wait when a fish and wildlife come into the waterbirds for their survival? Did those that call Fish and Wildlife got a better future to help preserve the environment? But when asked: why do Fish and wildlife numbers grow? How do some fish and wildlife numbers affect a fish population? What happened to their population in this species? There was no chance of poaching and poaching?
+
+Well, the population of fish numbers decreased dramatically. How many numbers are in Fish and Wildlife numbers increase?
+
+My hope that we know for sure, there's not something to learn, to get out of the waterbirds population. Now, fish populations thrive very well, so this is so dangerous and could cause severe poison
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven:30 pm
+
+Heads
+
+Heads
+
+What does that mean for the environment?
+
+Heads
+
+Heads use the same size as the environment and the environment for the environment. As this would be the most difficult thing to follow, the environment will always start and evolve to meet the needs of others. The reason is that most of the most successful reasons of the environment is just one of the most important needs of the health and well-being of the surrounding environment
+
+Heads
+
+It becomes more difficult to eat so far more than necessary that people use the same size as the leader, but when that sounds great, that is no more than that of the environment. Further, the most comprehensive reason is that you may get more of the health and well-being it can take with the environment in an environment without any problems when looking for the most practical solutions. To further enhance your education and bring back the problems all in one to two; the environment can also make
+
+========================================================================

@@ -1,0 +1,53 @@
+checkpoint: model_1h.pt
+label:      1h
+val_bpb:    1.1423900947670649
+elapsed:    3600.1s
+num_steps:  17328
+generated:  2026-04-20 07:02:23
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and drafted the river, the ancient lree loot, tower, tower, the river was as thick as it was in the loot, tower, or water. "Why does the ancient man walked slow and in some places?" It's not enough as a looter tower if it is buried in ancient lore. "The man walked slow and in some places it has been buried in the middle, but nevertheless it had its own, but it was a long way for you, to show up in this bible, it can be buried in ancient lore. There was some land along the Gulf of Stark where the great looter became the ones that had fallen past the river, but it was the old man walked slow by the hunters. Over a lifetime, man walked slowly toward the river and moved further toward the Lorentian Highway."
+"The looter,
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of Paris is increasing. This year, the city was the first to be able to afford to acknowledge more than 6,600 people of Paris from around the world and to the country in the form of its own Paris, there. The city's first Paris project is called "Poiro de Newt," the public will likely give the poiro- tobacco, as well as the country's largest private, public and public fundraisons. Still, the urban infrastructure cost would be inadequate, the city is still in poorence and the country in Paris from the city has reached public fundraisons by the city. But this year too has the public fundraisons that are a part of paris. In this year 290,600 Australians and police agency have an opportunity to discuss more details about what may be known as the "Poiro de New
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is intermined by those words. The reality is that life is connected to the soul, a person's stenciliating feeling so that they cannot exist, so they can, hence, be called life. For example, the life is divided into two groups: the same thing or the same as the same thing or the different thing: the same thing, and the opposite thing: the same in different ways. But things happen more and more so in the same way.
+
+Of course, these same things are called life.
+
+It is a term which refers to those of us who are wealth or who are just living in different ways. Our life forms, even if they can hold us in different ways. When we think about it or do, we can imagine it, and we do everything in our life to see its future.
+
+The things people are doing and when they think about something, is that we are seeing all over the world and what did we refer to when things happen
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because it's true that the most important rule in the world is that if you have at least four tolls in the universe (or rather the way they could) you get to know it at least, to know that it's true that there is no rule or even no rule that in a number sense, there are no rule that in the universe. If it doesn't know or even just know that there are no rule, the truth about it is true but not even there. That is why it really matters most not because of no rule you can understand is true but even if you're not certain people are trying to discover the rules.
+
+To understand in detail in the world, one thing that's possible is that you can do the very same thing that you didn't even know is a little nervous system. What exactly makes the way it work is the relationship of the world where we live at a little so that you are just trying to understand.
+
+Despite all the fact that the real
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Friendslit Mur. Sullivan. Ground control and home management. Uptake of earthquake control is a basic obligation for all civilians in the U.S., but no one knows. The rule is to get rid of all of these variables to the earthquake control of Mongolia, which includes more than 100,000 tonnes or about five percent of the total population of Mongolia. The rule is to obtain a ground control for Mongolia, as well as the earthquake control for Mongolians, such as the Mongolians and Sussex. So, to the extent that each Mongolian is different, it is a separate control of Mongolians, meaning that all the Mongolians were established together to create separate control systems for ground control and ground control for earthquake Control, and as follows: Mongolians
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town nearby called a town called a Batanite town called Mesophiazstada. Batanas often live in quieter caveats known as mines. While some places might live on mines in search of mines, they have some great places for specialists who work to help discover valuable mines. Other places nearby may have a few miles off the coast of Sacramento.
+
+There are some small town towns known as Mesophiazstada, and some places don't. They travel south for about three miles, most famous among the towns and cities of Batanite town miles. The town also plays tentatively by many nearby houses, which can further connect to roads – so there are some small city towns for urban scenics that are accessible to others.
+
+The city towns are typically near the east side of Mesophiazstada, where there are many other
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven:19 the Egyptian Government established the same idea. In 1992 the Persians were established in England, but only in Europe and the first United States were still accepted until the 1972 Persian. The Persian was named Baptism, the Bible which had only 8.5 stars and 14 of which were first seen as the first to see a paleo-centre life. The Great Persian, who took a family traded the Persians to the Persian, reached Europe by 0.5 million years of age. It was founded by John H. Baptism, who the Bible was among the biggest German citizens in the 1840s, the Great Persians. At one point, it was 12.5 million years ago, which was the country which were in the 1841s or the most famous. It became the United States EU's
+
+========================================================================

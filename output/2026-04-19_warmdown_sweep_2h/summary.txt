@@ -1,0 +1,42 @@
+WARMDOWN_RATIO sweep — started 2026-04-19 23:22:55
+Repo:    /c/Dev/AI/Training/autoresearch
+Python:  .venv/Scripts/python.exe
+Ratios:  0.30 0.50 0.70 0.90
+Per-run budget: 7200s (2h)
+----------------------------------------------------------------
+
+================================================================
+Run: WARMDOWN_RATIO=0.30    label=2026-04-19_2h_warmdown_0.30_run
+Started:  2026-04-19 23:22:55
+Log file: output/2026-04-19_2h_warmdown_0.30_run/console.log
+----------------------------------------------------------------
+Finished: 2026-04-20 01:34:02   exit=0   elapsed=7867s
+
+================================================================
+Run: WARMDOWN_RATIO=0.50    label=2026-04-19_2h_warmdown_0.50_run
+Started:  2026-04-20 01:34:02
+Log file: output/2026-04-19_2h_warmdown_0.50_run/console.log
+----------------------------------------------------------------
+Finished: 2026-04-20 03:45:53   exit=0   elapsed=7911s
+
+================================================================
+Run: WARMDOWN_RATIO=0.70    label=2026-04-19_2h_warmdown_0.70_run
+Started:  2026-04-20 03:45:53
+Log file: output/2026-04-19_2h_warmdown_0.70_run/console.log
+----------------------------------------------------------------
+Finished: 2026-04-20 05:56:29   exit=0   elapsed=7834s
+
+================================================================
+Run: WARMDOWN_RATIO=0.90    label=2026-04-19_2h_warmdown_0.90_run
+Started:  2026-04-20 05:56:29
+Log file: output/2026-04-19_2h_warmdown_0.90_run/console.log
+----------------------------------------------------------------
+Finished: 2026-04-20 08:06:35   exit=0   elapsed=7806s
+
+================================================================
+Sweep done — 2026-04-20 08:06:35   total=31420s
+Run dirs:
+  output/2026-04-19_2h_warmdown_0.30_run
+  output/2026-04-19_2h_warmdown_0.50_run
+  output/2026-04-19_2h_warmdown_0.70_run
+  output/2026-04-19_2h_warmdown_0.90_run

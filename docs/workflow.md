@@ -36,6 +36,23 @@ Naming conventions:
 - Sweep child:  `<date>_<budget>_<param>_<value>_run` — e.g. `2026-04-19_2h_warmdown_0.30_run`.
 - Sweep children auto-discover via glob: `output/*_<param>_*_run`.
 
+### Version-control convention
+
+Under `output/`, analysis artifacts are committed; bulky/regenerable files are
+not. `.gitignore` encodes this via two global rules (`*.pt`, `*.log`) plus an
+explicit ignore of `output/_archive/`; everything else under `output/` is
+tracked.
+
+| Committed | Not committed |
+| --- | --- |
+| `progress.csv`, `model_<milestone>.json` | `model_<milestone>.pt` (via `*.pt`) |
+| `<milestone>_prompts.txt`, `prompts.md` | `console.log` (via `*.log`) |
+| `qual-notes.md`, sweep `summary.txt`, sweep `*.png` | `output/_archive/` |
+
+This keeps each run fully reproducible in the notebook from a fresh clone
+(curves, prompts, scoring all drive off the committed files); only re-sampling
+from the trained model requires the checkpoints.
+
 ---
 
 ## `docs/` contents

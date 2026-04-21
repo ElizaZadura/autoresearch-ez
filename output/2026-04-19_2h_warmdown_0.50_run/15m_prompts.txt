@@ -1,0 +1,85 @@
+checkpoint: model_15m.pt
+label:      15m
+val_bpb:    1.2139462005988026
+elapsed:    900.0s
+num_steps:  3599
+generated:  2026-04-20 01:51:49
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and he and Iowes from my Dubai Kielle. A new man was walking from Dubai, and Iowes in the Dubai Kielle, and they go from Dubai the south of the Side (e.g., Saudikin, Rubai and Kielle) in 1994. He walked as the Dubai Kielle. A new man was walked into Dubaki. It was no longer than a man was walking at the Dubai, and Iowes was the one standing today.
+The man was walking at the Dubai Dockrey Kielle, and Iowes were the Dubai Kielle. He was a 300-400-year-old woman. He was a 2012 player, Iowes, and Iowe. He became a 95-year-year-old woman. He has two races, and I
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of France is increasing: 13 million people will have their city's Civil and Media land – which means by no one by many – and to a minimum all the time between these and the two countries – they in the past will be very much bigger than the countries with which other countries have their city in the world. (National News) In 1939, Civil and Astronomy were signed at Chapter 17, 1944; for the first time, Civil gave a Civil said "The History Of Civil and Media in the Civil, Media and Media Civil".
+
+As I was concerned with the settlement of IR as having the Civil and media presence of Civil and Media. I was taking into account the amount of Civil's history, the source of the history and how it has changed, and the fact that it is used in Britain was, a result of a misunderstander
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is that we weren't doing it with the same level of life.
+
+Why did my son say life did, even worse during the holiday season, while I would do so much in the last 5000 years?
+
+The world has, on our part, was, that a day to her life is a real possibility, but rather then it goes much later. By 150 years ago I'm not a fronting life person (similar of) to be able to come and send them a second to her life
+
+The Little House of People is one of the fastest people to swim is the Little House of people who swim 11 million year olds. We come again after a moment, a baby, and a life, we came and we started doing that again.
+
+At that moment when we began a second of his life the Little House of people weren't doing everything you do to complete life, and then we don't, just like, we
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the majority of the women on the market was most likely to have a problem with their mothers, he only has not yet been able to access their products.
+A woman with a problem with my mother's mother has been choosing to make her own birthplace. She is probably the one who has been the mother's mother and is most likely to eat the second part – so I wouldn't stop this as far that I know as it happens.
+Here is an overview which of the women on the courts say, the women of mothers are in the opposite direction but they don't feel as much of it or as they become much more impetus from their mother. I agree that, in a case, women at one time should have a woman's mother and her mother is less likely than others should have as they become much less likely to succeed.
+History of women
+
+Question: Does the mother have any difficulty choosing to use their mothers for birth, as they
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Spoonshot Tape: Ground Tracking
+Ground control to Major-Injured Limits
+Ground control to Major-Injured Limits
+Size(): 8 to 10 %
+Run by the Lifespan
+To
+Size(): 8
+Method
+Gender(): 1.3.2 seconds. (2.8 seconds).
+Deliver out the Spoonshot)
+Hunting (PV-)
+Trypto: the tale. To measure the lie, first measure against the force.
+Hunting = 6 to 8 seconds (or the force falling in the centre can decrease the force)
+Pressure on the force;
+The force was initially impulsive.
+For example, if you are pending a big, powerful force on the surface, it is best to leave the ball on the force.
+Place
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small time where the first attempt was completed, there was a small time gap, a large time gap, arrived at dawn gathering at the heart of the group. This event was held at the centre of the next meeting, the whole thing to play a crucial role.
+
+In Italian, a small time gap was a major project. This time, the final set was a key idea of ensuring smooth operation. In Italian, a large time intervals a crucial role in smooth operation. During the final task, the group had their time intervals, and was carried out on the back of the procedure in Italian before a small time gap.
+
+Since 1939, the small time gap, a large Time gap, was a significant role in the smooth operation of the entire process of the journey.
+
+By the time when a small time gap had been removed, the small time gap needed to return the final task at random can be significantly more than 6,300 hours
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 1: In the future the question of the answer: In this chapter we will delve into how to make a simple one-hot rule, let's delve into these aspects of how to use these simple steps when using a few simple steps.
+An Overview of the Challenges and How to Draw and Light Function
+Such as an overview of the Challenges sheds light on their origins and features in the field of chemistry and biology.
+Download this chapter from the full chapter of an overview of the challenges and how to draw the final result in the following chapter: 1.
+Good enough to have a solid scientific foundation for science!
+1. Destructing and tomorrow
+
+Question: What is a simple step in creating a simple one-hot rule? Answer: Uncover the answer: 1. Destructing and tomorrow
+
+Question: What is the main topic of the chapter
+
+========================================================================

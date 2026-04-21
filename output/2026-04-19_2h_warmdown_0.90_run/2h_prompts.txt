@@ -1,0 +1,136 @@
+checkpoint: model_2h.pt
+label:      2h
+val_bpb:    1.0500180245684112
+elapsed:    7200.2s
+num_steps:  34661
+generated:  2026-04-20 08:05:36
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and the man walked fast. It would have been quite difficult due to time when the man moved there and would walk almost instantly and take more than an hour of walk and the man was not an effective man to man. The man was the one man walked fast. I'm not worried, my man walking slowly and it looked like. Now I'm the old man walked, and I'm very careful when my man step back and my man walked.
+To me this might be fun to tell your man how long after you walk, or do you have one man walking fast on the other side of it as long as the man walking slowly and for how long I'm up there while the man walked all over the river I'm up there, so I can walk almost instantly.
+What's the difference between man and other man for example?
+The man walked fast and the woman walked slowly as the man walked fast.
+The woman's man was tricked
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of the Parisians is in Europe. Most of this, but the country is in France's Land
+The Rise of Non-Korbigmans: Land as well as some of them cancel out. They can't be bought for sale. They can't be handed to other country
+I was reading that one last thing about Paris and this is because I was very familiar with the idea of how the local government is able to stop them from getting there. There are many governments, some of these governments that stop their politics from being able to stop the people (even just that the political issues like the one over here are a bit out of reach for politicians, I doubt one could stop they from getting there because they had a political issue they had. They could stop the politics in anyway. I don't think that one really happens to me.
+If that doesn't come off, I'm not even surprised. But
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is based on a particular meta-analysis. While it may seem to be similarly obvious, life is still too harsh to develop as you make progress. Many people who believe life is the most important thing. When you are thinking of living a long life, then life isn't always an answer to the question: ‪ Why is life and life important? ” ” ” Life as well as life is considered the most significant part of the global population. ‪ And life as well as life itself, there is much to learn, as well as a skill – as well as the ability to understand what things are. ” ” ” You will never learn how to look in life without knowing how things matter in life – It will just become you, what you do, why you are doing things. ● ️ ️ Five years ago the Romo rangiad had the capacity of self-improvement
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of their poor eyesight. They never thought of the fact that we were all just like people, we could see some more about how we have come to believe in what is happening, and how and why it goes.
+
+When I look back at the original question I came across, people have been saying "toucan" to me and I think "toucan" to go. When it comes to that question. While people have been saying they do nothing at all! Even though it's the fact that it's a fact, "touche" is a question of sorts and not a fact, but in many cases it becomes a fact and its a fact. There are several studies done on the physical, economic and social issues of these subjects.
+
+Furthermore, the studies on animal behavior are largely attributed to the fact and the fact that they are not an animal animal. Lots of studies have done this with regard to their findings, and since researchers have had to
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, with its latest
+
+Follow us on Twitter
+
+Ground-balancing is an intriguing way of enhancing safety features in an upcoming, ever-loving NPR Senator.
+
+NPR Sensing
+
+Ground-balancing is the method of building smart, safe, comfortable clothing that has undergone advanced safety testing. Eco-friendly technology with its exceptional weather-fighting capabilities and advanced features make this innovative approach a must-have for every gamer. From safety features and accessories to its upgraded functionality and security features, this platform offers an extensive range of features, making it an ideal choice for every gamer.
+
+Ground-balancing is also incredibly powerful, allowing users to customize their clothing to fit their specific budgets, preferences and aesthetic of their chosen location. In terms of safety, the upgraded NPR Senator doesn't just have it; it has its sleek
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town called Latucci, lived two munitions, one of which became known as the Princes and the other a mad. The Princes had friends who loved sharing stories and stories about different cultures and cultures in different countries. However, as they weren't always there, these friends took part in learning about each other, especially among the people who made them feel loved sharing experiences and sharing stories.
+One day, while browsing for more at first glance, browsing became an easy and fun way to explore the world around him. This included people who weren't interested in sharing stories or taking too much action now and spending time together while cooking. However, even if you knew where this story was, you can still practice it without worrying too much about what things weren't meant to show us – maybe even yours.
+
+So why did the twinkling sound like this? Well, instead of guessing, it was because the Prin
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: A. Dungan
+
+B. Gerald F. Crick
+
+C. Ford
+
+Answer: B. Dungan
+
+D. Lloyd
+
+D. Jamie G. Rick
+
+Answer: C
+
+Lewis Armit
+
+Answer: G Rick
+
+D. Ford
+
+Answer: B. Dungan
+
+Answer: C
+
+H
+
+Lewis Armit
+
+Answer: B
+
+Lewis Armit
+
+Answer: L
+
+Hewis Armit
+
+Answer: H
+
+Lewis Armit
+
+Answer: H
+
+Hewis Armit
+
+Answer: H
+
+Lewis Armit
+
+Answer: B
+
+Lewis Armit
+
+Answer: H
+
+Lewis Armit
+
+Answer: H
+
+Lewis Armit
+
+Answer: H
+
+Hewis Armit
+
+Answer: H
+
+Lewis Armit
+
+Answer: Her
+
+Her
+
+Hewitzing
+
+ questions
+
+========================================================================

@@ -1,0 +1,17 @@
+{
+  "label": "15m",
+  "elapsed_seconds": 900.1,
+  "num_steps": 4261,
+  "total_tokens": 139624448,
+  "train_loss_ema": 3.384879,
+  "val_bpb": 1.206591,
+  "hyperparams": {
+    "WARMDOWN_RATIO": 0.3,
+    "FINAL_LR_FRAC": 0.05,
+    "MATRIX_LR": 0.04,
+    "EMBEDDING_LR": 1.3,
+    "MUON_BETA2": 0.95,
+    "TOTAL_BATCH_SIZE": 32768,
+    "DEPTH": 4
+  }
+}

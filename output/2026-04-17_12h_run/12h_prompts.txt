@@ -1,0 +1,66 @@
+checkpoint: model_12h.pt
+label:      12h
+val_bpb:    1.0435135839202558
+elapsed:    43200.2s
+num_steps:  174682
+generated:  2026-04-18 10:43:14
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and had his eyes open because of his shallow endless water. His gnarled eyes kept flying and he flipped, while the others were standing waiting for them to flare out. The angler staring over the river seemed to make a head-up. As the others hadn't fled. As the angler waited for the water to approach those rivers, the angler began to question the reasoning behind the flow. The angler had to look at the muddy pile of water as much as possible with their eyes, which means that the muddler came out to do not want to be flopped down by other rivers or that the boat floats in the sand. The angler also came to an unresolved problem because when the river strikes it floats and the river floats is flatten the anglers cannot flare for longer than minutes.
+
+The angler had the perfect choice. His choice made him to
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of the country is around 13 billion people. The country's major population is located over 65 billion, and of course the majority of the population is a poor minority. It's essential to understand this by choosing a poor country which is in need of a job.
+None of the population is over-Economic. The government has a backing on international exports of export to areas where there were no population densities. In fact, the country currently has over 8 in 20 countries since it was built in the year 1909, and over a period of years it was in need of a job-enhanced level.
+The country's government must work on their own projects because of this, because a government's responsibility to fund them.
+The country's population is a large producer, with many people working in such countries, that they are likely to become a bit wealthy as we are developing new technologies or their jobs in a country.
+Latin
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is not explicitly stated and the message is always the same in all the sentences.
+For Example 1, the first sentence of Soment 1 and Example 2 shows that no one is talking and we know that each sentence contains some sentence "give you a word". Because "give you a word and word" is simply called spontaneous "give you a word"
+NarWali is a sentiment that is sometimes described as the "temporary" sentence of a spontaneous sentence.
+If he is confused, there is a sentiment of the words "simple" and a statement of "go the day". The semantic sentiment implies that the sentence is "go nd". Hence Semantic Sentence should not be undegraded. As long as a sentence can be understood, all the sentence "give you a word will
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of the hampon's high energy goal, they have achieved a very high energy goal with some very low incidences of this problem, but, aside from being a great source of power it also needs to be met with one goal.
+The goal is just to ensure that the system can maintain even high energy levels until now.
+What kind of system needs energy? To be able to run and use high energy resources, like the one mentioned above, our 18.0-20s, we will be able to have enough electricity in our homes this year. Even as we know, a great number of energy can power their homes here at home. For this article, I will go to show all the importance and practical ways to ensure that our 20s, we will also be discussing how these power sources are currently being used for homes for different purposes.
+Good Sleep
+We have been looking at what energy goes for some time each day, and I've noticed that
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Frosted, Pyramids, Fly, and Common Core: Sticky Layers, Wheels, Ground Fibros (Drawings, Signs, Symbols, Fabrications, Lights, Courses, Navigations, Opportunities, Opportunities, Line, Navy and Pelleton)
+
+Pyramids are the most common, except when most patients have a small bowel movement in their backyards, and they are able to get comfortable in their quest after sitting or lying down.
+
+But they are also able to get a full range of movements at once. Most of the time, this is especially true in the wild and there is no demand for animals to eat it.
+
+If they are comfortable with eating, they may still need to eat a lot of it, unless he is moving. You can buy a lot of biscuits a few weeks before he
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town named Alice called Alice's Royalty, a wise couple. It seemed easy to see everything happening now, but what happened before was that they didn't come up with new ways to teach them. One day Alice sir Jonas Garrett, who was a friend of mine, had been asked, "How do you teach children at Alice?"
+
+Garrett greeted her sister, "Well sowed seeds for our children!" He approached the whole place where Alice became the first youngest mom of life; they thought it was always true they even were, "Is the same gospel? How do they grow?"
+
+As they started their morning routine, Alice saddened as he graciously began teaching him so that he left a place for other responsibilities. This year was a long time spent devoted wholeheartedly and kindly devoted to teaching her kids.
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 5 S. (Margaret-Stadtz, L.V.). The result is a clear line of instructions in the direction not on either side, with the same number of rows as the horizontal line.
+Subject: BM
+For example, the MRC and WEB (Monad Combined Method) were constructed for the same sequence but were more complicated and require more or less training than the LRC method.
+For example, it was possible that the 1-16 rows were already created in the same sequence, for each of the nine rows, for the next row, for that particular order, for the next row.
+With the two sets of sequence, we have made two lines of the code written with two identical identical sequences.
+When you use the WEB method, you can actually start the code by clicking on the order. The Code will show the
+
+========================================================================

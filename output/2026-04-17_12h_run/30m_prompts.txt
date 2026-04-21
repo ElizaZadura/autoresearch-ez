@@ -1,0 +1,74 @@
+checkpoint: model_30m.pt
+label:      30m
+val_bpb:    1.1928126191634805
+elapsed:    1800.0s
+num_steps:  7427
+generated:  2026-04-17 23:03:39
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and back to its slots in 2015. While we were young, you'll see a bit lighter.
+Congriding in the water by the river, people may observe the old man walk on the water. However, it's best not in the Water with a drink.
+The water in the city of Bernoucoe. There's more of a drink by the rambling of the street, which, for a longer period, be lesser and less aft to the road. The drink of the river could be the only drink more easily, allowing you to find more street signs which are the worst in the water.
+Dr Duncan Powder, PhD, a senior scientist at Bernoucoe Cooperative Fellowstone, tells the stories of a group of 216, 127 students who study the different aspects of the water.
+Published July 3, 1957, in 1914, the British of
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of 150,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,00 each,000,000,000,000 and000,000,000,000,000,000,000,00,000,000,00000,000,000,500,000,000,000 deaths each,000 among them,000,000,000,
+000,0,000,000,000,000,100,000,000,000,000,000,000,000,00000,
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is divided to three sentences:
+- The most important is: Life is divided into the five sentences on how to describe the meaning of life, including the five sentences on his or her sentence. This sentence is about all sentence and circumstances that can be categorized to the meaning of life while also encourages the emotional reaction of people and society. In the context of sentence, it is divided into non-driving sentence and emotional responses to one sentence.
+4 primary sentences for sentence sentence.
+A speech essay @deas.
+In a more comprehensive definition of speech sentences, sentence of essay is represented in a single sentence while driving to the main sentence. As a result of sentences on a sentence, sentence is made with a paragraph. Essay on sentence sentence.
+7 sentences are subject to paralysis of the meaning of words as in sentence sentence.
+An essay on sent
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of the notion of a single object (in general) that a single object is not a separate object is not a separate object. That is where it comes in from the concept of a design. For example, some modern design projects have several limitations. One is saying that there are several advantages of each object on the list that the object can be viewed as a separate object, which is based on the basic concept of the same object alone. In many ways, the concept of one object is still fixed. As a result, you may be not able to think about the same object but if a single person has to do the same thing when there is a special object, then then it just does not make a difference, but then it does not make a difference, whereas the other object does not produce it. The reason why is because you cannot think about it is just that you cannot think twice about the object.
+Therefore, only people can think of making up 100 different Ob
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, CA
+
+Brand Masterpiece, The Magic Masterpiece, The Magic Masterpiece, The Magic Masterpiece.
+
+Masterpiece, The Magic Masterpiece, The magic Masterpiece, The Magic Masterpiece
+
+Masterpiece, The Magic Masterpiece, The Magic Masterpiece, The magic Masterpiece, The magic Masterpiece, The Magic Masterpiece, The Magic Masterpiece, The magic mushroom, The Magic Masterpiece."
+
+The downside of magic mushrooming:
+
+The Magic Masterpieces, The magic Masterpiece, The magic mushroom, The magic Masterpiece, The Magic Masterpiece, The magic Masterpiece, The magic mushroom, The Magic Masterpiece, The Magic Master
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town in the Bugar District where a small town was named and was one of the most incredible and beautiful locations out there.
+
+One of the first big cities in the town of Campbell (Combine, France's second town) where people in the community are still learning to recognize the beautiful little town of Camera, Naples, and more with their unique talents to hear the community.
+
+This town is focused on exploring the gross world around the town of Camera. This type of town is the largest of all towns who live up to its name.
+
+The town offers several unique photographs, including the town of Camera, Victoria, and the beautiful town of Campbell. It has been around for over 400 years, while the town holds about 16,000 km (118,000 km) and 1,000 km to the south.
+
+"Though we were in Camera, one of
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 4296° or 5084°; 5084°.
+The more complicated instruction made by reading this post was to use the dictionary to tell you how much difference they have received for your school, according to the instructions provided by the instructions.
+This type of instructions provided the instructional instructions that you were written on. It also had instructions when taking instructions, as this was a complete instructions. It also also had instructions on which instructions were needed when the instructors were given instructions.
+This instructions are intended as the instructional instructions. It includes a step-by-step instructions, instructions on the directions on which instructors were given. It is also a instructions to use the instructors.
+This type of instructions provided instructions, as they were instructed by the author in the instructions.
+These instructions were also called instructions, which may be called instructions, which are written on the instructions. They have also provided instructions. They are also called instructions to use this instructions to complete instructions.
+
+
+========================================================================

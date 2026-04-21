@@ -1,0 +1,57 @@
+checkpoint: model_4h.pt
+label:      4h
+val_bpb:    1.1628813372488793
+elapsed:    14400.3s
+num_steps:  54733
+generated:  2026-04-18 02:38:17
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and averaged between 0.0-180 feet per second. That was a big question: Is the only theory for the Balkani? The original article, Paul E. L. L.. "When are the newest animals, they are always about the earth. The newest is the oldest the youngest. The animals can reach out of the river, and the newest is the young. The oldest goes to the river and the newest goes to the river.
+The two species of the newest are the dolphins. The youngest goes to Paul E. L. L. L. Raising our own river, the oldest, and the newest they've ever seen, as well as the newest.
+One is the newest. The newest is the newest extinct. The latest is the oldest named. The newest goes to the oldest extinct. Paul E. L.
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of Nicoloria was the most commonly known and widely known. The capital of France, in the form of Iberian ranks of Iceland, is about 230 million, and has been considered to be the first known country to be known in the United States. The country, however, has never understood it, as it has been called the Civil War, and the capital of India has a very uncertain future. Significantly, the capital of Paris was, before, with the introduction of the Civil War, and the Berlin Pierra, Iceland’s Civil War, and the rise of ranks of Urban, the Mr. and the Romania. The capital of the United States represents an example of the country’s first country in the world. The capital was the Civil War and the country of Jesus, and the country of the country as it consisted of a few European
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is called a family. In this study, 25 participants agreed to develop their business model by taking different kinds of money without having much trouble.
+
+After determining the development of business models, they provided a starting point for a new platform (math of the game of "Tyramidae"). The new platform can make it easier for you to complete a project or start the project by adding your fundraiser to the game by adding your fundraiser.
+
+A four-part story is a way to support people to believe in the opportunity, learn new skills in the way they interact to others and develop an understanding of their actions in all situations.
+
+A team of researchers developed a way to support the model, with which they learn how to use a tool, or create more own.
+
+A new algorithm is designed to get used by the researchers who can use tools they usually have before they go through an idea. It might be time consuming but still takes time to change or be much
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of gravity, is that you must still use a few different resources, so a lot of practice is necessary to stay in proper shape. Evolution and Honorige (grain, brain, head, neck and back ) does not equal the opposite problem of gravity, as they are used at both ends. However, evolution can be done to accommodate a lot of different problems, and a lot of specific problems may involve the use of a few different resources. So, when we have to say that your own "products" of mass mixtures, it might happen that's the theory or what you must know, the concept of mass production. At this time, the idea of mixtures as a result, one of the problems of mass-mixtures, because of their specific properties, is that it relies on the specific properties of objects and space between them. This does not necessarily mean the difference between a matter of the matter to the fact that mass production
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Shakeson or Fruit Creek Snorf, Bobby Snowmen, and Bobcat License. Also known as the fierch, Jenna Lorse, Sherman, Romania, Swedish, and Turkey, these small skies do not belong in the class, rather they are the class on the same way: Hadiard Gols, Riches. They are the small and one that we usually find their own, but the other of our own. The bountiful fierchings, of the Santica and Toyce, are the fierchings of this class, and is an articulation of how it has evolved that the common and endangered species of snake, Jenna, and Turkeys are related in the field. The fierchings, of which, in this country there is a reason for that the reason for these fossils came
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small, simple, yet very large group of plants, there was a complete whole called tropospucantalium which is a part of the ecosystem for plantation, thus allergy to plantation from all kinds of species, including other taxa, such as the darts and porosomales.
+We can read what this article calls something "into," as well as how we understand how the plant affects the environment and we can understand why plants may be disturbances, if they are not properly disturbed by their plants and are allowed to flourish in a variety of environment conditions. The plant also causes the temperature and pressure, as the plants move through different periods over days, as the temperatures were more and less.
+Things to do include how warm water should be applied to the seeds, or the sun or soil.
+Most of the time, plants must be planted out in a pot of water. Taking care of the soil can greatly reduce the amount of water
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 1. 3. 9.
+Computer and smart computer are the key elements of a computer software. The primary computer programs have a number of instructions with functions
+programs that allow computers to get started in a wide range of applications. For example, when it comes to building cache and cookware, there are a vast number of products on record (such as cookware or cookieware). To check these instructions can be downloaded or checked to the right to start.
+Interpreting the instructions
+Finding the desired "shape" has been the result.
+When you are looking to change the label to a label "shape" and "hole" as a result, you can also see what you want that could be. For instance, if you are a cookiewer that is not a cookiewer, it appears, you might want to use an even more product.
+Another feature of a "shape" or "jack"
+
+========================================================================

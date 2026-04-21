@@ -1,0 +1,68 @@
+checkpoint: model_15m.pt
+label:      15m
+val_bpb:    1.2149597790040216
+elapsed:    900.2s
+num_steps:  3608
+generated:  2026-04-20 04:03:40
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and he was torn and torn. They were torn and torn.
+
+"Wild men walked from the river to the jargon, and they were torn"-fluent" by the river."
+Nyra, he was torn and rushing and he was torn.
+
+Half of the river and he had had to come to the river for 15 years. He was torn.
+
+Early four years and he was torn?
+
+I was torn and torn and torn, and I never knew that it was the one time the river was torn or bumped toward the rivers in a dam.<|reserved_0|>You can use a hire torn tortur or cue to get rid of the river's blood. But what would be the cost to do it?
+
+Source: I'm still not aware that a hire torn torn looks like they can get from it and it's tied to it
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of France is unstable. Paris is known for its territory and a lot of land – which means the community must take away – and to land and waste by its land. But the community is unintended, and will be an end to land in France. Paris can be considered to an territorial by its territory and land. Paris involves its land and waste and by the govern of its territorial and land of waste including the land and land. Laws can be seen from its land using its land and waste, by its land and waste, the land and land, which makes land a valuable way to live.
+
+The governor of Paris is Paris, a city of the United States (Publican, a city of the state) and the governor of all territorial needs; it helps to create a local communities and communities.
+According to Tomatoes, the people who are not in harm, a person of a state of a state
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is changed in time and changed by the beginning of a new day. The meaning of life is changed by the beginning of a year, meaning change from new to old. With so much change, people started feeling rejective or shift. This change is part of change, meaning a changing time often changed by changing the time period. It changed by the beginning of change as changing the time the period changed by changing time period. The change has evolved into change and now move to change has been replaced with new changes - changing to changing the period changed by changing period. change is being moved faster and time changed by new changes, so shift can become changed more faster and changing times changed by changing times. change will change to change, again change as change moves.
+After transition from shift and shift, change again with changed changing time. new changes will change. change will change so changes are happening. change will change the time you changes to change so changes are happening now when shift, incre change, change
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because an allegic reaction goes on without being a food is a problem, is that an allegic reaction goes bad? Well, as allegedly, the allegic reactions go wrong, there is likely reasonable concern: because allegic reactions can be either the right, or the left? The allegy question: Is this related to allegic reaction that can be either ignored or misinterpreted? Why? Well, allegic reactions go wrong (without having allegic) but they don’t seem as simple: They’re afraid to be just one, so what could you say?
+
+Well, a allegic reaction comes from the allegic reaction, because the allegic reaction goes bad due to the alleged reaction and the allegic reactions. The reaction creates an oxygenic reaction that can be causing an allegic reaction, it is
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, LOANEFI, an online company that is known for its "Ground Control". The EBI, a term used for its control of control to Major Snorf will be used as an control to control the control to Major Snorf. However, the controlling control of control to Major Snorf will be able to make a difference in the control to Major Snorf, not control. IMULY BROW OAMERED PLOS THES BECTRICES BECTRAL, NAMNICE:GeOFI 8 –OBLOVICE –OBLOVICE:EBM
+DO NOT OB LOVICE
+DO NOT A PLOS.
+DO NOT LOAN EBMORE
+DO NOT LOVICE CAN FUM,
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small pond or pond called "Opbase" in the forest to help, he realized the importance of removing liberation, lending the bands to help. She became active, who was involved with several mandatory studies in 1998 and gave her the potential to play this a time when someone had a deep breath. This led him to a fiery, and he had a deep breath, turning back to her life. The bands had gone back to its mother when she came to me for his life and had been tangent down and was very excited about the heritage of her town. It turned up a powerful remodel that the bands had been mandatory of their mothers. Suddenly, they understood why those struggling to remain active, and as soon as she had died.
+The bands had been discovered by a fiery man named Chence Father (1888-776, 1998
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 1: 1 and 3: 1: 2 and 2: 3: 2. 3: 4 Theory of the Too Body Theory Over Your Threats
+
+If you have a body you can do a whole nine: 1 and 3: 3. 2. 2. 3: 4. 1. 4. Sound the body in the middle of the middle of the inner of the middle of the middle of the middle of the middle of the middle of the inner of the middle of the middle of the middle of the middle of the middle of the middle
+
+After it's final, it's just 30000 degrees to 30000 degrees
+
+The throatian end of the middle of the middle and the throatian end of the middle of the gigantic middle of the middle.
+
+Now, it's just the beginning of a second to the third of the middle
+
+========================================================================

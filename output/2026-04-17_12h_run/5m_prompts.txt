@@ -1,0 +1,52 @@
+checkpoint: model_5m.pt
+label:      5m
+val_bpb:    1.267106932158664
+elapsed:    300.0s
+num_steps:  1190
+generated:  2026-04-17 22:36:40
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and has been a reality for many weeks, as many as 35 times asleep. The old man walked slowly in the river has already been restricted, and the people go untouched and turned into a place where this is not a place of mental health. (News. 2002-11)
+The old man walked into a river with a slaughter turned into a series of river waves. The storm was not 11 years away by means of river waves. Despite this new man walked slowly. For times now, man walked into the rivers and flooded the waters of the river. He also found that man walked swords through the River with the river had never been on. So, he would walk to the river. It has been quite close to the river. Madaira, an archaeologist, and biologist. He has a river. YOUR OCNSHORDIOXIZE
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of Alkaloans over in Alkalo and Women is 3.5%. These are 4.6% of the Galaphi population, and the European population has received 9.9% of France. Many of them have adoptable 10% to 10-25% of the Galaphi population, while the population of those who had 0.9% of European settlement have been 2.09% of the Galaphi population in Alkalo.
+Most Alkaloans are born who remain after
+Robody, 74, 22 years of Pongki's disease is around 11-15 minutes. While this disease is in the early days of Alkaloans or the American population. In general for Galaphi population, 119-641 is among 7.9%, in the early 1990s
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is a term that occurs in an acceptable way, and that is a short term that requires a specific term used as the meaning in "effs" refers to the beginning of the term "lobby". This term is used in an opening called "lobby" refers to the term of ortechniques", although it is the term that involves the term that the term as "sexite."
+
+Powerless Dehler - In Significance, the term is primarily refers to the term that focuses or refers to the phrase after termining or refersling the term. It refers to any term used as "rection term" defined in the term refers to a term used in the term. In definition, when an term is refers to the term "no term used" term referrals term used to refers to terminal term referrals terminal refers to term used as commonly referrals terminal refers refers to term refers to the term refers
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the aging process isn't quite complicated. Craditional and traditional, the same basic concept is known as the fact that the process is more complicated for multiple processes, though most people might consider several different approaches. But in the sense of evolution of a larger process, most of the processes have been involved with this particular process. In other words, there is two important concept that, one would say that the process would involve different functions and methods for different kinds of processes. However, some such process may include a very unique solution. If the process is a very simple phenomenon, the process will help to process the various elements, such as the creation of a change, and if a process is repeated, it can be difficult for the process to recur in which the process has a relatively simplicity, but the process looks like the process. Most of the process is about the whole process and the process is mostly done with multiple layers before the steps are done, because both layers of the process make
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, CMO, 125, and Ok, Os, Mercury
+
+Cathe Serverages Credits 125, and Os are widely used for a number of the most widely used method of chemical processing in recent years, such as:
+Prepared Carbonation: Brain control allows the conversion of a substance and a very low degree of use to remove the products in addition to other methods: to use the standard as a process that requires one-slorf perception of operation of a substance that is not applicable for any particular reason. To achieve such a complete object, consider using a combination of the process of the method of chemical products of the processing process and its associated with its industrial processing.
+What We Need to say for Carbonation: Predators to Metallic Acid Protocol
+How to Metall Metallic Acid Protocol Products in Carbon Carbon Carbon Carbon Car
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town among the mains and villages of Maine, there was no actual production. The first major problem for this time since then, as the production rate increases, the amount of production is increasing again. At the moment, people who worked hardly towards the village were very well-known and often since they were being put in an ever-known reason being lost. Some places were not in the country to live in or on their own. The main reason why this time has been the production? The country is usually there before the villages for use, at the groovey store here are some common ways to keep all of these people in focus when the supply has been opened. The main reason why the use of the economy by using the economy can be as much more costly than the import of supplies. The cost of production is the expense of the sector to costly because the supply costs in production can lower the prices range from 30 to 500. Other
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven:10 -32/2
+2019/2018· The instructions made for the first time when the instructions went so that it didn't take up at the moment to go. Eitherto do the work. Slowly release the instructions down again, it may feel that you'll just be able to find the correct instructions.
+The instructions made in 3 minutes should the instructions to keep the instructions in mind when releasing the instructions into the instructions. I didn't put it apart so that it's pretty much easier, so how time it's been done?
+How do you change how the assembly of instructions will execute instructions? First, what did not happen, and how many degrees do, if any, then once? I get an idea of how many degrees do you just need to go, so that my instructions had no thought, how many degrees do I know that the assembly did not have to make. ?
+To keep the instructions off the instructions for the instructions in a p
+
+========================================================================

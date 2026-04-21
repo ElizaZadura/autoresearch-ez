@@ -1,0 +1,71 @@
+checkpoint: model_5m.pt
+label:      5m
+val_bpb:    1.2691222194311307
+elapsed:    300.0s
+num_steps:  1198
+generated:  2026-04-20 03:51:59
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and the horticis is one of my current life with a 1/58 to all that in the next 15 weeks has already been treated to be a very young women. Because of this early life, she might have been diagnosed with a heart disease with the beginning of the past. Cardifford (also known as cortium) and the second period, so a woman that is born during an end of born in 1933, did not have any control over its life.
+What happened to be that had taken place in the early stages of death?
+It was a good first of a five years after the last few years due to the fact that the beginning of the period of life cycle the early stage. In fact a one's right that is the best of life that a survivor is not the best that has followed the beginning of life cycle.
+If the 2 months period of life and 1 years at an period of high and low the duration of
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of Alkali and the people of Bangokia. It is therefore of the development of Aluka and the World Trac Organ living at a large, narrow, and dark world. The central to the Paris is the Hubble of the Indonesia, the Wright, Maroon of America in Polynesia in Khadan, and the Los Angeles Times of Russia at the European Library. The European Paris Paris is located in the west Supreme Bangokia, the Paris Hubble within Northwest Siberia. The Southern Minas of the Indonesian Times 50th of August 1959, is nowhere near Supreme. In May of September, Congo's Paris Paris Paris Paris Paris Paris Paris Paris Paris Paris Paris Parister for the Bible Hillside Paris Paris Paris
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is a term, of the definition, refers to how a term begins in the term.
+In a study, a term will discuss in "electrical term," and may explain your opinion on what is given to a term or describe in your term.
+According to a research group, one refers to how life or term is dependent on what is on the term, by how people or the term describe their term, or how of different things, what do people?
+In the context of "green term," refers to what is that we orchestrated one term after one term or that will be a term. There are several terms that is on some of the term meaning (and), what type of refersifier is the term. In a term, an term is different. And in any term, it helps many personally, but one term is the term, and also is different.
+Some term is different, including different people. There are two categories for different types of term. The same
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of them you won't know they want to share everything with others is the way to actually coex with their work or other them in real life. This does not always work in a way that will affect others. But in a sense of that's not real, any, in a way that can be done at the end of the process, not to the end of a whole, one would like to the end of a different program and make a different set of choices.
+We have always thought that, in a very different program, because of the world that others are in many countries. In the countries that are going to be in our world, because we are going to take a very different programs out of that program. The one that you should that is really important is when you can't to take it back on track for your goals. Most you should always take the money that has to the people in your work with others. When we're taking the money that has to the people in your
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, CMO, 1250, and OR, are of the Mercury
+
+Catherence MD2 CMO 1250 is a chemical formula that can be measured with the following equation, the following:
+1. Hg = 2.3. Hg = 2.45
+3. We have calculated this by our formula.
+
+2. The total number1 is 1250, 4 = 4.50 per he
+da=3. 5.40 = 8.70 * Round
+3.0.55 = 3.0 * 2.50
+4.0 * LIE1/3
+5.0 * 4.00 * Round
+1.0 = 3.50 * RV = PIE1/2 + 3.50
+2.3 + 2
+3 = 6.3 + 5
+4 = 5.
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town called Himalayan, where there were no landings which was not enough. The Himalayan, a Syrika Masty, was a popular place for the Himalayan in a country. The majority of people enjoyed the idea they took about 4 hours to collect from the time it was followed. Himalayas were just about $5 or less.
+Suddenly, the Himalayan is at zero – and there are small, unnecessary landings which have been at 100 miles per hour – each of which is equivalent to a second year of approximately 6 in average.
+Those of the yearly landings which came to a good year. Several of the 100 sites in the Northwest are currently listed on Himalayas.
+The Himayan is a good place for the Arabia, or two years ago during the early 1860s. All around this
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven:10 - 102
+2019 - 100,460(5) - 102
+2019 - 103
+
+1 (100:100) - 100,150,250 - 100,240.2-- 55,684 - 100 - 100 54,340,360,100 - 100,60.
+The speed and speed of pissaries can be over time and at this, so how could it be used to be a better system? In the world of Iraniana, some people may be more able to control and be more tolerant, but so, then take down.
+The information in Iraniana is quite helpful and for the most appropriate, but a nice hand of information is called a Mallianaa.
+The following:
+"To be a nice, nice, nice, and fine, we are in a M
+
+========================================================================
