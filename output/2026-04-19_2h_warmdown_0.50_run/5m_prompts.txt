@@ -1,0 +1,62 @@
+checkpoint: model_5m.pt
+label:      5m
+val_bpb:    1.2674484021195882
+elapsed:    300.1s
+num_steps:  1198
+generated:  2026-04-20 01:40:07
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and has never been a leader. These young humans have been able to live inside and outside of their surroundings. These youngsters have been trained as a retreat, and can also go into the home of the river. Ensuring is always a good idea with the help of the people. Cities have been a little to learn about climate, weather, and safety in different areas so they can be free - that means the world's population is not able to live outside. So the world's new man walked out of the water. But in the ocean, people have given the opportunity to learn for themselves to grow. Local climate change is due to the importance of protecting the community with the human activities so the development of climate, weather, and environmentally and is now the key to that the world's climate change is about that every day. But for any people who have been able to watch their actions outside of they can also live inside.
+
+One of the main goals is to develop
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of French, became one of Australia in French to the United States.
+
+During the 1980s, France, the world has completed the Saint Rhode Island, Boulder. At the core, the cities of France and the French government have now become a re-written reserve, to be more clear in the world.
+
+Wednesday, 10 November 2022 — Supreme Layer at Yardtlark Hay
+
+In January of 2003, the Supreme Boulder's, the Paris Hay and Supreme Tourism Institute developed its World Winter in the 22th century, while Swedena is a part of World Winter Supreme, and in its national and regional accomaders.
+
+Materials were classified as a re-written resident at the start of the U.S. by 1997 as part of the U.S. Patrol, and the
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is a tune of people and is an intramid. The story of the one takes on a whole new world but is in constant sense for life at any time, and it is a new product from an infant or to the point. The answer is to that this story may lead to the life or life of human health.
+How is the story of the life that it has become as important of its life is that more and less people do not have it.
+One of the factors that it has become so important that scientists and scientists are getting more understanding of the ways that it can help shape our culture. Is the story of it is a life of different kind and kind. For this reason they don't have the ability to do something, so this is probably the reason to take care of them.
+So, which is the best one to do is understanding the importance of life. Having a life or their lives in people who are so important about others is not going to help us learn
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of the reason why people and their family is so much more and more likely to get back to the 1994 World Congress. One of the most important and most common features of the Congress is the Criticism which is a real problem. It is also associated with poor social interactions at the end of the 50th century, in older people, where one would like to be more flexible and relaxed and could actually help for older people who are more like a realization. In the recent book, researchers from Congress believe that the Congress, the authors are now learning how to think about their beliefs based on the personal view of a loved one.
+How to identify
+Criticism
+Criticism is often used to make a sense of the socially connection between loved ones where you had become more connected. However, some of these characteristics appear in Criticism because they are related to social networks, such as their share
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, CMO, GSB, SPR, OM, MRMMCHE SUDT CMO, KBIU, and Way. While some species of CMO range from 65 to 65, they range from 47 in the Caribbean, which is one of the most popular, and is mainly due to the use of Lord MR, MDMCMO and ELG, and also one of 576 in the Caribbean. Round of this Movement, GSB, and Writer, may also be classified by the Lord MR/Olymp3, or SPB. Each of these include an older and more frequent form of an older Movement, the more likely to have an older MR/Olymp3, the bigger the number, the lower the number, the lower the percentage and the lower number
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town called Himalayan, where there were no intercolions, so there could have lived hundreds of thousand years ago. In Sabotai, the number of prayer, the length of the air in landfills, and was often referred to as the airplane and its "confused" area of the 100-year PVP (submittenus rups or the ficturbell) that were known as Himalayan. With the following days before Himalayan had been at the heart of each southeast and the heart of all of the original Sabotaiians had been at the heart. Thank you to the verse that Himalayan has served as a 1.9mm (cracks) of the southeast and the fare. One of my favorite sites in Himalayan took on as many people as possible. All of this
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: Increasing the length of the hair and the ends; by the end of the body, thereby the
+best length.
+
+Therefore, at the moment of the hair cuttings, it is a step-byt. But the edges of the ends of an axis is completely equal to that, and the length of.
+The slaughter of 3 slaughter slaughter is a completely new piece of art. "It's completely clear to me this, that there's one". But, this time, this, for how to complete this step.
+
+Then, the end of the end of this step, with its side-liding curricular (Connectal) with the middle of the first slaughter slaughter slaughter slaughter steps.
+
+This slaughter slaughter slaughter, which would cause a long time ago, is called a 'best point slaughter slaughter slaughter for the 250-100 ends of the slaughter slaughter slaughter
+
+========================================================================

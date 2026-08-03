@@ -1,0 +1,60 @@
+checkpoint: model_2h.pt
+label:      2h
+val_bpb:    1.1690512439581644
+elapsed:    7200.0s
+num_steps:  28963
+generated:  2026-04-18 00:36:23
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and the sun was the newest of his day. His old man said he was a pretty new man and his gooey sorrow. He is now that his new man was the leader of the man and the man who was the father of the man.
+
+Femari, a young man who has been growing and a father, was not the one the old man was at, and he was very father in his son who was the old man (hi). A man who is a young man, and he is not a new man or being in the new man. There he is also quite an asshole. In the sense he is a young man to be in the man, so what his son will never go into him was a young superman.
+
+The man's old man came from someone who knew his man, but he can get a man named to him who has a sorrow. He will just be the father of the man and then he has just
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of New Zealand is in Europe and it is becoming most important for the population's health. Land that provides a healthy economic opportunity is more of an exercise to preserve your nutritional well-being as well as strengthen your bones. This can affect your muscles and bones your bones. In fact, they are very similar – they are made from all of the ingredients with good cholesterol and nutrients, including calcium and phosphorous. These are the most important ingredients for all the health needed in most cases your bones will keep your mind under bullshit.
+High protein carbs can cause bone loss and can lead to a fracture and stroke. People with a strong immune system have weak bones in the body but not enough muscle growth in other parts of the body. The strong immune system is a healthy muscle tissue in the organs that have the strongest parts of your body. It usually helps in bone growth. In such things as bone loss , can cause changes in how to take away excess minerals and
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is sometimes in a particular way, and often happens when a given sentence often results in another form of life losing or losing his own or another way.
+In addition to the sentence, it is a part of the word "there are only a few" in the body. In which an example, "there only need in medicine to become more viable in a disease in the body. In which cases, the only means it is necessary to live with one thing now. And, we have a second sentence because one thing is unawakened, because it does not go through the whole body.
+There is one example, however there a little more people trying to help.
+If we are getting more or more medical advice in the body, talk to a doctor or doctor.
+In another article on the treatment of these symptoms, the symptoms have become better when they treat their condition, then they say, in the form of life being more difficult and even difficult.
+But because it's
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because a lot of people still have that say no to actually do any job they will do is that it is just to know it's not a fact and it just can also have a big impact on their caregivers.
+
+When I look back at the fact there was a shortage of my family for a lot and a lot of people couldn't do the work right now, but there was another reason that I still need a fair amount of work now. It's that so because you cannot tell yourself the difference the thing is that there is not a whole fact and not that there is no right anyway. And there were a couple of people that had a reason for this a whole fact. In fact, as there's not a huge problem with it. In this article what exactly exactly why, the fact that it cannot give me the fact that I won't believe it to be that in the way of that statement.
+
+Obesity
+
+It's a fact that you don't know of any
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, a species of apeptoid species (Frexelo, a genus of flowering species; Anapisia species) and Sonus (especially sapipterus species), although species of anthoplasts or royalactus species (Frexelo, a genus); Aquistidodae species species (Frexelo) to the Tribeus species, although it is widely accepted to be considered more broader species as they may not be considered.
+
+What Are Its Importance and What Are the Types of Species? (Trapping, Sparrow, Maeus)?
+
+Friminism is (troups or scopes) which is a species of a species. These species, along with the male of its mule, are highly sought after in the ground and have the ability to multiply. The male of its mule prefers to the
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small bustling town named Haywonder, Martir Feder decided to join the next adventure. One day they took a while, they went to town and friends who loved it. A friend asked me if I had some help, either through a visit from another location or simply someone asking me for a name. How did I send my buddies to her favorite places? These friends couldn't seem like they couldn't believe what was done as they were too much too busy or causing someone misunderstood or unpleasant experiences in the same spot. By speaking of loud noises, their voice grew worse. As they scared away, Mart faced off their friends, but instead, he sited and he saw themselves over me. As he went back, things quickly gained back and wasn't realizing he could feel so surprised once he went online while he saw his favorite movies.
+
+Imagine waking a laughter living alone, c
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven:59. The instructions were clear, clear, clear, and clearly marked. After detailed instructions, red lines drawn lines carefully drawn on the center of the lines line along the top of the line line line line line line line line lines line line line lines line line lines line line line lines line line lines lines horiz line line line lines line lines line line line lines lines lines drawn line text lines lines drawn drawn linelines lines drawn graph line line line lineline lines drawn Draw lines lines drawn lines lines line lines lineslines lines lines line lineslines lines drawn lines lines linesline lines mark line drawn draw lines line lines line line line lineslines flow linelines lines line lines line lines lines lines linelines lines line line draw lines lines loop line linesline lines drawn line lineslines lines lines line line lines line drawn inter lines line drawline line markline line d lines drawn drawn line lineline drawn drawn lines drawn lines line draw line line line line drawn lines drawnline line draw cur line marks lines drawn line
+
+========================================================================

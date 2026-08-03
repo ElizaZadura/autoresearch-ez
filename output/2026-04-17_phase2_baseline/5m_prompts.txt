@@ -1,0 +1,61 @@
+checkpoint: model_5m.pt
+label:      5m
+val_bpb:    n/a
+elapsed:    300.29472064971924s
+num_steps:  981
+generated:  2026-04-17 16:16:53
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and toes in the day of the night of my sister Beest to the Brooklyn and, in the day of their day, this day will be for Beest to the night, and also also be night there will be no morning work to sleep.
+
+Master and Master to the Brooklyn at St. Fisher, N. Beest to the Lindana Pleistocada (NPS) & Robbie Roth of Beeslbis & Tasja & Jewarez Beest to the Brookehouse. In this morning we was at the base station, N. Master in this morning, V.D. was at the base station for Master and Wicominus in the Victorian Nâ, but the morning is restored. The Beest to the Rotyel Paddle is filled with gnit, which we have had
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of France has been growing as part of its annual annual year-long German economy, with a series, with a host of $305 million for its inception and to help the city and in parts of Germany.The first annual growth of French caravatÒ, Germany is the highest of Germany in its 1850s in Germany, with a very large number of African populations being traed back 1.4 by 1998 by the French in Germany.
+
+The first American caravatÒ is a large-scale, multi-year 21 million square foot from the US that is overpowering countries over some 2,000 countries in Germany, 3.5 million to 326 million in Germany
+
+KlikiÒ
+
+The name of Port Hurich was Germany in 1976, Germany and an in 1989, Germany helped Germany to 2,000 countries 3,000 countries overseas in Germany
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is no longer the same as the same of the same thing as different means. Not only the same as different means more often the same thing, when the same of only same thing as different different means but they only one same thing as different identifiers. This is why most women in the same thing are only different means more people like to have one more one than different different means and also different different means more people like to get better than same, which also only because more people do not find different identifiers. Let's say women you don't know more about different types of different characters for different types of different is that women you are and women they never go together.
+Lifelong different groups and different types of identifier usually means different identifiers as they go together, which ones like the different types each of different are both different groups, together which means it doesn't differ from different differences between types in different types.
+The different difference between different differences between types of different means
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the type of cricket the most successful and more difficult ones can lead to the death of the most dangerous conditions. According to this in a recent paper, the number of holes in the case of adeptics on each other are:
+
+- Stuff within the holes of the cinch, the puff along the edges of the cinch from which there is no additional hatch. The holes are also available to either of the puff along the shaft or the cinch, which is responsible for the insufficient custodopian is capable of using the fact that the cinch holes between each other.
+- Neguariae Vertical Fluence Awareness Naolinus
+The type of cricket that most people are studying in today's world have also come to make is not always a common name-oriented name. This is where the number of holes in the cinch are 10
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, the mariocattle is an extremely popular type of control used in the world. Although the number of cases of mariocattle were made, there were many varieties. The number of cases of mariocattle was declared from 4.5 to 7.11, and the number of cases was declined from 4.6 to 6.6..
+The number of cases of mariocattle occurred on May 6, 31.19, on August 1, 45.5. The number of cases of mariocattle were declared from 3.9 million. Therefore, the number of case reports recorded was declared to declared from a decline to 2.1 million.
+In the present issue about declared from the decline time in the past decade there were 5.5 million in the past decade. Witness the decline of over 400,000 deaths per year in 
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small amount of energy for the land in a typical traveller or a friend lived in the world. He has been able to make sure to make the perfect world of travel, and he does not have the perfect solution to help the planet. As a beginer, many are also interested in making a perfect world for people who live in a traveler or a park, so be careful, and not only in the world but it's just the simplery of the world. You can make a powerful guide on exploring how to make your world look so fast!
+
+Soon in today's society, a beautiful world of adventures is becoming Today, and even though most travelers want to know more about traveling and discovery. Few children in history play a role, as they can move beyond their varket hars and the world by giving us a simple way to look around different traveling lines of different shapes of our world. Let's take some time!
+
+To begin, think around, look
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 150, where the pileage of the first step is to start the end of the first step, in this article. Then, the second step is to determine the order of the second step.
+
+What is the second step to the first step at to the second step? the most simple step are not to add the third step to the first because the third step ends up in the second step back. The first step to the third step consists of third steps: removing the first step and then leaving the second step. The second stage is the third step. Once the third step occurs, the third step is the second step. The second step is to to see the third step.
+For first step, the first step is to find the third stage to find the second step in second step. The third step is to follow the third Step. First, first step is to find the first complete second step (usually to put the second step) to remove the second step. Then first
+
+========================================================================

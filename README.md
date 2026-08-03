@@ -1,84 +1,170 @@
-# autoresearch
+# autoresearch — dev-continuation
 
 ![teaser](progress.png)
 
 *One day, frontier AI research used to be done by meat computers in between eating, sleeping, having other fun, and synchronizing once in a while using sound wave interconnect in the ritual of "group meeting". That era is long gone. Research is now entirely the domain of autonomous swarms of AI agents running across compute cluster megastructures in the skies. The agents claim that we are now in the 10,205th generation of the code base, in any case no one could tell if that's right or wrong as the "code" is now a self-modifying binary that has grown beyond human comprehension. This repo is the story of how it all began. -@karpathy, March 2026*.
 
-The idea: give an AI agent a small but real LLM training setup and let it experiment autonomously overnight. It modifies the code, trains for 5 minutes, checks if the result improved, keeps or discards, and repeats. You wake up in the morning to a log of experiments and (hopefully) a better model. The training code here is a simplified single-GPU implementation of [nanochat](https://github.com/karpathy/nanochat). The core idea is that you're not touching any of the Python files like you normally would as a researcher. Instead, you are programming the `program.md` Markdown files that provide context to the AI agents and set up your autonomous research org. The default `program.md` in this repo is intentionally kept as a bare bones baseline, though it's obvious how one would iterate on it over time to find the "research org code" that achieves the fastest research progress, how you'd add more agents to the mix, etc. A bit more context on this project is here in this [tweet](https://x.com/karpathy/status/2029701092347630069) and [this tweet](https://x.com/karpathy/status/2031135152349524125).
+This branch (`dev-continuation`) is a continuation of the original [autoresearch](https://github.com/karpathy/autoresearch) project. If you are new here, read the original README section below first. This branch documents **Phase 2**: after the autonomous hyperparameter search converged, we shift focus to studying how the best recipe develops over longer training horizons.
 
-## How it works
+---
 
-The repo is deliberately kept small and only really has three files that matter:
+## Background: Phase 1 — Autonomous Hyperparameter Search
 
-- **`prepare.py`** — fixed constants, one-time data prep (downloads training data, trains a BPE tokenizer), and runtime utilities (dataloader, evaluation). Not modified.
-- **`train.py`** — the single file the agent edits. Contains the full GPT model, optimizer (Muon + AdamW), and training loop. Everything is fair game: architecture, hyperparameters, optimizer, batch size, etc. **This file is edited and iterated on by the agent**.
-- **`program.md`** — baseline instructions for one agent. Point your agent here and let it go. **This file is edited and iterated on by the human**.
+The original autoresearch concept: give an AI agent a small but real LLM training setup and let it experiment autonomously overnight. It modifies the code, trains for a fixed **5-minute wall-clock budget**, checks if val_bpb improved, keeps or discards the change, and repeats. The training code is a simplified single-GPU implementation of [nanochat](https://github.com/karpathy/nanochat).
 
-By design, training runs for a **fixed 5-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. The metric is **val_bpb** (validation bits per byte) — lower is better, and vocab-size-independent so architectural changes are fairly compared.
+Over ~134 experiments across one session, the agent explored:
 
-If you are new to neural networks, this ["Dummy's Guide"](https://x.com/hooeem/status/2030720614752039185) looks pretty good for a lot more context.
+- Batch size scaling (`TOTAL_BATCH_SIZE` from 2^19 → 2^15)
+- Optimizer tuning (Muon LR, momentum schedule, `ns_steps`, NorMuon `MUON_BETA2`)
+- LR schedule shape (`WARMDOWN_RATIO` 0→0.70, `FINAL_LR_FRAC`)
+- Architecture (depth/width tradeoffs, attention patterns, MLP activation, value embeddings, QK-norm)
+- Regularization (weight decay, gradient clipping)
 
-## Quick start
+**Phase 1 result:** `val_bpb = 1.1887` with a 28.8M parameter model (depth=4, dim=512, 4 heads), trained on [karpathy/climbmix-400b-shuffle](https://huggingface.co/datasets/karpathy/climbmix-400b-shuffle) with an 8192-token vocabulary. The biggest single gains came from batch size reduction (more optimizer steps per wall-clock minute) and the aggressive warmdown schedule. After ~50 consecutive experiments with no improvement across all major categories, the search was considered converged.
 
-**Requirements:** A single NVIDIA GPU (tested on H100), Python 3.10+, [uv](https://docs.astral.sh/uv/).
+Key architectural details of the winning config:
 
-```bash
+- SwiGLU MLP (8/3x expansion)
+- RoPE positional embeddings (θ=10000)
+- QK normalization (critical — removing it causes val_bpb ~1.23)
+- Value embeddings (ResFormer) on alternating layers
+- Logit softcap (tanh, value=15)
+- Muon optimizer for matrix params, AdamW for embeddings/scalars
 
-# 1. Install uv project manager (if you don't already have it)
-curl -LsSf https://astral.sh/uv/install.sh | sh
+---
 
-# 2. Install dependencies
-uv sync
+## Phase 2 — Developmental Study (this branch)
 
-# 3. Download data and train tokenizer (one-time, ~2 min)
-uv run prepare.py
+**Central question:** does the 5-minute winner remain strong at longer training horizons? When do gains flatten? What changes qualitatively in generated text over time?
 
-# 4. Manually run a single training experiment (~5 min)
-uv run train.py
-```
+Rather than continuing to tune hyperparameters at the 5-minute budget, this phase runs the **fixed best recipe** at increasing durations:
 
-If the above commands all work ok, your setup is working and you can go into autonomous research mode.
+| Checkpoint | Budget |
+| --- | --- |
+| `model_5m.pt` | 5 minutes |
+| `model_15m.pt` | 15 minutes |
+| `model_30m.pt` | 30 minutes |
+| `model_1h.pt` | 1 hour |
+| `model_2h.pt` | 2 hours |
+| `model_4h.pt` | 4 hours |
 
-## Running the agent
+Each run is **fresh** (not continued from a previous checkpoint) so results are directly comparable. The `TIME_BUDGET` constant in `prepare.py` is edited directly between runs.
 
-Simply spin up your Claude/Codex or whatever you want in this repo (and disable all permissions), then you can prompt something like:
+The `WARMDOWN_RATIO=0.70` was tuned for 5-minute runs and is expected to be suboptimal at longer horizons — re-tuning it is explicitly in scope once baseline developmental data is collected.
 
-```
-Hi have a look at program.md and let's kick off a new experiment! let's do the setup first.
-```
+### Evaluation
 
-The `program.md` file is essentially a super lightweight "skill".
+Both quantitative and qualitative change are tracked.
+
+**Quantitative** (automated):
+
+- `val_bpb` at each checkpoint — run via `eval_checkpoints.py`
+- Train loss EMA recorded mid-run in JSON sidecars
+- Repetition onset, longest clean span, sentence completion rate — computed in `development.ipynb`
+
+**Qualitative** — a fixed prompt pack is run against every checkpoint:
+
+| # | Type | Prompt |
+| --- | --- | --- |
+| 1 | Plain continuation | `The old man walked slowly toward the river and` |
+| 2 | Factual fragment | `The capital of France is Paris, and the population of` |
+| 3 | Longitudinal anchor | `In one sentence, the meaning of life is` |
+| 4 | Structurally awkward | `Despite the fact that however, the reason why because` |
+| 5 | Anomaly lure | `Ground control to Major Snorf,` |
+| 6 | Signature | `Once upon a time there was a small` |
+| 7 | Continuation | `The instructions were clear until line seven:` |
+
+Outputs are rated on: coherent span, repetition onset, syntax stability, specificity vs sludge, interestingness, prompt adherence, and weirdness retained. See `program.md` for full scale definitions.
+
+---
 
 ## Project structure
 
 ```
-prepare.py      — constants, data prep + runtime utilities (do not modify)
-train.py        — model, optimizer, training loop (agent modifies this)
-program.md      — agent instructions
-pyproject.toml  — dependencies
+prepare.py            — constants, data prep, dataloader, evaluation (do not modify)
+train.py              — model, optimizer, training loop (edit TIME_BUDGET between runs)
+program.md            — current research objectives and instructions
+sample.py             — interactive inference from any checkpoint
+eval_prompts.py       — run fixed prompt pack against one or more checkpoints
+eval_checkpoints.py   — evaluate val_bpb for all timed checkpoints → output/eval_results.csv
+development.ipynb     — analysis notebook: developmental curves, prompt comparisons, metrics
+analysis.ipynb        — Phase 1 notebook: hyperparameter search history and progress chart
+results.tsv           — Phase 1 experiment log (commit, val_bpb, status, description)
+model.pt              — best Phase 1 checkpoint (val_bpb=1.1887, 1242 steps)
+model_5m.pt           — timed checkpoint at 5 min (generated during Phase 2 runs)
+model_15m.pt          — timed checkpoint at 15 min
+...                   — etc.
+output/               — prompt pack outputs and eval results
 ```
 
-## Design choices
+---
 
-- **Single file to modify.** The agent only touches `train.py`. This keeps the scope manageable and diffs reviewable.
-- **Fixed time budget.** Training always runs for exactly 5 minutes, regardless of your specific platform. This means you can expect approx 12 experiments/hour and approx 100 experiments while you sleep. There are two upsides of this design decision. First, this makes experiments directly comparable regardless of what the agent changes (model size, batch size, architecture, etc). Second, this means that autoresearch will find the most optimal model for your platform in that time budget. The downside is that your runs (and results) become not comparable to other people running on other compute platforms.
-- **Self-contained.** No external dependencies beyond PyTorch and a few small packages. No distributed training, no complex configs. One GPU, one file, one metric.
+## Workflow
+
+```bash
+# 1. Edit TIME_BUDGET in prepare.py for the desired run duration (e.g. 3600 for 1h)
+# 2. Train
+uv run train.py
+
+# 3. After all runs are complete, evaluate val_bpb for each timed checkpoint
+uv run eval_checkpoints.py
+
+# 4. Generate prompt pack outputs for each checkpoint
+uv run eval_prompts.py model_5m.pt model_15m.pt model_30m.pt model_1h.pt model_2h.pt model_4h.pt
+
+# 5. Open the analysis notebook
+jupyter notebook development.ipynb
+
+# 6. Try the model interactively
+uv run sample.py "Once upon a time"
+uv run sample.py  # interactive mode
+```
+
+---
+
+## Quick start (original)
+
+**Requirements:** A single NVIDIA GPU, Python 3.10+, [uv](https://docs.astral.sh/uv/).
+
+```bash
+# Install uv (if needed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install dependencies
+uv sync
+
+# Download data and train tokenizer (one-time, ~2 min)
+uv run prepare.py
+
+# Single training run
+uv run train.py
+```
+
+## How it works (original)
+
+The repo only has three files that matter for autonomous research:
+
+- **`prepare.py`** — fixed constants, one-time data prep, runtime utilities. Not modified by the agent.
+- **`train.py`** — the single file the agent edits. Contains the full GPT model, optimizer (Muon + AdamW), and training loop. Everything is fair game.
+- **`program.md`** — instructions for the agent. The human edits this to steer research direction.
+
+Training runs for a **fixed time budget** (wall clock, excluding startup/compilation). The metric is **val_bpb** (validation bits per byte) — lower is better, and vocab-size-independent so architectural changes are fairly compared.
+
+For more context: [@karpathy's original tweet](https://x.com/karpathy/status/2029701092347630069) and a [follow-up](https://x.com/karpathy/status/2031135152349524125). If you are new to neural networks, this ["Dummy's Guide"](https://x.com/hooeem/status/2030720614752039185) has useful context.
 
 ## Platform support
 
-This code currently requires that you have a single NVIDIA GPU. In principle it is quite possible to support CPU, MPS and other platforms but this would also bloat the code. I'm not 100% sure that I want to take this on personally right now. People can reference (or have their agents reference) the full/parent nanochat repository that has wider platform support and shows the various solutions (e.g. a Flash Attention 3 kernels fallback implementation, generic device support, autodetection, etc.), feel free to create forks or discussions for other platforms and I'm happy to link to them here in the README in some new notable forks section or etc.
+Requires a single NVIDIA GPU. For other platforms, see the notable forks below — particularly [jsegov/autoresearch-win-rtx](https://github.com/jsegov/autoresearch-win-rtx) for Windows, which this branch was developed on.
 
-Seeing as there seems to be a lot of interest in tinkering with autoresearch on much smaller compute platforms than an H100, a few extra words. If you're going to try running autoresearch on smaller computers (Macbooks etc.), I'd recommend one of the forks below. On top of this, here are some recommendations for how to tune the defaults for much smaller models for aspiring forks:
+For smaller compute (Macbooks etc.), recommendations from the original README:
 
-1. To get half-decent results I'd use a dataset with a lot less entropy, e.g. this [TinyStories dataset](https://huggingface.co/datasets/karpathy/tinystories-gpt4-clean). These are GPT-4 generated short stories. Because the data is a lot narrower in scope, you will see reasonable results with a lot smaller models (if you try to sample from them after training).
-2. You might experiment with decreasing `vocab_size`, e.g. from 8192 down to 4096, 2048, 1024, or even - simply byte-level tokenizer with 256 possibly bytes after utf-8 encoding.
-3. In `prepare.py`, you'll want to lower `MAX_SEQ_LEN` a lot, depending on the computer even down to 256 etc. As you lower `MAX_SEQ_LEN`, you may want to experiment with increasing `DEVICE_BATCH_SIZE` in `train.py` slightly to compensate. The number of tokens per fwd/bwd pass is the product of these two.
-4. Also in `prepare.py`, you'll want to decrease `EVAL_TOKENS` so that your validation loss is evaluated on a lot less data.
-5. In `train.py`, the primary single knob that controls model complexity is the `DEPTH` (default 8, here). A lot of variables are just functions of this, so e.g. lower it down to e.g. 4.
-6. You'll want to most likely use `WINDOW_PATTERN` of just "L", because "SSSL" uses alternating banded attention pattern that may be very inefficient for you. Try it.
-7. You'll want to lower `TOTAL_BATCH_SIZE` a lot, but keep it powers of 2, e.g. down to `2**14` (~16K) or so even, hard to tell.
-
-I think these would be the reasonable hyperparameters to play with. Ask your favorite coding agent for help and copy paste them this guide, as well as the full source code.
+1. Use a lower-entropy dataset, e.g. [TinyStories](https://huggingface.co/datasets/karpathy/tinystories-gpt4-clean)
+2. Lower `vocab_size` (4096, 2048, or even byte-level 256)
+3. Lower `MAX_SEQ_LEN` in `prepare.py` (down to 256)
+4. Lower `EVAL_TOKENS` for faster validation
+5. Lower `DEPTH` (default was 8, Phase 1 winner is 4)
+6. Use `WINDOW_PATTERN = "L"` (single full-attention pattern)
+7. Lower `TOTAL_BATCH_SIZE` to 2^14 or so
 
 ## Notable forks
 

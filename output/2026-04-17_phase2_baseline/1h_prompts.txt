@@ -1,0 +1,52 @@
+checkpoint: model_1h.pt
+label:      1h
+val_bpb:    n/a
+elapsed:    3600.19163107872s
+num_steps:  11822
+generated:  2026-04-17 16:17:16
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and left trails of Tumbai, the taller man being an unmanageable, known as the “today” of man. However, the lousy of man walked slowly over the centuries does not mean the man was 900 miles long, its bold height, its surroundings its surroundings its roots and Its roots its its roots its roots.
+The man built a hide by slump down the east with its feet forward, its branches and leaves its its deep root its roots its roots its its roots its roots its roots its root its root and its roots Its roots can be easily cut into its roots its roots its root roots extend out its roots while the leaves arrive straightwardly its roots its its root roots its its roots its root its roots its roots its its roots its its roots Its root its root its roots its roots their its roots its roots Its roots Its true roots Its roots their roots Its rhode its its roots its roots Its roots
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of French paddy was established in the province. They are one of the most diverse parts of the Paris economy. Here, Paris is an indigenous and historical land manager in Paris. Varis was a popular capital of France, where he was a popular ét. It is one of the most famous figures of famous historians and many of the paris was the Paris. At best, France was renters the land history. Here are the capitalist nations in Paris.
+There are numerous other figures that paris has been used as a base for reveling the inquiry to do this. The land manager was 10 years later, an attempt to land historians to reveled the inquiry to do this, which would be considered the paris.
+In 1647 Elonyma Paris had the 350 people chase of La Paris in France. Elon
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is beyond what we want to do and if we take part
+At Latin's 160+ Word, they don't necessarily mean we can't. They don't want to put things or do things in order to make us
+A. (Imagining us, etc.,)
+A. (Imagining us, etc.)
+Will we see how we really need to get started
+Now that a business, we're looking for ways to get into the industry. It's pretty much easy to say things like things
+to pay. (Imagining us, etc.,)
+Sometimes people do get into the industry, but those things may get into the industry. If you say so, there may be a person who you're not going to like is something like that would happen. There's a way to get rid of that stuff. We're not to go back. Become a good thing. Maybe it's an entity that's always better than good.
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of the fact that the caffeine alcohol will be strong alcohol, and even for for some alcohol, to be drinking alcohol, can be quite addictive for a very long time. Therefore, when you drink soda 800 glasses you can significantly increase the risk your body is getting too high and you have bad eating habits. Alcoholic drink more alcohol slowly can lead to chronic diseases which may lead to chronic diseases associated with alcohol consumption. Most alcohol consumption alone is significantly increases a health condition in many parts of you, most often from the diet. However, it is a normal behaviour such as drinking alcohol with alcohol with the recommended products, water, as well as alcohol. This article contains some tips on how to avoid alcohol consumption. This is a good way to become effective and enjoy the long drink. Most of the alcohol consumed in some of the other drinks is high in calories. It is essential to limit drinking alcohol consumption to a minimum of 100 glasses. Avoid drinking alcohol
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, such as cinchine or casserole, is the most popular way to trap cinchine or marshalline or terpenes. This is the commonest thing in modern life and cinchine or casserole, such as brigo or sharkburn. Its main purpose is to trap pine and terpenes underwater with caucus or marshalline, such as lakes, rivers, and coastal streams. Additionally, pine stands out in a traditional pine tree (and canal; david and casserole) or with deep orange or purple.
+Best of all modern casseroles are casserole, which have many benefits, which makes it ideal an aesthetic. However, it provides an aesthetics pleasure for both the taste and the way to go from the water of a casserole to the comfort and flavor needed to a
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small amount of power to play for the game of my game. This meant the players, the students and the environment they wanted to play. However, let their parents play, their little guilt and the power to play the game, the toys created a more attractive and satisfying setting. To play a game, they wanted to buy a game by the game to purchase a book and they finished their game. Then, try an old game using the Pint and Treasure box. Play puzzled the toys (sugar, corn, honey), and whatever else they wanted. This game was like asking why I was played all about it.
+
+Now that you've puzzled how toys do exist, you'll see what I liked to do with puzzled toys by asking "I love it" because when they play back and back up front of the fun games they were puzzled by. When trying the quiz puzzled (if you can play a favorite game, they will see two
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 14 September 2016 (Ill 2017) and the first attempt was not followed in the other 18 December 2016. It is now unfortunate that the beginning attempts were not rude in my 2004 attempt to get a new start from which I managed to be able to achieve a successful launch from my first 19 years. However, my first success would be the failure to "hand out" the start, but after a few years, I made a small change and a small changes in my time in my backend. And if the original first attempt were not rude but I wasn to be there, it seems to be just 15 years ago.
+I recently have heard about 400 of the start, and it's still really fascinating. For it, I've been using my apartment for some no matter what I think about 10-year-olds working in Liverpool as a small but powerful camera on the head
+
+========================================================================

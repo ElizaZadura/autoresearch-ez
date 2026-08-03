@@ -1,0 +1,58 @@
+checkpoint: model_1h.pt
+label:      1h
+val_bpb:    1.1776530977930726
+elapsed:    3600.1s
+num_steps:  14407
+generated:  2026-04-20 02:40:57
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and dated from Jeside, but did it turn into the water and chase it over with his own daughter, Villager, and anthropologist Gavill Jones' wicked and the pep and peps. His mother, Jonathan, has worked since Tusks. Jones also did not have to wait for him to get around and make a turn to it, and are often ready to be scrambled.
+There are many ways to keep the old man informed for you, including:
+- The age of the mother is first known to use the old man to teach him a child. The young man has been taught, has been called on for his son, and Tusks have done for a long time, such as to notify him, by her husband, Much He and her son were never interested in children.
+- When he sights him, he also encouraged his neighbors to take his
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of California remains a major districts and is part of the Dutch. This means that I must remember that more than 6,000 years of age and the population were dominated by the Induslima population. For example, the Estonians of Canta Cherman were dominated by the Civilian population. Most of the population was considered to be non-probilitous, with the population being dominated by the Sovieties. This number of social and the Purdueian forces are not considered to be considered the largest. They have an equally complex social history in which the Civilian population is dominated. For others, the economic benefits of this population mean that the Purdueian population is a much wider component of it than this year 220 (1950) of the country as the Civilian population was dominated by the Induslima population in 1950. Satis
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is never intrêvian, like having to be in possession for toddlers.
+
+The meaningful meaning of life is so powerful that we cannot define, understand, describe, describe their own life and not, it is an orangishing of life. I think the same thing happened, it as we are at any rate (no matter who, for example, the most useful material being to be in possession. They have to be in possessions of people, animals, even cats and humans, which are we humans, and humans. Even most probably do have feelings or an attitude that we are just for when we come to be. It's not the reason why we have life.
+
+I have a great time to make this meaning to those who are in possession. They have made their own toddlers who haven't, they are called toddlers. To be, they want their own life (or others) to do so and then have to make them
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because it's so unpleasant to see it remain in a new class is when its parents find that everyone with a good name does not use the term "influx" in addition to his name to a particular sentence. This is one very useful class because it is an inheritance, a good name, bad name and good name it. This class that is also called "influx", is the name which does not mean but not confess it to what is called 'inf flux'. Unfortunately, you can't always find it, however, the concept of dualmobile flux and the concept in which these numbers were used, or that's not, for example, very good for you. For some reason, there are some very little ways to protect these things at all times.
+The fact that your dualmobile flux is probably so strong you are probably trying to make your life a bit different. It's a
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Fri. The Dry World. Several in the state were enamaged, but I thought, as well, I was most shocked to see what I should use to keep an eye out for them.
+
+Georologists at the foreground are studying more than 640 newcomers in the humanian population, and scientists, engineers and natural scientists, technologists, engineers and physicians, and scientists at the University of Nottingham have the foreground in their future.
+
+"Every day, as a human being, we will continue to observe," said I do so by understanding the nature of geothermal power and explaining these differences in geology and geology by examining and examining geotypic geomagnetic fields and field geology of geological history to learn more about geological history.
+
+"With the potential to have a significant impact on Geologists, researchers and physicians, we will explore their geological history through the course of years
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town filled with a new town filled with friends and neighbouring lesion, all together loved one together. They came back to my home saying, "if someone tried it but it made a feel like it did something unexpected in the morning and after it hitting, the news was still a couple of years before the news got back back to you.
+
+But just wanted to be part of the conversation. One group wanted friends made together to share with them their friends and champions. Think, asking questions answered asked me a questions asked to explain?
+
+To answer these questions, we asked our friends with friends and neighbours. When asked questions answered, he sought answers, asking questions asked answered questions. While each answered asked, asking questions asked by questions answered, asking questions answer, asking questions, asking question answered questions answered, yes. One answer was yes – even when people understood how questions they asked.
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: I would have to sit with his eyes until the same color I was trying to find out more what I read.
+As I asked if you would like to think of how the eyes will be read until the same time the eyes fad. The next step was to follow your eyes and still the eye is right to your hand.
+My first thing about how the eyes are read and bearing up is that, on all the lights, which makes things more obvious. Now, if the eye becomes ill or worse, the first line which appears the same problem is going to be on the eye. If you are thinking about if a lightning illuminates or is going to be on the eye, there are certain things about how it's seen to say, "I will be on the eye, but in one case, it's more difficult!". Once, he's right that, because his eye is not a "light illuminator." But, his own eye can be used again if
+
+========================================================================

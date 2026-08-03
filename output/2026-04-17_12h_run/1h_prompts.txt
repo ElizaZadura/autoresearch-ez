@@ -1,0 +1,73 @@
+checkpoint: model_1h.pt
+label:      1h
+val_bpb:    1.1781450834527576
+elapsed:    3600.1s
+num_steps:  15020
+generated:  2026-04-17 23:34:49
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and dived from Julu, but did it because of wadding to an ice cream with no other nearby river was a large, dense lavajo earten off the coast of the Sierra Nevi and in some parts of the Sierra Michell.
+
+Brittle the rivers in the Southern Nevi and rivers, when they were not wary of julu, to get stuck into julu, river waters.
+There are many unrelenting river mouths for the river to travel north in inland, the ice can be seen and seen under an ice cold of a thousand earten off the Kerbalkankaraw.
+
+The rocks are not waded and not rocked, such as the Cerricski.
+
+The ancient rocks were created from several sources, such as mountain meerkata, sierras, and the Naruanian Gulf of
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of Paris is the Buddha, the Budalmanship, and Trucklifer.
+With such large and fragile land, paris has taken a very high-level tourism across the nation. For Paris, Paris has been a very large country.
+The Paris is also a very small paris.
+We now know that Paris is quite large and very small and quite small, but has grown quite large, with relatively big and large number of large and fragile paris.
+They have been pretty small.
+The large number of paris is still huge, so far and very efficient in Paris from the Buddhist mountain. Its big size, low and small and has been very large and large, with large and medium numbers, and a bigger than the larger and large number.
+Buddhist paris are small, but big than its big, small and medium numbers are very larger.
+The biggest threat to Paris is Par
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is intermovie. In this sentence the meaning of life history is intermovie. By the time when life history is interpreted. In the beginning, it was, when life history had happened to be interpreted by life and the life history period, the meaning of life history is interpreted.
+The meaning of evolution is interchangeable. During the period when the meaning of life history influences the mean life of life in life and the mean lifetime. It was not interchangeable. It is interchangeable. Even though time history is interdivided for that purpose of life history, religions are interpreting the human life as it has been interpreter. The significance of the meaning of life is interpreted in history and cultural context.
+Many aspects of history and religion are. For this reason, it were interpreted. They were interpreted by life, the world and people and were interrelated, and the
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because it's impossible to maintain your health when it comes to achieving the right level of life is not to stay motivated at all.
+
+While the best way for reaching your goal of life is to have some clear understanding of the things your goals are, it's not just focusing your goals. It's possible to maintain a good diet, exercise and be creative, it's your desire to exercise, or even your goals in everyday life.
+Consider your goals as having a balance throughout your life; instead, include:
+
+Determine the appropriate target within you. In contrast, after you follow up with your planes, with other goals, your goals become overwhelmingly congested. Determine your goal without fail achieving your targets.
+Use a healthy diet. You are not simply a little exciter, but rather a good exercise regimen. Following the planes are no longer worth it, and your efforts to follow the appropriate target should be taken care of. To
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Friends, or Movies can be in action. Around the world, the use for a ground control to be applied is known to be effective at bringing ground to your home.
+What is the ground control to Major Snorf?
+The ground control is a ground control that connects ground to the foundation of ground, ground, the ground, your home, or the landscape. The ground control has ground, and grounds into ground is connected to the ground by an integrated buried ground.
+What are ground control to Majorie ground control?
+The ground controlled ground control is an ground control that connectsground ground to ground, ground, ground, ground ground and ground ground by the ground and then grounds.
+When ground is ground, ground control is ground, ground is ground, then ground is ground in the ground, grounds ground, ground ground, and ground grounds ground ground.
+How does ground control works?
+If ground is planted directly through the ground, ground
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town filled with a large town in Batanaval, M.I. Rachel lived in Bathan, Missouri. Rachel called the Father's Four Billers, who called Four Biller. That's filled with the stars and galaxies that could close the globe even when they finally returned to Batanaval. He created three great cities around the world who took the great deal and now known as M.I. St. Vanu and Rhill, and began in Brusades, with an estimated 564 million people and about 2 million visitors worldwide. As a result he believeded, he was still so we couldn't see. While he loved hearing – so many names on the city of Ms. Jenny Penn, Dallax, and Ms. A.I.'s fabulous spirit. He found, "Goldburg,
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 1,2,3
+The number of 5,135 shows the number of 7.36.
+They were number-blooded, and their length is still pretty much guaranteed. The code is very smooth. The code is 2x4.
+2
+The numbers were number-blobal.
+The first count of 5 numbers are number of number-blooded, and numbers are numbers are two-4.3 or four.3 numbers are number of number numbers, respectively. The two number numbers of numbers are number-blooded, and numbers number are of numbers number-blooded.
+There are number numbers number numbers number six number number numbers are number-blooded. In simplicity, number count numbers are given by number 8 in total number numbers number number numbers number numbers number of number number number numbers number number numbers number number numbers number number number. number numbers number numbers number numbers numbers numbers N numbers number number numbers number
+
+========================================================================

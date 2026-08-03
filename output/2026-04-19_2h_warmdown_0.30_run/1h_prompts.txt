@@ -1,0 +1,58 @@
+checkpoint: model_1h.pt
+label:      1h
+val_bpb:    1.1771865227821252
+elapsed:    3600.0s
+num_steps:  16697
+generated:  2026-04-20 00:29:07
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and drowneded on a beautiful reef-bearing reef. He had been churping over the river slowly, and was slowly dying after the wave of the wave. On Willebrandt's reefs, a few large waves had seen its eury, but nevertheless, his mother wondered if he was sure the wave did not swim before waves. Or nobody he walked down but he walked to the bridge that he felt that, despite the fact that there are all kinds of threats to people living for them, now, all of their life has the most basic information to us, including what this is and which one is more likely to have information available, which is more likely to be able to tell you who's looking to learn new habits.
+There is no reason for the difference between them. He's in the same place and has much difficulty swinging up on the river. His friends and families are also the guardians of this great example,
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of Belize is the largest island nation, located mainly in the island northeastern Tuscast region. It's considered, and a number of historic telescopes and highlands is the most commonly used telescopes, the world of "belonged" telescopes," and the Crettorque is a number of historic observatories in the west, where they are known for the largest of all, and the largest number of large telescopes in the world. Most telescopes located in the upper parts of France have an equator size for the largest expedition; and the largest expedition with the largest expedge, the total number of observatories in the country of the world.
+The main objective of the region is to capture the largest diversity of scientific diversity in terms of telescopes located in Belize; and a large expedition between the two main objectives, from our
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is intermovie. In this sentence the meaning of life is only intermovie with only one piece of information on things like the purpose. It may, however, be, say, a picture of life, this sentence or other sentence. The sentences is about someone who has spent her life over time, and how they really got caught.
+Swedishment: We could be given by Michelle II and Egyptian people, who just worked to make life for them. It is called the authority. This is seen in the words of a sentence on the one side of the sentence. The nannies are actually the first sentence by people. Then they saw the authority, as if it took them, and they went about, to figure out everything, and wanted. You're right: it were the first sentences of menacing their husky (or the sin and so were talking about what his father
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because it's true that the most important thing is that one person is given to every person so that he didn't need to get a job. I believe the question is why does it's that matter? That's where the fact is that while there is no reason why do it is that in a moment in which the person is just under the influence of what it is and why that is, it could be that in fact that things aren't going to put you at the next step. That is why is it that it's not necessarily that it won't kill everything. And when I believe that he is going to let that happen if I get this out you don't do that. You shouldn't do as much, but you should do the thing for what the person would want to say why do it? He's not exactly doing the good thing but is there an inferior thing where the guy really is doing it? That's how he really is doing. So why do your guys stop doing
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Females' Dry Facts.
+The USDA National Park, National Science, and Technology for Research and Intro — was created in 1952. The American government launched an annual Australian National Park warning in 2002 at the forefront of an emergence of the USDA National Monash and its 11th February, National Park, the 104th, 6th Century Park, and the 105th, the 117th announced, National Geographic.
+Table of contents are found in 2019. The U.S. Department of Conservation, the Wens of Perspectives, National Geographic, and the U. S. Department of Geography, is now a National Park for 10th Females.
+In August 2003, National Cemographic Board (NCD) established a National Park and 115th, the U.S. Department of Conservation National Park (D
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town nearby called a "disolet," a few years ago. When they all turned away to the city couch, they were chased, which was called the Father's Father's Father's Father's Father's Father's Father, the Storyteller Sunday, and the Chesapeake.
+
+How To Sound Crowns?
+
+A sound trapped within a circle from the center of a circle, a chordered sound made out of the words. It came from the fact that musicians in the middle of the city, or even our Father's Father—as of "Twenty-Children"— were vocalizing, "Air and Capture" – so no one had inheritted the sound, right now. They also got to the music site that was too lordful to listen because it was a musical one; it was a kind of musical
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven:9 the following weekend. Having the instructions on the list of instructions could cause the instructions to be readily available to the public. Telling us to watch. Please explain how you may have to send instructions.
+
+Your instructions will be readily available at the table below.
+
+1. The instructions are written with a handful of instructions.
+
+Your instructions are written with instructions that must be written with instructions. Your written hand should be reading a manual or word or instructions. A instructions written by a professional who will be read correctly will make the instructions readily available for you or you are not readily available. Before you read, take your instructions out of touch.
+
+Write these instructions for you or you are not readily available in any format. When you write instructions, start out on time. After you read, it's important to write instructions about what you are readily available and which date for instructions. The instructions should be easy to make. It will be instructions easy to read.
+
+
+
+========================================================================

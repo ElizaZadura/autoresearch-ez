@@ -21,8 +21,19 @@ dev/
 
 # Results file
 results.tsv
+
+# Model files
+*.pt
+/*.pt
+
+/model_*.json
+/model*.json
+/model_*.pt
+
 /.venv-linux
 /artifacts/
+
+# Logs
 *.log
 /run-debug.log
 /run-smoke-small.log
@@ -30,8 +41,14 @@ results.tsv
 /run.log
 /run-setup-smoke.log
 /.specstory
+
 /bash.exe.stackdump
 /.claudemodel.pt
 /model.pt
-/output
 /model.json
+
+# Outputs: commit small analysis artifacts (progress.csv, model_*.json,
+# *_prompts.txt, prompts.md, qual-notes.md, summary.txt, Section 8 PNGs).
+# Bulky files are already ignored via *.pt (checkpoints) and *.log (console.log)
+# higher up in this file.
+/output/_archive/

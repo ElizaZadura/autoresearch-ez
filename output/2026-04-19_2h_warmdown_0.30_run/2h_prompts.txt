@@ -1,0 +1,55 @@
+checkpoint: model_2h.pt
+label:      2h
+val_bpb:    1.0605711957017718
+elapsed:    7200.1s
+num_steps:  31257
+generated:  2026-04-20 01:32:53
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and the river finally came down. It was all the small wooden boat striking the river, and they would fly and fly and soo... The man is now still waiting.
+
+She is an exorbitantly agile, the man has never been seen as a car, and it has been a long- and short-, long day.
+
+If the river is gone for, then there is no way in which to go to the old man to see a river. If you are still looking for an area you can take a lot longer to do then go straight north. There is much less for an open water lake. Just a little deeper if you take advantage of the river with the water lake and the winds up in the river, if the winds up the river, keep the boat steady. On the road you see the canyon, water lake, marshmall and grasslands, etc.
+
+Gill Gills Bird and Ice Cub
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of the Paris army in Europe is now inextricably linked to the country. Lord Paris's enemies are not just a small town; they're a village surrounded by two of them who live in two places in front of their fellow. In fact, they're usually living in two buildings: the city of Paris with a very poor people, including Jordan Marks, who live on the hovers and, in a small city with many of them (i.e., many buildings) is now no exception. Lord Paris had a place in the Paris fortunately due to their procurement by France's Merzegat, which then in a way be a perfect place for France to live. Paris already has a place for France in the fifty years ahead of the French Army in 9.1442.
+North France was partially conquered to take on Paris'
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is based on a particular emotion and a particular emotion. When a person has a emotion, they can tell him that it is an emotion. He can be depressing for the person of choice. When a person thinks a person desperately needs to leave his loved ones. When a person feels the need to leave out his loved ones. When a person is a need to leave out his loved ones. When a person thinks a person is a need to leave, he can lead his loved ones. When a person thinks something is a need to leave, they can tell him that he needs to leave. When a person thinks something is a need to leave out his loved ones. When a person thinks something is a need to leave, he can guide him.
+When a person is depressing from a person a given sentence. What kind of emotion is the need to leave that someone thinks would want to leave? What state would it be
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of their poor quality, such that their production is actually poor quality or they are just low quality, is just in some way very much a fact that is very poorly priced, and they are quite hard to compare and contrast both. However, they have certainly been very successful people as they were a little boring, that, and you still aren't sure what this is. It doesn't matter whether that is a fact, that you are really trying to buy new equipment or make more profit, to the people you have come to work on. So far, it seems obvious when you make an investment decision, the results, and the fact that is, and its cost, you really aren't guaranteed to compare and contrast if they are not really poor quality.
+Fish, the most popular thing that you have is so much better than the bad quality of so much so that is because of the lower levels that their prices are lower that are very much a poor quality. So of course
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, with its own approach, is a big asset, to the development of a more comprehensive and productatic way of communication. It's an extremely reliable, reliable way to manage and manage communications.
+The problem is that it is the communication of the team and its decision-making abilities. This, at the very moment, leads to the development of a more strategic, well-opted approach.
+This is in contrast to the competitiveness of the approach, however, to the communication of broader broader hierarchy. Further, each hierarchy is a productive, efficient way of communicating, akin to making a profit, or a team member. Each hierarchy is a productive, collaborative part, by its teams. The same hierarchy in this approach of hierarchy is a way of coordinating and coordinating, and it does work effectively with the team.
+To begin, there are four main steps
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town called Latucci or Mahokai and, in Tokhur, the town lived comfortably in the region. Based on this experience, there would have been some unbelievable weather conditions like wet, humid, and dry conditions when there was little rain, sunny conditions, or poor conditions.
+
+At Latucci, there was little rain near the town, even though its windshield was strong enough. As a result, the town turned to a very cold day and was constantly running in the same spot as its cousin. However, another night, a small town, named after Fort Zavo, decided to find a new village called the "Jump," a small town named Tokhur.
+
+Native Americans, who often think of small homes as a low-cost villager, went through many challenges until they became known as the "jump," a town who used to be called
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: I found it funny that the Irwinian Ferraranovie performed similarly to some of their mothers, but it was only a matter of thinking, as it were just a way to keep my family company safe and secure. This is the reason I was born in 1879. It was supposed to be a very real life experience, but had not been the first to survive as many children as it was. I never heard that people were willing to play and play with games to help get their children out on the plane.
+And when I started teaching about the 'Herrnis' this year I was the first to use a dictionary of children with sensations. I wanted to give each child a clear idea of what they would be able to play by their own children but was not able to be the first to give off the dictionary as the other way of thinking. The more that I found off these dictionaries were the
+
+========================================================================

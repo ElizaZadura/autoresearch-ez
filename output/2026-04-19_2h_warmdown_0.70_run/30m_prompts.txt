@@ -1,0 +1,70 @@
+checkpoint: model_30m.pt
+label:      30m
+val_bpb:    1.195990141935215
+elapsed:    1800.2s
+num_steps:  7230
+generated:  2026-04-20 04:20:11
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and on the streets of Sydney, and he had never been to an urban village, as well as he has run in a different direction from the man to the farm. The village began her own farm with no cage. But in the same city, villages began to visit villages that were founded into the urban area and banks were nearby by hand.
+Forton inland, located at Lang Nang, was founded the village as a source of agriculture and he was the first farmers in the city. The village, which was considered a farming village, was able to run farming in the village; the villages became banks, transported to nearby farms and were now called to villages.
+Roman Jews
+The village villages are usually seen as a source of food; they sometimes reach a village. The farmers must pay the village that runs, transported, in some kilometres
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of 150 million people in the region of Africa and to which the region is the most important region in the country since then it is one of the most important region to which the capital is most important.
+August 22, 2015
+The capitalists also have some important knowledge and techniques for developing the infrastructure, including improving the long-haul economy in the country because of high level of government.
+The city of Paris is currently overseeing the region as more than one million people. It helps the cities, towns and cities need to build a community overseed. The capitalists will allow people to build homes with buildings with buildings that can be built with building roads.
+The infrastructure comes as simple as running out the roads in its park to help people build homes with more roads. The roads can increase the roads because it is the highway of the highway, which allows the people to move on land from roads. It is also the city's largest city that
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is divided to three sentences:
+•
+
+The sake of life includes life, the sake of life, and life. Some life is divided into three elements:
+•
+
+The sake of life. This sake of life exists
+•
+
+Everyday life is divided into 25 individual life. One person sake of Life: life is divided into three parts: one person's age (<=0,000 130 billion died of Life: 379 billion died of Life); the life is divided into nine parts: three life cycles.
+
+Sake of life is the purpose of life, each life is made of life, with six different tasks, including organizing a life, each life. There are no life on Earth, according to scientific literature. Every living organism is one life cycles, life cycles, or life. When every life organism lives, each other life is life is divided into four stages: life is divided into the third stages.
+
+An individual die first
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because of the notion of a single object (in general, that can be observed when it may not be called a single object). In that case, it may have been found in a single object. For instance, some objects that have more than one instance would probably have been discovered in a particular place. This might be due to the fact that there is one instance of an array being a object; in some instances, the name of the array exists. Instead, the object should consist of a unique instance. Both these object instances may occur because of the fact that in some circumstances, the object might have been found in the form of a single object and that it exists because of it.
+This is exactly a certain degree of fact that occurs in the form of a single instance.
+It's not really unoculated to all kinds of object. For example, a single instance that has a single instance of a cell (or instance, it can be a single instance if a cell must be
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Cruef, and Stress
+The term "Memjor snoreships" (the slight movement in a snorf's shell and slight weights) has been applied to the term "maskie" to "membership," which is also characterized as a "vaseball of slight bump," and its primary strategy is to increase a person's physical capacity to move freely.
+At the very beginning, a person wishes to become a co-ordinator would not be able to run a full-time snoring system. While a person cannot run a full-time snoring system, a person can continue to do a full-time snoring system. In addition, a full-time snoring system can be used to cover a full-time snoring system, potentially a major issue in the future. Lack of time, the person's physical capacity to move freely, with a full-time snoring system will not only provide you with a
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small amount of unpleasant, there was a place filled with an uncontrolled number of unpleasant smells, but there was a little unpleasant smell left behind it. In this period, we decided on two more ways to prevent unpleasant odour.
+
+But how wouldn I keep unpleasant smells alike? And just like us mentioned with my two-year-old son Marilyn Garry Schwarzm, her sister Mother of me asked if she knew exactly why he smells alike when he was in a garage. In his case, she was afraid her smell was unpleasant, when she would smell something like this.
+
+Now, wondering if someone was at home suddenly could smell like him?
+
+That was the place filled with a grip, where every detail might be washed. Fortunately, my friend and her friends decided to tell him how to tell them if her odour was left behind.
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: Yes, the answer was written in the middle of the middle and was not the original version of the same page. Most common in the early years between 2696 and 3786, but the same page should be noted; however the early 34863-1471 hadn't written a page that didn't written any information that needed for the years of 37863, including the original content. You also read all about the history of 5 different questions, but it could also not be a bunch of answers that needed for the years of 37863-1593.
+International 2.2-1
+The 18863-1471 hadn't written a different about the 23923-1593, but in today's age they could have a different set of content that would have lost, while some 46,000 of 47,000 readers. Mostly, this question would be written for the years
+
+========================================================================

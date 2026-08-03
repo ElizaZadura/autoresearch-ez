@@ -1,0 +1,50 @@
+checkpoint: model_5m.pt
+label:      5m
+val_bpb:    1.2565317616789828
+elapsed:    300.2s
+num_steps:  1419
+generated:  2026-04-19 23:28:53
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and has never died since 2004, though many have been broken into the old ones, and that the young chimpons has already been treated into the river and now some goats are being sad enough to hurt the world! If a woman has been at risk of death and the death of a woman would be to death, and he says a woman hasn't died so far. The dead end of an end of your tent and his death is just as dangerous and could also be killed in the dead of death of a woman in the same house or the first man named a woman for the death of her son. After disastering for 5–second times with the human being so the dead of death, he says that's right that it is the reason that there will be no death to prevent them from making damage to the tent and his diminishing death of the woman. After all 19 years, I was working to kill many fame friends
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of our culture means Paris, in which to carry the Hubber Tree of the Homans Israel, which is a Hondurbish, which is a hologarchy for the Hapistan Peninsula. Paris usually is just the last year. This is because of the Hingeous Hapistan Peninsula, which is the Holypyan Penraula that is a Holypyan Peninsula. The Holypyan Peninsula is the capital of on the Holypyan Peninsula that is a Southern Hillas Mountain, which means that 500.5 6 115 11 1214 15 14 079 9 1015 12 1711 13 1112.6 1 12119 14 1314 12 12 1114 12 184 
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is a common goal of people. Even an answer, they just often refer to people that it's a whole new idea, called in "The Spanish Emperor."
+Scientist Andrew Bernwan said that the idea of living in a way is that there is one million words living in a way that is so serious about who the idea of organics goes or the idea they've created, or something else. And here are some people who are working in ways that is so serious about how and what it could look like, and what it could look like, what that makes sense, it could be the idea that it is a whole lot of time and space for people to enjoy life — but is the same idea: "Let alone…."
+Posts: So, let's say they don't tell the things you give up to, the idea that your life isn't. With just what you'll look like, things you get to have, what you're doing,
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the fact remains between 1 p30 is probably the most common name for the reason that they don't like the fact that the fact is true. It does not always look exactly if they were originally the most common one in the world. However, that's exactly why no reason wouldn't have been such problem at all. Even in normal, the problem is normal. Therefore, if one would like you the more likely problem you said, could actually help for a reason that it would be a problem, but instead are just the case because they lacked the ability to change their life skills, the real problem in a reason, even if their eyes lacked the knowledge between their eyes and their parents.
+Would you just like the reason you were that the fact that the problem is that they might not find the reason they did find that there are reasonable problems in the story that they did the problem. As far back as the 21st century, they might not find the fix problem for
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, HCI, GSBCI and GPHs for Tracker
+
+Cathewer RF, GSBCIIIU, GSBCII, GSBCI, GSBCI, GSBCIIIIII, SDOB, GSBCI, GSBCI, GSBCI, GDBIVII IIIBCIIG, GSDCI, GSCI, GCIGLG, MGA, GSCI and GSBCI. These GSRTI GPs have a unique combination of several GSBCIGLGs and GSBCIGLGs that GSBCI. GSBCIGLGs are the GSBCIIGS GSBCGLGM GS
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small and interesting kind of human body, so there were no "locators" out there.
+First-rate and let out the light on our eyes. If it wasn't clear (to which it would be), the light on our eyes was also. It was the idea that you didn't seem to see everything from the light, so obviously we actually didn't tell.
+Parents started using their eyes to see everything from the air, though.
+NEWs were no specific type of air. With the exception of the air quality, for all I know that air filters are no exception, so I could just keep all of the people in between them.
+Difficulty being used to be a person to prevent air quality problems.
+Targeted as no-known ones with the exception of the Hot Honey Guns Honey Guns Honey Goed Affordable to the New York Times
+WAY
+The Oceans:
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: Increasing the 300–10000000112���������������� Un�²��������������� according��������½����������������������������������������������������������������������������������� once����������������������������������������������������
+
+========================================================================

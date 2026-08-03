@@ -1,0 +1,69 @@
+checkpoint: model_15m.pt
+label:      15m
+val_bpb:    1.2065910030124742
+elapsed:    900.1s
+num_steps:  4261
+generated:  2026-04-19 23:40:21
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and he was torn and turned away. He was torn and he walked slowly towards the river and he walked slowly towards the riverbanks. As they walked slowly toward the rivers, he walked gently toward the flooding the riverbanks, so as the rushing of all that walked slowly toward the flooding the caves. His park walked slow and straight away from the river, and he torned and controlled tranning. He got a smudging cropping from the riverbank, for three days, and all there was. Then the walked stop and we got ate his dinner on a raven and felt a scarb. During our own childhood he was torn and killed so he was tethered off the riverbank up for a pound of a crown. The walkth slowly toward a lake surrounded by railroad, the rulers and the railroad to
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of 3 million people, and in the France.
+The second largest city of Barrettène, Montgomery
+Mexico Paris is located between 3.6 million and 9.4 million people. It is not in France.
+Represation of the cities of the Paris area - and in the France - between two Croatia and Croatia.
+The Croatia region of Barrettène and Lesse is located between 699 million and 7.7 million people in Sweden and France, between 500 and 100 people.
+According to the Paris Cooperative, Croatia and Croatia are 699 million in the Paris area, of the 7000 million people in Belgian countries.
+Croatia and Croatia are approximately 699 people, and of 3,000 to 250 countries.
+
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is sent to life and death by the beginning of a new era. The meaning of life is sent as a starting point for a new world. It, while the meaning of life and death, come across is a story of something beyond evolution, but there remains much for a new generation around the world that many believe, but a new understanding can be found at many levels.
+Advertisements
+When they are the first time, they are not only a new generation, but they can come across a range of opportunities to gain the true tom. Some of the first definat insights into the meaning of new growth, including the meaning of the new life that is most present in the real world. The meaning of life, which means as individuals, has developed, the same number of new growth opportunities that are present in a new domain will, however, come from the new life of these new life and the new generations of life. In short, the new generation is, for the way we
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because an article states that the Fascinating fact from a particular time a single day is too much can cause a problem on the farthest circumstances. One example is that we can't be able to find a single farther time on the Fascinating fact from each other to the farther the time or the bigger these cases are, the more time it is that the energy from this can take that can be found, so it is possible to go there which is why that means that they can't find the farthest farther time possible.
+This isn't a problem with the Fascinating fact from our great-grasses. From that point, at 10am to a tiny, but at least, it is. However, the Fascinating fact from that point to the point it is being 3rd time and the most effective, yet not only are that there is enough capacity in the farther some people with their own farther points
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Member to Norse: Member
+Duvian Installation
+
+February: The Erination, Fighting and Fertilizing Erination's In Your Home!
+
+February 13, 2001
+Member, you can begin a program with a single step after the program begins
+to make you realize that a simple green house is really just a basic way to
+wheat vegetables. I also plan on making these is a program without need for any program
+so you must start at home or home; the first thing to do starts to make you feel
+gardened, backed by a plan for what you can use.
+
+The First Erination's In Your Home:
+
+The First Erination in Your Home
+
+You're in the most important way to think about you're in the home. You're now making more changes in your homes if you are
+broken, or so. Sometimes, a certain
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small group of people called "noebtles" in the streets, a man named Brian Zadi (or the 10th of the city) became a unique place for people, from the Middle Ages to the North Ages to the South.
+As with any Brian Zadi, there was a place where there were many people asking whether the city was the neighbors on the country. In our backyard, Zadi looked a lot of people, and then asked if it became a house and hadn't made. Sometimes, there was no neighbors, no one can find.
+It was the place where people lived and what they could find.
+Now, there was a spot where no one would find living in an neighboring town, a hiking trails, a fishing traile, and a fishing trails, so that people were finding a boat that can find the perfect way to travel and travel on a bike.
+The town was called a
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 12: 12: 12: 12: 12:12: 16: 18: 24: 12: The 16: 12: 12: 12: 12:12: 24: 18: 12: 12: 12: 16: 12: 12: 12: 12: 12: 12: 12: 12: 12: 18: 12: 12: 18: 12: 12: 12: 12: 12: 16: 12: 18: 16: 16: 12: 6: 12: 16: 13: 12: 12: 12: 16: 12: 12: 12: 12: 12: 16: 22: 16: 12: 12: 19: 15: 16:
+
+========================================================================

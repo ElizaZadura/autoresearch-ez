@@ -1,0 +1,63 @@
+checkpoint: model_30m.pt
+label:      30m
+val_bpb:    1.1916630580384604
+elapsed:    1800.2s
+num_steps:  7201
+generated:  2026-04-20 02:08:29
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and was able to see the old man wage on an alarming hull. Now when the tides were landed there was a small chance the river could see the tides with it, and when the tides were made. The man in the other man was made and was ruined. It was the old man the male who and her brother or had been pulled with it in a few days, and then the man did be there for the man. The tides were also not there. After the tides were reoccurred, the man wore her cage, the tides, the tides and walamant was wilted. The Tides were also not dictated. At the year, there were a few dictators who were not able to see it. The man wore was able to see if a man looks any kind of the old woman. At the years, the man in the estate of
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of 150 individuals.
+The capital of France, and the majority of it is left in a city in the capital that has a low economic income to the economy, according to the capital of India.
+Table of Contents to the capital of France.
+What does its capital stand to do?
+The capital of France it is a central role of the country of France in the capital of Germany.
+The capital of France.
+The capital of France is a central role of the country as opposed to the country of France.
+The capital of France is the central role of the country in the economy.
+The central role of the economy.
+The city of India, as it is the part of the capital of India.
+The Business of the India is the main capital of France,
+In Germany, the total capital of French country is the highest-energy economy.
+Sequity of the economy is the first generation of businesses that have an economic presence to the economy, according to the capital and the economy
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is divided into three sentences:
+- Job Languages are given by one word and the corresponding sentences. One word is the meaning of life. Some sentences be translated into language, but others are not. Others are also spoken and written. Often words are said to be used in English. These mean they have four words and they are a text dialogue. The first sentences are text in translation. Some of them are said to have the corresponding word in English (see Togger. )GSB Question: The meaning of meaning in the text varies from words by the sentence of the text in translation Question: The meaning of life is divided into the sentence of the text in the sentence of the text in translation Question: The language is divided into three sentences:
+- Job Languages are translate text and are written into English. They have two sentences: in translation (i
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the world is not the only thing in the human society is that the presence of a high quality of life comes from where even today the human society has taken another example from the many different countries of the world from France to France.
+The first example of a human is another human beat made from animals, including humans and animals that have developed a strong presence in the presence of a dangerous substance. The fears that the brain or animal are already influenced by the human body are still scared of which they leave after a brief one because the human beings are in a lot of different places. And although most likely to be the most successful when there is a human beings, it is just therewhere humans can the human head.
+Unlike human beings where humans and animal have many characteristics, and are the most of all human beings, and the human beings that belong to a large number of people are the most successful. So if you are born with your family you are the
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, CA
+Big-off with a variety of flavors
+If you enjoyed your garden, you'd be prepared for a healthy soil for your garden. Ground control can be challenging, but you can add other nutrients to your home, such as phosphorus, potassium, and vitamin K, which is very important for health and fitness and growth.
+Pure it right away
+Day in the soil does not come with it. It helps to keep the soil moist and reduces the amount of direct sunlight exposure by plants, so you can plant any type of plants in a garden.
+For any soil with high-quality soil, it should be well-skilled and moisturised. This could be used for groundwater arrow plants (or waterings and the soil. It should also be pronounced in the ground in a way that won't dissolve it in a way that it is well worth.
+Place a few potted plants down a hole in the ground,
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town filled with mystical thoughts known as NSF where all of were born out of the town and had a huge number of friends of both of us. Some of the world's fastest growing kids were born on the street. They told their parents how many times they realized their dreams of living, and how many times they realized that they would not exist if they had to have a young teen? By understanding the origins of their dreams, they can enjoy eating healthy and healthy meals. When they had a big dream when they had to come together, they had to find ways to get that healthy despite their negative attraction from becoming the "unknown" that they knew that they were losing. Finally, at night, they could be able to discover new hidden talents filled with amazing healthy eating habits.
+
+In summary, NSF represents the ultimate goal of having big success in the world. When successful in the field due to its growing nature and its
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 427, or "weak" 4, and then "weaken" 1: 437, or 2: 428, and 3: 426, or 4: 218, and 4: 437, or 4: 427 or 428, or 2: 4: 427, and 1: 437, or 427, or 428, or 648, are intended to prevent or prevent or reduce the risk of chronic disease transmission.
+Often times early the infection caused by a transmission in the United States of America, but the majority of the US surpassed by an emergency, the US surpassed, was in the US from this 117: 427, and then was later in the Middle East, until 432, and 167, or 4: 428, or 3
+
+========================================================================

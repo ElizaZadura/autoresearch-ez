@@ -1,0 +1,66 @@
+checkpoint: model_15m.pt
+label:      15m
+val_bpb:    1.2125812271610275
+elapsed:    900.1s
+num_steps:  3659
+generated:  2026-04-17 22:47:41
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and he was tilted to the shingles of the shingles of the shingles in the shingles.
+The jaws of the shingles can vary very little from one place to the next. When young sons do shingles take place the shingles will take place, the shingles will wrap them in plastic bags on soaked shingles.
+The shingles will wrap up and pull the shift towards shingles
+Buders will wrap up and pull the jaws for shingles on all of the shingles.
+The shingles will wrap toward the shingles in the shingles. The shingles can easily grab or lean the shingles on the shingle’s tip toward the shingles.
+The shingles will run over the shingles because the center of the shingles shingles might be on the shingles, but their
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of countries is taking part in different countries so as they need to pay attention. In Europe, country officials are increasingly exposed to capital of South Africa to a country (and are so vulnerable), the United States is being in the same danger as France has had not met countries with governments but has a big advantage on the population. In Europe, countries do not have any capital – they do not want the governments to be at peace, but they also need a lot of capital to do it. The economy needs to be constant. Therefore they need to do everything else in place in the United States, to be doing so.
+As the country’s largest country on the country, the United States will also need to be more aware of the climate crisis situation of country as its countries have been in the developing environment for quite a while. It is extremely hard that countries are also at risk, if countries are at risk and have not yet been developed for climate crisis. The United States has need
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is changed in time and time when it is impossible to solve for a reason or a lack of knowledge of the world, the definition of a 'productive succession' is so much inherent in the human mind. It comes down to that but when people are feeling a full truth, they are just giving away the potential to any particular concern and its challenges are not as likely in the future. To these criticisms, life is often misfortunate and undoubtedly we can be acknowledged that even the true truth is not quite obvious. But what is the meaning of God? For example, when God is to say God (not is an example in which you are not being God) or God (not as you speak but instead we say that God is God) or when God is not believing, it, if God is the God that comes down and what he makes a truth……there is, on the other hand,, just being God is
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because you may never fully understand the meaning of the most natural things is a problem. If you are looking for a problem on your face and if you try to get yourself and others on the road or have questions, we have you covered. Here we focus our eyes to the idea. From the way you want the most natural things to these things, and the way you want to know everything is from the wrong place that you want to get away from things. To go there, look for some things and even try to make things look like what you are in the eye.
+A good way to go out is with your eye. The most common thing people get is that your cat gets you feeling excited and sit to it without you trying it up. You're in the center, right, your back, but the most basic principle being that your cat actually sucks up on you. Instead of getting up and walking down, look for some things and try some other activities. And that is it important
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Member
+Dive: May 29, 2021
+
+Memory
+
+Memory: The Ergian Freedom Roveling in Ergian Goldenstein. 8
+
+November 6, 2020 - Nova Scotland
+Semory
+
+Price
+Image credit: Nova Scotland, Member
+
+This year, the Principal Aquaria Bhazzamine and Member (Part Bandry and Member) the Ergian Freedom Roveling Association, Nova Scotland, Member. 4 (or 3) 4 (or 1) 4 (or 5) 5 (or 1) 6 (or 4) x 5 (orx) 8 (orx) x 5 (orx) 6 (orx)
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small swaying of small-less soft-tipped glow-heads, such as an upcoming socket, that the sways were on the ground to release. On the other hand, there was a small footprint among the sways left to play and the sways left were smaller, allowing the platter to throw off the grass or shrub. However, this was not true enough to do the sways until it wasn't enough to bend a lot of time until it did a few things quite a bit different than just a tiny piece! Here's what we've got about it:
+
+Breathing:
+
+Difficulty breathing - a pleasurable feeling - itching – itching
+
+breathing:
+
+Itching - Breath, a hobby, can be used as an air conditioning practice. Blow-head is a small, easy-to-maintain procedure for breathing or breathing (in a few hundred miles) from a couple
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: 12: 13: 12: 15: 15: 15: 15: 17: 15: 17: 16: 15: 15: 17: 15: 17: 15: 7: 16: x: 15: 17: 15: 17: 17 (: 15: 17: 17: 16: 17: 15: 16: 17: 17: 16: 18: 18: 17:: 18: 17: 17: 17: 17: 17; 18: 17: 17: 15: 15: 18: 18: 18: 17: 17: 17: 17: 16: 15: 15: 17: 17: 21: 17: 17: 17: 17: 
+
+========================================================================

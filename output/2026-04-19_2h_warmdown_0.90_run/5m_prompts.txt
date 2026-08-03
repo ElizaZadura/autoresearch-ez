@@ -1,0 +1,54 @@
+checkpoint: model_5m.pt
+label:      5m
+val_bpb:    1.2537317991059116
+elapsed:    300.1s
+num_steps:  1443
+generated:  2026-04-20 06:02:24
+temp:       1.0  top_k: 50  top_p: 1.0  max_new_tokens: 200
+========================================================================
+
+[plain_continuation]
+PROMPT:     The old man walked slowly toward the river and
+COMPLETION: The old man walked slowly toward the river and has never been a difficult time driving by humans, but with a small range of human species and having the perfect balance in mind is a difficult time driving into the lives of a human. If we keep ourselves in check here, the only time you feel like we were here is when there is a whole process of uncheasing our brakes into our own city and here in the Greek world. The most important thing I am going to do is not to talk to them in any way. You want your brakes to be better then you will get brakes. My brakes are better than us for this to tell you why you have braike yourself for it as even though some people are not sure that they are on the ground, but do one's right? If people stop you and you will come into a second road and that is, the more people are getting on you. So, there is some of course you can do this at least.
+
+Richard Rosenz,
+
+[factual_fragment]
+PROMPT:     The capital of France is Paris, and the population of
+COMPLETION: The capital of France is Paris, and the population of our chief, it is in danger to our owners and governments. It is also referred to as it is a group of people. The capital of France is defined as the first. It is formed by the name of the group of the capital of America. It is formed by the "game to be." The capital of Britain is formed by the 1910-1980s which the word "game" is actually "turned up" in the English language. The word translates to "long-legged capital" on English. It is originated in Tennon, France and the term "game to be' "Terrini," which is first defined in the English word "game to be'," or 'game to be' "games to be. It is referred to as "game to be'".
+
+Land by the 1980s it originated in the Indian Ocean, and the
+
+[longitudinal_anchor]
+PROMPT:     In one sentence, the meaning of life is
+COMPLETION: In one sentence, the meaning of life is a term for the "life," refers to how a person has a connection to one when a person who has a negative impact in life is the life of someone’s most important life. When the person comes to life, or person’s life experiences, often experience a negative impact on one’s life. The last story is told by a man who has 6.15 people. When the person wants to see the life of life, the person he learies it, or does it feel a lost life. He is a personal and social, person, and a life acting on that thing. He is a personal, social and economic person.
+Second book: The most common person with life-adjusted life experiences: life: a person’s ability to make meaning in life
+Musical: person can be a personal challenge. For some reasons, life is like a personal and social. In fact, people are living things they can come face such a negative impact on our
+
+[structurally_awkward]
+PROMPT:     Despite the fact that however, the reason why because
+COMPLETION: Despite the fact that however, the reason why because the fact that I actually told my dog is really wrong, isn't the only reason actually? We're actually the actual question of what's happening. We know when you read, if you read, the answer is your question with my answer. This is right, you will probably be the only question that I got the right question. That's not how science plays in mystical role, but also the fact that I have said to be a big reason for those who are trying to stand up, there is no way for me because I won't come away due to many of us, as we are now going to come across ours."
+As we concluded, there was a lot of reason why we used to being the only question about that in which I'm interested, I'm pretty sure it actually contains several of those questions. I'm pretty sure the question does well. I think there was a lot of truth about what we actually made. It might be an option in which we
+
+[anomaly_lure]
+PROMPT:     Ground control to Major Snorf,
+COMPLETION: Ground control to Major Snorf, Cakery, Weather Rabbits
+This beautifully reminds you of sageways to wrap into their mouths, not just not to do so, and that they actively support them. For most children, sageways, including adults, cats, cats, cats, cats, and some of their territorial nature. This is a particularly true source of connection to catacre and the importance of active nature.
+Fortunately, adult cats are naturally echocrats, that their food is often raised as predators. Rabbits, including humans, are protected from pets from the environment and will develop their nuance. These cats can fly themselves or they may feel more comfortable or distracted. They may not have fur and hair, but for example, cats may not be well-admitted to fly after they escape.
+Love from from your veterinarian is great since it may be a natural way to get your cat up from home, to
+
+[signature]
+PROMPT:     Once upon a time there was a small
+COMPLETION: Once upon a time there was a small town among the residents, town, and tie, there lived a long range of about a 50s and two.
+Robot (5) Dolphins, which lived at the 20th annual in Swiss. Unsynopsy. It seemed to have a very high visibility. It is a young houseplant. With friends being with friends or family and you have fun, a person could be on their own.
+Cost About: 10th January
+With the exceptional bird, there are 50 deaths for birds, including:
+Today's birds. Many birds consume food. For more views, the bird is usually seen in birds. Dolphins. They eat food, as birds consume food. The birds can beat food. Most dogs with the food have many nutritional requirements and can beat the birds’ food.
+The best bird food is called "maculture."
+In the morning, there is a water bowl. That's just
+
+[continuation]
+PROMPT:     The instructions were clear until line seven:
+COMPLETION: The instructions were clear until line seven: In a quarter of quarter people have over half a millenthy quarter of their lives. Now the quarter is the quarter at the moment of my quarter. I do this twice for as long quarter quarter conversations I think as a quarter of people of quarter people have no quarter quarter quarter quarter questions. It seems to be the same as quarter quarter you think quarter quarter quarter quarter quarter s quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter quarter-quarter-quarter quarter sand Quarter-quarter quarter quarter Quarter quarter qu equivalent quarter quarter y quarter s quarter quarter Quarter quarter quarter answers quarter quarter quarter quarter  quarter-quarter quarter quarter quarter quarter qu qu
+
+========================================================================
